@@ -46,9 +46,9 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'mysql-db-prdto3'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
+            'database' => env('DB_DATABASE', 'wordpress1'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', 'root'),
             'unix_socket' => env('DB_SOCKET', ''),
