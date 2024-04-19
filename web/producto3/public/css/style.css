@@ -261,19 +261,69 @@ https://www.w3schools.com/css/css_editor.asp
 */
 /*ESTEBAN*/
 
+/*ESTEBAN*/
+
 a.enlace {
-color: white;
-text-decoration: none; /* Eliminar subrayado */
-transition: color 0.3s ease; /* Transición suave del color */
+  color: white;
+  text-decoration: none; /* Eliminar subrayado */
+  transition: color 0.3s ease; /* Transición suave del color */
+  }
+  
+  a.enlace:hover {
+  color: lightgray; /* Cambia el color al pasar el ratón sobre el enlace */
+  }
+  
+  .card-index{
+  transition: 0.3s ease;
+  }
+  .card-index:hover{
+  scale: 1.05;
+  }
+  
+  main {
+    margin: 1em 5em 2em; /* Ajusta este valor al tamaño de tu pie de página */
+  }
+  .card-image-container {
+    height: 200px; /* Ajusta este valor según tus necesidades */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .card-image {
+    width: 80%;  /* Ajusta este valor a tus necesidades */
+    height: auto; /* Esto mantendrá la relación de aspecto de la imagen */
+  }
+  .card-body {
+    --bs-card-spacer-x: 0.5rem;
+    --bs-card-spacer-y: 0.5rem;
+    --bs-card-cap-padding-x: 0.5rem;
+    --bs-card-cap-padding-y: 0.5rem;
+  }
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
-a.enlace:hover {
-color: lightgray; /* Cambia el color al pasar el ratón sobre el enlace */
+.card {
+    animation: fadeIn 1s ease-in-out;
+}
+.container {
+  animation: fadeIn 1s ease-in-out;
+}
+.container-fluid {
+  animation: fadeIn 1s ease-in-out;
 }
 
-.card-index{
-transition: 0.3s ease;
-}
-.card-index:hover{
-scale: 1.05;
+/* 
+https://fonts.google.com/icons?selected=Material+Symbols+Outlined:visibility:FILL@0;wght@400;GRAD@0;opsz@24&icon.query=view
+*/
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
