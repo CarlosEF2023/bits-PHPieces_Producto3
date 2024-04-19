@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminPanelController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', HomeController::class);
+
+Route::get('administrador/adminPanel', [AdminPanelController::class, 'index']);
+Route::put('administrador/adminPanel', [AdminPanelController::class, 'index']);
+
+Route::get('reservas', function () {
+    return 'reservas';
 });
+

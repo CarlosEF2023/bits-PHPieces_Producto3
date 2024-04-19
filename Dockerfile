@@ -19,3 +19,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Instala las extensiones de PHP necesarias para MySQL.
 RUN docker-php-ext-install mysqli pdo pdo_mysql
+# Habilita el módulo rewrite de Apache
+RUN a2enmod rewrite
+
+# Reinicia Apache para que los cambios tengan efecto
+RUN service apache2 restart
