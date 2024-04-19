@@ -17,8 +17,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] == "") {
     <header class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow" style="position: sticky; top: 0;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <a href='/index.php'><img src={{ asset('assets/Isla_Transfers_Logo.jpeg') }} width='64px'></a>
-                        height='64px'></span></a>";
+                <a href='/index.php'><img src={{ asset('assets/Isla_Transfers_Logo.jpeg') }} width='64px'></a>                        
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbar-content">
                     <div class="hamburger-toggle">
