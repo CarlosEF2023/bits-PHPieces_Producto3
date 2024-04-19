@@ -1,0 +1,38 @@
+
+version: '3.9'
+services:  
+  mysql-db-prdto3:
+    image: mysql:8.0.36
+    volumes:
+      - mysql-volume-prdto3:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress1
+      MYSQL_USER: user
+      MYSQL_PASSWORD: root
+    ports:
+      - "3308:3306"
+    container_name: mysql-db-prdto3
+  php:
+    container_name: PHP-webServer-prdto3
+    build: .  # Esto le dice a Docker que construya la imagen desde el Dockerfile en el directorio actual
+    volumes:
+      - ./web:/var/www/html
+    ports:
+      - 8080:80
+      - 8000:80 # Puerto para aplicación laravel cuando se cree
+    depends_on:
+      - mysql-db-prdto3 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2.0
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: mysql-db-prdto3
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  mysql-volume-prdto3:
+
