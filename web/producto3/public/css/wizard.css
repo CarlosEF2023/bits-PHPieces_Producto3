@@ -1,0 +1,128 @@
+/* https://phppot.com/php/wizard-form/ */
+
+.phppot-container {
+    width: 740px;
+    margin: 20px auto;
+    padding: 0px 20px 0px 20px;
+}
+
+
+.message {
+    padding: 6px 20px;
+    font-size: 1em;
+    color: rgb(40, 40, 40);
+    box-sizing: border-box;
+    margin: 0px;
+    border-radius: 3px;
+    width: 100%;
+    overflow: auto;
+}
+
+.error {
+    padding: 6px 20px;
+    border-radius: 3px;
+    background-color: #ffe7e7;
+    border: 1px solid #e46b66;
+    color: #dc0d24;
+}
+
+.success {
+    background-color: #48e0a4;
+    border: #40cc94 1px solid;
+    border-radius: 3px;    
+    color: #105b3d;
+}
+
+.validation-message {
+    color: #e20900;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.display-none {
+    display: none;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
+.m-20 {
+    margin: 20px;
+}
+
+.tile-container {
+    width: 240px;
+    border: #9a9a9a 1px solid;
+    border-radius: 3px;
+    padding: 10px 20px 10px 20px;
+}
+
+.label-width {
+    /* width: 200px; */
+}
+
+button {
+    width: 200px;
+}
+
+.wizard-flow-chart {
+    border-top: #ffc72c 3px solid;
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 0px;
+}
+
+.wizard-flow-chart span {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50%;
+    border: #ffc72c 3px solid;
+    margin-top: -20px;
+    z-index: 100;
+    background: #FFF;
+}
+
+.button-row {
+    margin: 60px 0px;
+    text-align: right;
+    border-top: #2f2f2f 1px solid;
+}
+
+.wizard-flow-chart span.fill {
+    background: #ffc72c;
+}
