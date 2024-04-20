@@ -1,7 +1,7 @@
-@extends('plantilla')
+@extends('layouts.plantilla')
+@section('title', 'Reservas del Aeropuerto al Hotel ida y vuelta')
 
-@section('contenido')
-
+@section('content')
 <?php
 echo '<form method="POST" action="/~uocx1/controllers/reservas/modificar_reserva_sql.php">';
 echo "<h1> LOCALIZADOR: ".$bbdd_reservas->get_Localizador()."</h1>";
