@@ -1,6 +1,7 @@
-@extends('plantilla')
+@extends('layouts.plantilla')
+@section('title', 'Reservas del Aeropuerto al Hotel')
 
-@section('contenido')
+@section('content')
 
 <?php
 echo '<form method="POST" action="/~uocx1/controllers/reservas/modificar_reserva_sql.php">';

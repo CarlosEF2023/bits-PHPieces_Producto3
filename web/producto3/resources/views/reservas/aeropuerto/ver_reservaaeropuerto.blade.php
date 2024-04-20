@@ -1,10 +1,9 @@
-@extends('plantilla')
+@extends('layouts.plantilla')
+@section('title', 'Reservas del Aeropuerto al Hotel')
 
-@section('contenido')
+@section('content')
 
 <?php
-error_reporting(0);
-session_start();
 echo "<h1> LOCALIZADOR: ".$bbdd_reservas->get_Localizador()."</h1>";
 ?>
 <h3>Recogida aeropuerto</h3>
