@@ -1,7 +1,7 @@
-@extends('plantilla')
+@extends('layouts.plantilla')
+@section('title', 'Reservas del Hotel all Aeropuerto')
 
-@section('contenido')
-
+@section('content')
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
     <div class="card">
