@@ -1,6 +1,7 @@
-@extends('plantilla')
+@extends('layouts.plantilla')
+@section('title', 'Menú de listado de reservas')
 
-@section('contenido')
+@section('content')
 <div class="d-flex align-items-center justify-content-center" name="reservas" id="reservas">
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col" style="width: 300px;">
