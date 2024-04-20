@@ -39,7 +39,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] == "") {
 
                     <!-- Colapsar correctamente los form de login -->
 
-                    <form action="controllers/loggin_sql.php" method="post" style="display: flex; align-items: center;">
+                    <form action="{{ route('login') }}" method="post" style="display: flex; align-items: center;">
+                        @csrf
                         <div style=" margin-right: 10px;">
                             <a href="#" class="enlace">Registrarse</a>
                         </div>
