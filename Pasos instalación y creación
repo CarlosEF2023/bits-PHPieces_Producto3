@@ -1,1 +1,93 @@
 
+docker-compose up -d 
+
+Entrar por ssh:
+docker exec -it 323473b1674251293e87f7488b9a4401ca3ae20341123cd45fb2dab1511a8f4e /bin/bash
+
+1 No nos olvidemos de instalar las librerias de php en el contenedor, ya estan en el Dockerfile
+2 Insalar la aplicacion laravel en su versión 10, ya que php de AWS es 8.1.2 y no permite una versión más nueva
+	- No se puede especivicar una vesión desde el instalador de laravel, tiene que ser con composer
+	composer create-project laravel/laravel:^10 nombre_del_proyecto
+	composer create-project laravel/laravel:^10 producto3
+3 Luego, ejecuta el siguiente comando para instalar las dependencias del proyecto:
+	composer install
+
+# Cambia al usuario root para ejecutar comandos de permisos
+sudo su
+o
+su root
+
+# Establece los permisos adecuados en los directorios de almacenamiento y logs
+chmod -R 775 /var/www/html/producto3/storage
+chmod -R 775 /var/www/html/producto3/bootstrap/cache
+chmod -R 755 /var/www/html/producto3
+
+ssh al remoto:
+ssh uocx1@fp064.techlab.uoc.edu -p 55000
+pass: GMRFPtpR
+
+php artisan:controller nombreControlador 
+
+
+# Habilita el módulo rewrite de Apache
+RUN a2enmod rewrite
+
+docker-compose down
+docker-compose build
+docker-compose up
+
+php artisan tinker
+
+use App\Models\TransferAdministrador;
+> $administrador = new TransferAdministrador;
+= App\Models\TransferAdministrador {#4996}
+
+> $administrador->Username = 'Pepito';
+= "Pepito"
+
+> $administrador->Username = 'Pepito';
+= "Pepito"
+
+> $administrador->Password = 123456;
+= 123456
+
+> $administrador;
+= App\Models\TransferAdministrador {#4996
+    Username: "Pepito",
+    Password: 123456,
+  }
+
+> $administrador->Nombre = 'Pepe';
+= "Pepe"
+
+> $administrador->email = 'pepe-admin@gamil.com';
+= "pepe-admin@gamil.com"
+
+> $administrador->Apellido1 ='Loren';
+= "Loren"
+
+> $administrador->Apellido2='Perex';
+= "Perex"
+
+> $administrador->Id_tipo_usuario=3;
+= 3
+
+> $administrador;
+= App\Models\TransferAdministrador {#4996
+    Username: "Pepito",
+    Password: 123456,
+    Nombre: "Pepe",
+    email: "pepe-admin@gamil.com",
+    Apellido1: "Loren",
+    Apellido2: "Perex",
+    Id_tipo_usuario: 3,
+  }
+
+> $administrador->save();
+
+ver la config de conexión con tinker
+config('database.connections.mysql')
+
+DB::select('SELECT 1');
+
+php artisan config:clear
