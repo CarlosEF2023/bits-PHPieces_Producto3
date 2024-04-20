@@ -1,10 +1,8 @@
-@extends('plantilla')
+@extends('layouts.plantilla')
+@section('title', 'Reservas del Hotel all Aeropuerto')
 
-@section('contenido')
+@section('content')
 <?php
-session_start();
-require_once "../../models/transfer_vehiculo.php";
-$conductor= new transfer_vehiculo("", "", "", "", "");
 $tramo_informe= $_POST["filtro"];
 $fecha_actual= date("Y-m-d");
 $id_conductor= $_SESSION["identificador"];

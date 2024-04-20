@@ -1,10 +1,8 @@
-@extends('plantilla')
+@extends('layouts.plantilla')
+@section('title', 'Reservas del Hotel all Aeropuerto')
 
-@section('contenido')
+@section('content')
 <?php
-error_reporting(0);
-session_start();
-
 echo "<br><div class='card'>";
 echo "<table class='table table-bordered table-striped table-hover'>";
 echo "<thead class='table-dark'>";

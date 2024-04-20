@@ -1,9 +1,8 @@
-@extends('plantilla')
+@extends('layouts.plantilla')
+@section('title', 'Reservas del Hotel all Aeropuerto')
 
-@section('contenido')
+@section('content')
 <?php
-error_reporting(0);
-session_start();
 require_once ("../../controllers/check_connection.php");
 $_SESSION["mensaje"]="";
 include_once "../header.php";

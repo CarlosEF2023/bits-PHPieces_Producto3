@@ -1,5 +1,6 @@
-@extends('plantilla')
+@extends('layouts.plantilla')
+@section('title', 'Reservas del Hotel all Aeropuerto')
 
-@section('contenido')
+@section('content')
 
 @endsection
