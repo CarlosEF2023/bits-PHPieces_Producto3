@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\AuthController;
 
 
 /*
@@ -18,13 +19,33 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', HomeController::class);
+Route::post('login', [AuthController::class, 'login'])->name('login');
+
+// habra que unificar estas rutas en una sola
+
+Route::get('/administrador', function () {
+    return "administrador";
+})->name('administrador');
+
+Route::get('/vehiculo', function () {
+    return "vehiculo";
+})->name('vehiculo');
+
+Route::get('/viajero', function () {
+    return "viajero";
+})->name('viajero');
+
+Route::get('/hotel', function () {
+    return "hotel";
+})->name('hotel');
+
 
 Route::get('administrador/adminPanel', [AdminPanelController::class, 'index']);
 Route::put('administrador/adminPanel', [AdminPanelController::class, 'index']);
 
-Route::get('reservas', function () {
-    return 'reservas';
-});
+// Route::get('reservas', function () {
+//     return 'reservas';
+// });
 
 Route::get('/db-test', function () {
     try {

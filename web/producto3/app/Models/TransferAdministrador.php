@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TransferAdministrador extends Model
+class TransferAdministrador extends Model implements AuthenticatableContract
 {
     use HasFactory;
+    use Authenticatable;
 
     protected $table = 'transfer_administrador';
     // Laravel utiliza estas columnas para las marcas de tiempo de creación y 
