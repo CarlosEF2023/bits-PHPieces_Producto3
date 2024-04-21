@@ -1,0 +1,249 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: rgb(255, 255, 255);
+  height: auto;
+  min-height: 100vh;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), url('../assets/Isla_Transfers.jpeg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height:100%; /* Esto asegura que el cuerpo tenga al menos la altura de la ventana del navegador */
+}
+
+
+a {
+  text-decoration: none; /* Esto quitará el subrayado */
+}
+.container {
+  min-width: 1100px !important;
+  height: 100%;
+  width: 100%;
+  padding-top: 20px;
+}
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
+  }
+
+
+@media (max-width: 768px) {
+  body {
+      font-family: 'Montserrat', sans-serif;
+      background: rgb(255, 255, 255);
+      height: auto;
+      margin: 0;
+      padding: 0;
+  }
+  .container {
+      min-width: auto !important; 
+      width: auto; 
+  
+  }
+}
+
+/****************************************************/
+/* BARRA DE NAVEGACION */
+/****************************************************/
+
+
+.navbar {
+position: sticky; 
+top: 0;
+background-color: black; /* Color de fondo del menú */
+color: white;
+display: flex; /* Utiliza flexbox para alinear elementos horizontalmente */
+justify-content: space-between; /* Alinea los elementos a los extremos */
+align-items: center; /* Centra verticalmente los elementos */
+padding: 10px; /* Espaciado interno */
+z-index: 1; /* Coloca el menú por encima de otros elementos, puesto para que el login fail no quede detrás del menú */
+}
+
+.logo img {
+width: 94px; 
+height: 94px;
+}
+
+.menu ul {
+list-style: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+text-align: left; /* Alinea el texto a la izquierda */ 
+}
+
+.menu ul li {
+display: inline-block; /* Alinea los elementos horizontalmente */
+margin-right: 20px; /* Espaciado entre elementos del menú */
+}
+
+
+.menu ul li:last-child {
+margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.menu ul li a:hover {
+background-color: #efb810;
+color: black;
+}
+
+.menu ul li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+.menu ul li .active {
+background-color: #04AA6D;
+}
+
+/* ******************************
+ * TABLAS 
+ ****************************** */
+ table.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTable tbody td {
+  font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTable thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+
+table.blueTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blueTable tfoot td {
+  font-size: 14px;
+}
+table.blueTable tfoot .links {
+  text-align: right;
+}
+table.blueTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+
+/*
+https://www.falconmasters.com/web-design/tutorial-menu-de-navegacion-fijo/
+https://divtable.com/table-styler/
+https://www.bestcssbuttongenerator.com/
+https://www.w3schools.com/css/css_editor.asp
+*/
+/*ESTEBAN*/
+
+a.enlace {
+  color: white;
+  text-decoration: none; /* Eliminar subrayado */
+  transition: color 0.3s ease; /* Transición suave del color */
+  }
+  
+  a.enlace:hover {
+  color: lightgray; /* Cambia el color al pasar el ratón sobre el enlace */
+  }
+  
+  .card-index{
+  transition: 0.3s ease;
+  }
+  .card-index:hover{
+  scale: 1.05;
+  }
+  
+  main {
+    margin: 1em 5em 2em; /* Ajusta este valor al tamaño de tu pie de página */
+  }
+  .card-image-container {
+    height: 200px; /* Ajusta este valor según tus necesidades */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .card-image {
+    width: 80%;  /* Ajusta este valor a tus necesidades */
+    height: auto; /* Esto mantendrá la relación de aspecto de la imagen */
+  }
+  .card-body {
+    --bs-card-spacer-x: 0.5rem;
+    --bs-card-spacer-y: 0.5rem;
+    --bs-card-cap-padding-x: 0.5rem;
+    --bs-card-cap-padding-y: 0.5rem;
+  }
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+.card {
+    animation: fadeIn 1s ease-in-out;
+}
+.container {
+  animation: fadeIn 1s ease-in-out;
+}
+.container-fluid {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* 
+https://fonts.google.com/icons?selected=Material+Symbols+Outlined:visibility:FILL@0;wght@400;GRAD@0;opsz@24&icon.query=view
+*/
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+  
