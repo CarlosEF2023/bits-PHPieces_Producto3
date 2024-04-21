@@ -9,7 +9,8 @@
     <div class="phppot-container" name="resulado_reserva" id="resulado_reserva">
             <h1>Reserva trayecto Aeropuerto al Hotel</h1>
 
-            <form method="POST" name="checkout-form" id="checkout-form" action="/~uocx1/controllers/reservas/crear_reserva_sql.php" Method="POST">
+            <form method="POST" name="checkout-form" id="checkout-form" action="aeropuerto/enviar" Method="POST">
+            @csrf
                 <input type="hidden" name="idtiporeserva" id="idtiporeserva" value="1">
                 <div class="wizard-flow-chart">
                     <span class="fill">1</span>
@@ -49,7 +50,7 @@
                     <div class="row">
                         <label class="float-left label-width">Hotel destino</label>
                         <?php
-                        $t->comboHotel("", "Hotel_Destino");
+                        //$t->comboHotel("", "Hotel_Destino");
                         ?>
                     </div>
                     <div class="row">
@@ -60,11 +61,11 @@
                     <div class="row">
                         <label class="float-left label-width">email reserva</label>
                         <?php
-                        echo '<input type="mail" name="emailreserva" id="emailreserva" value="'.$_SESSION["email"].'"';
-                        if ($_SESSION['usertype']==6 ){
-                            echo " disabled ";
-                        }
-                       echo '>';
+                        //echo '<input type="mail" name="emailreserva" id="emailreserva" value="'.$_SESSION["email"].'"';
+                        //if ($_SESSION['usertype']==6 ){
+                        //    echo " disabled ";
+                        //}
+                       //echo '>';
                         ?>
                     </div>
 

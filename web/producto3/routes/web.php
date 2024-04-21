@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\reservas\transfer_crearreservaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +22,7 @@ Route::get('/', function () {
 Route::get('reservas', function () {
     return 'reservas';
 });
+
+Route::get('reservas/aeropuerto/crear', 'App\Http\Controllers\reservas\transfer_crearreservaController@CrearReservaAeropuerto');
+
+
