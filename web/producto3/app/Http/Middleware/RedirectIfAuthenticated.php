@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-
+use Illuminate\Support\Facades\Log;
 class RedirectIfAuthenticated
 {
     /**
@@ -17,6 +17,7 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
+        log::channel('mylog')->info('Pasando por RedirectIfAuthenticated');
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {

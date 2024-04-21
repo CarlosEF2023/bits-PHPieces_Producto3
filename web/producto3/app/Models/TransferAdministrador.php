@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,4 +28,6 @@ class TransferAdministrador extends Model implements AuthenticatableContract
         'Apellido2',
         'Id_tipo_usuario',
     ];
+
+
 }
