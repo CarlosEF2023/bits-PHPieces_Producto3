@@ -91,3 +91,29 @@ config('database.connections.mysql')
 DB::select('SELECT 1');
 
 php artisan config:clear
+
+SELECT COLUMN_NAME 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_SCHEMA = 'nombre_de_tu_base_de_datos' 
+AND TABLE_NAME = 'nombre_de_tu_tabla';
+
+mi canal para logs personalizados
+en el archivo de logs
+
+config/logging.php
+
+    'channels' => [
+        // ...
+    
+        'mylog' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/mylog.log'),
+            'level' => 'debug',
+        ],
+    ],
+
+
+Log::channel('mylog')->info('Email: ' . $email);
+
+luego para verlos en consola
+cat storage/logs/mylog.log

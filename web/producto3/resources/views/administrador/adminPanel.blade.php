@@ -1,4 +1,7 @@
-<body>
+@extends('layouts.plantilla')
+@section('title', 'Administrador')
+ {{-- poner menu como plantilla --}}
+@section('content')
     <main>
         <div id="spinner" style="display: none;">
             <div class="spinner-border text-primary" role="status">
@@ -125,30 +128,4 @@
             </div>
         </div>
     </main>
-    <!-- <script>
-        $(document).ready(function(e) {
-            $("#btn_ver_reservas").on("click", function(e) {
-                $("#principal").load("reservas/frm_reservas.php");
-            });
-            $("#tipos_usuarios").on("click", function(e) {
-                e.preventDefault();
-                $("#principal").load("tipos_usuarios.php");
-            });
-            $("#zonas").on("click", function(e) {
-                e.preventDefault();
-                $("#principal").load("lista_zonas.php");
-
-            });
-            $("#lista_reservas").on("click", function(e) {
-                e.preventDefault();
-                $("#principal").load("lista_reservas.php");
-
-            });
-            $("#asignar_conductor").on("click", function(e) {
-                e.preventDefault();
-                $("#principal").load("frm_asignar_conductor.php");
-
-            });
-        })
-    </script> -->
-</body>
+@endsection
