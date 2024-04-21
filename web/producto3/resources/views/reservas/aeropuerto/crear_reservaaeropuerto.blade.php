@@ -3,6 +3,22 @@
 
 @section('content')
 
+<?php
+
+use Illuminate\Support\Facades\DB;
+
+try {
+    // Intenta obtener el objeto PDO de la conexión activa
+    $pdo = DB::connection()->getPdo();
+
+    // Si no hay excepción, la conexión se ha realizado correctamente
+    echo "Conexión exitosa a la base de datos";
+} catch (\Exception $e) {
+    // Si se lanza una excepción, significa que no se pudo establecer la conexión
+    echo "Error al conectar a la base de datos: " . $e->getMessage();
+}
+?>
+
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
     <div class="card">
