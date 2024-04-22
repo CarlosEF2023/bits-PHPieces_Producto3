@@ -1,27 +1,32 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class transfer_hotel extends Model implements AuthenticatableContract
+class transfer_viajeros extends Model implements AuthenticatableContract
 {
     use HasFactory;
     use Authenticatable;
-    protected $table = 'transfer_hotel';
+
+    protected $table = 'transfer_viajeros';
     public $timestamps = false;
 
     protected $fillable = [
-        'Caracteristicas',
-        'Comision',
+        'apellido1',
+        'apellido2',
+        'ciudad',
+        'codigoPostal',
+        'direccion',
         'email',
-        'id_hotel',
         'Id_tipo_usuario',
-        'id_zona',
-        'NombreHotel',
+        'id_viajero',
+        'nombre',
+        'pais',
         'password',
-        'usuario',
     ];
+} {
 }

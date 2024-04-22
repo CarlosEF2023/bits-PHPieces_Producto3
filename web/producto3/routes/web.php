@@ -25,19 +25,19 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
 // habra que unificar estas rutas en una sola
 
 Route::get('/administrador', function () {
-    return "administrador";
+    return view('administrador.index');
 })->name('administrador');
 
 Route::get('/vehiculo', function () {
-    return "vehiculo";
+    return view('administrador.vehiculo');
 })->name('vehiculo');
 
 Route::get('/viajero', function () {
-    return "viajero";
+    return view('viajero.index');
 })->name('viajero');
 
 Route::get('/hotel', function () {
-    return "hotel";
+    return view('hotel.index');
 })->name('hotel');
 
 Route::get('administrador/adminPanel', [AdminPanelController::class, 'index']);
@@ -70,5 +70,3 @@ Route::get('/db-test2', function () {
 });
 
 Route::get('reservas/aeropuerto/crear', 'App\Http\Controllers\reservas\transfer_crearreservaController@CrearReservaAeropuerto');
-
-

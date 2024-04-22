@@ -1,8 +1,9 @@
 @extends('layouts.plantilla')
 @section('title', 'Home')
 
-@section('content')
-    <?php
+
+@section('navbar')
+<?php
     // Comprueba si la sesión ya está iniciada
     if (session_status() !== PHP_SESSION_ACTIVE) {
         error_reporting(0);
@@ -67,8 +68,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] == "") {
 
     <?php
 } else {
-    include "views/menu.php";
-    /*
+    ?>
+    @include('layouts.menu_nav')
+<?php
+
+/*
                     <form action="controllers/CerrarAplicacion.php" method="post" style="display: flex; align-items: center;">
                         <div style=" margin-right: 10px;">
                             <!--  TODO aqui un icono de usuario -->
@@ -83,6 +87,10 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] == "") {
     */
     }
     ?>
+@endsection
+
+@section('content')
+
     <div class="container-fluid" name="principal" id="principal">
         <main>
             <?php

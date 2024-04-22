@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\transfer_administrador;
 use App\Models\transfer_vehiculo;
-use App\Models\transfer_viajero;
+use App\Models\transfer_viajeros;
 use App\Models\transfer_hotel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -22,19 +22,19 @@ class AuthController extends Controller
 
     // Intenta autenticar al administrador
 
-    // Intenta autenticar al viajero
-    $viajero = transfer_viajero::where('email', $email)->first();
-    if ($viajero && $viajero->password === $password) {
-        Auth::login($viajero);
-        log::channel('mylog')->info('Autenticado como viajero, tipo usuario:'. $viajero->Id_tipo_usuario);
-        return redirect()->intended('viajero');
-    }
-
     $admin = transfer_administrador::where('email', $email)->first();
     if ($admin && $admin->Password === $password) {
         Auth::login($admin);
         log::channel('mylog')->info('Autenticado como administrador, tipo usuario:'. $admin->Id_tipo_usuario);
         return redirect()->intended('administrador');
+    }
+
+    // Intenta autenticar al viajero
+    $viajero = transfer_viajeros::where('email', $email)->first();
+    if ($viajero && $viajero->password === $password) {
+        Auth::login($viajero);
+        log::channel('mylog')->info('Autenticado como viajero, tipo usuario:'. $viajero->Id_tipo_usuario);
+        return redirect()->intended('viajero');
     }
 
     // Intenta autenticar al vehiculo
