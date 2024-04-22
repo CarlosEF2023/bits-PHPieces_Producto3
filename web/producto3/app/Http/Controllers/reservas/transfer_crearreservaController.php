@@ -10,7 +10,30 @@ use Illuminate\Support\Facades\DB;
 
 class transfer_crearreservaController extends Controller
 {
+
+    public function index($valor){
+        if ($valor=="1"){
+            $this->CrearReservaAeropuerto();
+        }
+        if ($valor=="2"){
+            $this->CrearReservaTotal();
+        }
+        if ($valor=="3"){
+            $this->CrearReservaTotal();
+        }
+    }
+
     public function CrearReservaAeropuerto()
+    {
+        return view('reservas/aeropuerto/crear_reservaaeropuerto');
+    }
+
+    public function CrearReservaHotel()
+    {
+        return view('reservas/aeropuerto/crear_reservaaeropuerto');
+    }
+
+    public function CrearReservaTotal()
     {
         return view('reservas/aeropuerto/crear_reservaaeropuerto');
     }

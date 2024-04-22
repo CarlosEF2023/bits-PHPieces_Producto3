@@ -9,7 +9,7 @@ $mail = "carlos-viajero@uoc.edu";
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <?php
-        echo "<img src='assets/Isla_Transfers_Logo.jpeg' width='64px' height='64px'></span></a>";
+        echo "<img src=\"{{ asset('assets/Isla_Transfers_Logo.jpeg') }}\" width='64px' height='64px'></span></a>";
         ?>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
           <div class="hamburger-toggle">
@@ -43,7 +43,7 @@ $mail = "carlos-viajero@uoc.edu";
               $menuItems = [
                 ['label' => 'Reservas', 'idname' => 'reservas', 'controller' => 'reservas.menu_reservasController'],
                 ['label' => 'ver reservas', 'idname' => 'listarreservas', 'controller' => 'reservas.menu_listareservasController'],
-                ['label' => 'Datos Personales', 'idname' => 'datospersonales_viajero', 'controller' => '']
+                ['label' => 'Datos Personales', 'idname' => 'datospersonales_viajero', 'controller' => 'reservas.menu_reservasController']
               ];
               break;
             case "3":
@@ -70,10 +70,10 @@ $mail = "carlos-viajero@uoc.edu";
           echo "<li class='nav-item'><a class='nav-link' href='#'>Hola  <b>" .$mail . " !</a></b>";
           foreach ($menuItems as $menuItem) {
             echo '<li class="nav-item">';
-            echo "<a class=\"nav-link\" ";
-            echo "   href=\"{{ route('" . $menuItem['controller'] . "') }}\" ";
-            echo "   id=\"" . $menuItem['idname'] . "\"  ";
-            echo "   name=\"" . $menuItem['idname'] . "\">";
+            echo '<a class=\"nav-link\" ';
+            echo '   href="'. route($menuItem['controller']) .'" ';
+            echo '   id="' . $menuItem['idname'] . '"  ';
+            echo '   name="' . $menuItem['idname'] . '">';
             echo  $menuItem['label'] . "</a>";
             echo '</li>';
           }

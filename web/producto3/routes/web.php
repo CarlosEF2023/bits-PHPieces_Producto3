@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\reservas\transfer_crearreservaController;
+use App\Http\Controllers\reservas\menu_listarreservasController;
+use App\Http\Controllers\reservas\menu_reservasController;
+use App\Http\Controllers\reservas\transfer_eliminarreservaController;
+use App\Http\Controllers\reservas\transfer_listarreservaController;
+use App\Http\Controllers\reservas\transfer_modificarreservaController;
+use App\Http\Controllers\reservas\transfer_reservaController;
+use App\Http\Controllers\reservas\transfer_verreservaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +36,10 @@ Route::get('/administrador', function () {
     return view('administrador.index');
 })->name('administrador');
 
+
+Route::get('administrador/adminPanel', [AdminPanelController::class, 'index']);
+Route::put('administrador/adminPanel', [AdminPanelController::class, 'index']);
+
 Route::get('/vehiculo', function () {
     return view('administrador.vehiculo');
 })->name('vehiculo');
@@ -40,8 +52,22 @@ Route::get('/hotel', function () {
     return view('hotel.index');
 })->name('hotel');
 
-Route::get('administrador/adminPanel', [AdminPanelController::class, 'index']);
-Route::put('administrador/adminPanel', [AdminPanelController::class, 'index']);
+
+// --------------------------------------------------------------------------------
+
+Route::get('reservas/menu', [menu_reservasController::class, 'index'])->name('reservas.menu');
+Route::get('reservas/listar', ['as' => 'reservas.listar', 'uses' => 'menu_listarreservasController@index']);
+Route::get('reservas/crear/{valor}', ['as' => 'reservas.crear', 'uses' => 'transfer_crearreservaController@index']);
+
+Route::get('reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva']);
+Route::get('reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva']);
+Route::get('reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva']);
+
+
+
+
+
+// --------------------------------------------------------------------------------
 
 Route::get('/db-test', function () {
     try {

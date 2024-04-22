@@ -8,11 +8,11 @@ use App\Models\transfer_reservas;
 use Illuminate\Support\Facades\DB;
 
 
-class transfer_crearreservaController extends Controller
+class menu_listarreservasController extends Controller
 {
-    public function menulistarreservas()
+    public function index()
     {
-        return view('reservas/menulistarreservas');
+        return view('reservas.menulistareservas');
     }
 
 }

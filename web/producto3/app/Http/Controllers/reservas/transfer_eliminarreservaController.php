@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\transfer_reservas;
 use Illuminate\Support\Facades\DB;
 
-class transfer_reservaController extends Controller
+class transfer_eliminarreservaController extends Controller
 {
-    public function Reserva()
+    public function EliminarReserva($valor)
     {
-        return "Reserva";
+        return "Eliminar reserva".$valor;
     }
+
 }

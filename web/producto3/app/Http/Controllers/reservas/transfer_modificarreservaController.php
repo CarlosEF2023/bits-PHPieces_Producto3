@@ -9,5 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class transfer_modificarreservaController extends Controller
 {
-    //
+    public function ModificarReserva($valor)
+    {
+        return "Modificar reserva". $valor;
+    }
 }
