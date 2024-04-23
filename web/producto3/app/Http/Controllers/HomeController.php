@@ -11,7 +11,7 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {        
-        
-        return view('index');       
+        $user = $request->session()->get('user');
+        return view('index', ['user' =>$user] );     
     }
 }
