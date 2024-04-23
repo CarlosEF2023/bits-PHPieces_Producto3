@@ -1,84 +1,91 @@
-@section("nav")
-<?php
-//if (!isset($_SESSION['login']) || $_SESSION['login'] == "") {
-
-
-
-//}else{
-
-    ?>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <?php
-        echo "<img src='assets/Isla_Transfers_Logo.jpeg' width='64px' height='64px'></span></a>";
-        ?>
+        <a class="navbar-brand" href="#">
+            <span><img src="{{ asset('assets/Isla_Transfers_Logo.jpeg') }}" width="64px" height="64px"></span>
+        </a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
-          <div class="hamburger-toggle">
-            <div class="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class="hamburger-toggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-          </div>
         </button>
+
+        @if (isset($user))
+        <!-- Si existe el usuario -->
         <div class="collapse navbar-collapse" id="navbar-content">
-          <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Isla Transfer</a>
-            </li>
-          <?php
-          
-          switch ($_SESSION["usertype"]) {
-            case "5":
-              // Hotel
-              $menuItems = [
-                ['label' => 'Registro Entradas/Salidas', 'idname' => 'Hotel_Entrada_Salida'],
-                ['label' => 'Datos Personales', 'idname' => 'datospersonales_hotel']
-              ];
-              break;
-            case "6":
-              // Viajero
-              $menuItems = [
-                ['label' => 'Reservas', 'idname' => 'reservas'],
-                ['label' => 'ver reservas', 'idname' => 'listarreservas'],
-                ['label' => 'Datos Personales', 'idname' => 'datospersonales_viajero']
-              ];
-              break;
-            case "3":
-              // Administración
-              $menuItems = [
-                ['label' => 'Dashboard', 'idname' => 'dashboard_administrador'],
-                ['label' => 'Datos Personales', 'idname' => 'datospersonales_administrador']
-              ];
-              break;
-            case "4":
-              // Conductor
-              $menuItems = [
-                ['label' => 'Vista Trayectos', 'idname' => 'vistatrayectosconductor'],
-                ['label' => 'Datos Personales', 'idname' => 'datospersonales_conductor']
-              ];
-              break;
-            default:
-              $menuItems = [
-                ['label' => 'Inicio', 'idname' => 'inicio'],
-              ];
-              break;
-          };
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
 
-          echo "<li class='nav-item'><a class='nav-link' href='#'>Hola  <b>" . $_SESSION['email'] . " !</a></b>";
-          foreach ($menuItems as $menuItem) {
-            echo '<li class="nav-item">';
-            echo '<a class="nav-link" href="#" id="' . $menuItem['idname'] . '" name="' . $menuItem['idname'] . '">' . $menuItem['label'] . '</a>';
-            echo '</li>';
-          }
-//        }
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Isla Transfer</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Hola {{ $user->email }}!</a></li>
 
-        echo "</ul>";
-        echo "<a class='nav-link' style='align:right;' href='#' id='cerraraplicacion' name='cerraraplicacion'>Salir</a>";
-          ?>
+                @switch($user->Id_tipo_usuario)
+
+                    @case('3')
+                        <!-- Administración -->
+                        <li class="nav-item"><a class="nav-link" href="{{ route('menu.crear') }}">Crear Reservas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('menu.listar') }}">Listar Reservas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('menu.datos_personales') }}">Datos personales</a></li>
+                        @break
+
+                    @case('4')
+                    <!-- Conductor -->
+                    <!-- Aquí colocar las opciones específicas para el conductor -->
+                    @break
+
+                    @case('5')
+                    <!-- Hotel -->
+                    <!-- Aquí colocar las opciones específicas para el hotel -->
+                    @break
+
+                    @case('6')
+                    <!-- Viajero -->
+                    <!-- Aquí colocar las opciones específicas para el viajero -->
+                    @break
+
+                @endswitch
+
+            </ul>
+
+            <a class="nav-link" style="align:right;" href="#" id="cerraraplicacion" name="cerraraplicacion">Salir</a>
+
         </div>
-    </div>
-  </nav>
-  
-@endsection
+        <!-- Fin de div collapse -->
+
+        @else
+
+        <!-- Si no existe el usuario -->
+        <div class="collapse navbar-collapse" id="navbar-content">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./views/principal.php">Isla Transfer</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Colapsar correctamente los form de login -->
+        <div>
+            <form action="{{ route('login') }}" method="post" style="display: flex; align-items: center;">
+                @csrf
+                <div style="margin-right: 10px;">
+                    <a href="#" class="enlace">Registrarse</a>
+                </div>
+                <div style="margin-right: 10px;">
+                    <label for="email">@</label>
+                    <input type="email" id="emailId" name="email" placeholder="email" required>
+                </div>
+                <div>
+                    <label for="password"></label>
+                    <input type="password" id="passwordId" name="password" placeholder="password" required>
+                </div>
+                <div style="margin-left: 10px;">
+                    <input type="submit" value="Login" class="btn btn-secondary btn-sm">
+                </div>
+            </form>
+        </div>
+        </nav>
+        </div>
+        @endif
+        <br>
