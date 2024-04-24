@@ -20,46 +20,39 @@
             <div class="col">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <div class="container-fluid mt-3" style="padding-top: 20px;">
-                            <h2>Listado de administradores</h2>
+                        <div class="container-fluid mt-2" style="padding-top: 20px;">
+                            <h2>Listado de vehículos</h2>
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Username</th>
-                                            <th>Nombre</th>
-                                            <th>1er Apellido</th>
-                                            <th>2do Apellido</th>
-                                            <th>Email</th>
-                                            <th>Tipo usuario</th>
+                                            <th>Descripción</th>
+                                            <th>Email</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- recorrer listado de administradores --}}
-                                        @foreach ($administradores as $admin)
+                                        {{-- recorrer listado de vehículos --}}
+                                        @foreach ($vehiculos as $vehiculo)
                                             <tr>
-                                                <td>{{ $admin->Username }}</td>
-                                                <td>{{ $admin->Nombre }}</td>
-                                                <td>{{ $admin->Apellido1 }}</td>
-                                                <td>{{ $admin->Apellido2 }}</td>
-                                                <td>{{ $admin->Email }}</td>
-
+                                                <td>{{ $vehiculo->Descripcion }}</td>
+                                                <td>{{ $vehiculo->email_conductor }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-start gap-2">
                                                         <!-- Formulario para modificar -->
                                                         <form method="post"
-                                                            action="{{ route('administrador.frmModificarAdmin') }}">
+                                                        {{-- {{ route('administrador.frmModificarAdmin') }} --}}
+                                                            action="">
                                                             @csrf
-                                                            <input type="hidden" name="adminMod"
-                                                                value="{{ $admin->email }}">
+                                                            <input type="hidden" name="vehiculoMod"
+                                                                value="{{ $vehiculo->id_vehiculo }}">
                                                             <button type="submit" class="btn btn-outline-success"
                                                                 style="width: auto;"><i
                                                                     class="bi bi-pencil-square"></i></button>
                                                         </form>
-
                                                         <!-- Formulario para eliminar -->
                                                         <form method="post"
-                                                            action="{{ route('administrador.delete', $admin->Id_usuario) }}">
+                                                        {{-- {{ route('administrador.delete', $admin->Id_usuario) }} --}}
+                                                            action="">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-outline-danger"
@@ -75,9 +68,10 @@
                             </div>
                         </div>
                         <div style="display: flex; align-items: center; padding: 20px;">
-                            <a type="button" href="{{ route('administrador.formNuevoAdministrador') }}"
-                                class="btn btn-outline-primary" name="nuevoAdmin" id="nuevoAdmin"
-                                style="width: auto; margin-right: 10px;"><i class="bi bi-plus-circle"></i> Añadir Administrador</a>
+                           
+                            <a type="button" href=" {{ route('administrador.frmNuevoVehiculo') }}"
+                                class="btn btn-outline-primary" name="nuevoVehiculo" id="nuevoVehiculo"
+                                style="width: auto; margin-right: 10px;"><i class="bi bi-plus-circle"></i> Añadir Vehículo</a>
                             <a id="volver-a-tipos" href="{{ route('administrador.tiposUsuarios') }}"
                                 class="btn btn-outline-secondary" style="width: auto;"><i class="bi bi-arrow-left-circle"></i> Volver a Tipos de Usuarios</a>
                         </div>

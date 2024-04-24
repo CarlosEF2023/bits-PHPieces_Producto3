@@ -36,7 +36,7 @@
                         <p class="card-text">Gestión de conductores.</p>
                     </div>
                     <div class="card-footer">
-                        <a type="button" name="btn_ver_conductores" id="btn_ver_conductores" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                        <a type="button" href="{{route('administrador.listaVehiculos')}}" name="btn_ver_conductores" id="btn_ver_conductores" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
                     </div>
                 </div>
             </div>
