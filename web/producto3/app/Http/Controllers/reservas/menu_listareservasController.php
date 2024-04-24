@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\transfer_reservas;
 use Illuminate\Support\Facades\DB;
 
-class transfer_reservaController extends Controller
+
+class menu_listareservasController extends Controller
 {
-    public function Reserva()
+    public function index()
     {
-        return "Reserva";
+        return view('reservas.menulistareservas');
     }
+
 }

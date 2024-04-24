@@ -8,8 +8,7 @@ class ViajeroPanelController extends Controller
 {
     public function index()
     {     
-        log::channel('mylog')->info('Pasando por ViajeroPanelController');
-        return "ViajeroPanelController";
-        // return view('administrador.adminPanel');       
+        // return "adminPanel";
+        return view('viajero.index');       
     }
 }
