@@ -18,6 +18,9 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow">
+
+
+
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <span><img src="{{ asset('assets/Isla_Transfers_Logo.jpeg') }}" width="64px" height="64px"></span>
@@ -138,6 +141,8 @@
     <script lang="javascript" src="{{ asset('assets/libraries/bootstrap.bundle.min.js') }}"></script>
     <script lang="javascript" src="{{ asset('assets/libraries/popper.min.js') }}"></script>
     <script lang="javascript" src="{{ asset('assets/libraries/wizard.js') }}"></script>
+
+
 
 </body>
 

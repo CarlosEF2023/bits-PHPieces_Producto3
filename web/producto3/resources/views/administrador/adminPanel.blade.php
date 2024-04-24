@@ -1,6 +1,8 @@
 @extends('layouts.plantilla')
 @section('title', 'Administrador')
- {{-- poner menu como plantilla --}}
+@section("nav")
+@include('layouts.menu_nav')
+@endsection
 @section('content')
     <main>
         <div id="spinner" style="display: none;">
