@@ -13,6 +13,9 @@ class TransferAdministrador extends Model implements AuthenticatableContract
     use Authenticatable;
 
     protected $table = 'transfer_administrador';
+    // Por defecto laravel en las consultas por identificador busca la columna id
+    // si tu tabla tiene otra columna como clave primaria debes especificarlo
+    protected $primaryKey = 'Id_usuario';
     // Laravel utiliza estas columnas para las marcas de tiempo de creación y 
     // actualización de los modelos Eloquent. Si tu tabla no tiene estas columnas 
     // y no quieres que Laravel las utilice, puedes desactivarlas en tu modelo Administrador 

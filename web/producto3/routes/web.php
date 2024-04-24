@@ -26,10 +26,20 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::post('login', [AuthController::class, 'login'])->name('login');
 
+
 Route::middleware(['checkAdmin'])->group(function () {
-    Route::get('administrador', [AdminPanelController::class, 'index']);
+    Route::get('administrador', [AdminPanelController::class, 'index'])->name('administrador');
+    Route::get('administrador/tiposUsuarios', [AdminPanelController::class, 'tiposUsuarios'])->name('administrador.tiposUsuarios');
+    Route::get('administrador/listaAdministradores', [AdminPanelController::class, 'listaAdministradores'])->name('administrador.listaAdministradores');
+    Route::get('administrador/formNuevoAdministrador', [AdminPanelController::class, 'formNuevoAdministrador'])->name('administrador.formNuevoAdministrador');
+    Route::post('administrador/store', [AdminPanelController::class, 'store'])->name('administrador.store');
+    Route::post('administrador/frmModificarAdmin', [AdminPanelController::class, 'frmModificarAdmin'])->name('administrador.frmModificarAdmin');
+    Route::put('administrador/update/{Id_usuario}', [AdminPanelController::class, 'update'])->name('administrador.update');
+    Route::delete('administrador/delete/{Id_usuario}', [AdminPanelController::class, 'delete'])->name('administrador.delete');
+    
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'administrador/'
 });
+
 
 Route::middleware(['checkVehiculo'])->group(function () {
     Route::get('vehiculo', [VehiculoPanelController::class, 'index']);
@@ -89,19 +99,19 @@ Route::middleware(['checkHotel'])->group(function () {
 //     }
 // });
 
-Route::get('/db-test2', function () {
-    $host = '127.0.0.1';
-    $database ='wordpress1';
-    $username = 'root';
-    $password = '';
-    $port = 3306;
+// Route::get('/db-test2', function () {
+//     $host = '127.0.0.1';
+//     $database ='wordpress1';
+//     $username = 'root';
+//     $password = '';
+//     $port = 3306;
 
-    $mysqli = new mysqli($host, $username, $password, $database, $port);
+//     $mysqli = new mysqli($host, $username, $password, $database, $port);
 
-    if ($mysqli->connect_error) {
-        return "Error al conectar con la base de datos: " . $mysqli->connect_error;
-    } else {
-        $mysqli->close();
-        return "Conexión con la base de datos exitosa!";
-    }
-});
+//     if ($mysqli->connect_error) {
+//         return "Error al conectar con la base de datos: " . $mysqli->connect_error;
+//     } else {
+//         $mysqli->close();
+//         return "Conexión con la base de datos exitosa!";
+//     }
+// });

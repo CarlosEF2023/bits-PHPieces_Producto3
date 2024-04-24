@@ -6,6 +6,11 @@ body {
   width: auto;
   margin: 0;
   padding: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), url('../assets/Isla_Transfers.jpeg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height:100%; /* Esto asegura que el cuerpo tenga al menos la altura de la ventana del navegador */
 }
 a {
   text-decoration: none; /* Esto quitará el subrayado */
