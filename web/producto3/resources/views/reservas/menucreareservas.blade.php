@@ -10,7 +10,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col" style="width: 300px;">
                 <div class="card h-100">
-                    <img src="{{ asset('assets/reservas.jpeg') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('/assets/reservas.jpeg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Reserva viaje del Aeropuerto al Hotel</h5>
                         <p class="card-text">Reserva tu viaje del Aeropuerto al hotel y evita esperas.</p>
@@ -22,7 +22,7 @@
             </div>
             <div class="col" style="width: 300px;">
                 <div class="card h-100">
-                    <img src="{{ asset('assets/reservas.jpeg') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('/assets/reservas.jpeg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Reserva viaje del Hotel al Aeropuerto</h5>
                         <p class="card-text">Evita perder el avión y llega a tiempo al aeropuerto.</p>
@@ -34,7 +34,7 @@
             </div>
             <div class="col" style="width: 300px;">
                 <div class="card h-100">
-                    <img src="{{ asset('assets/reservas.jpeg') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('/assets/reservas.jpeg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Servicio ida y vuelta</h5>
                         <p class="card-text">Sin complicaciones. Nosotros nos encargamos de llevarte siempre a tiempo.</p>

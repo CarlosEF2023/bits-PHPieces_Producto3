@@ -2,16 +2,10 @@
 @section('title', 'Reservas del Hotel all Aeropuerto')
 
 @section('content')
-<?php
-$tramo_informe= $_POST["filtro"];
-$fecha_actual= date("Y-m-d");
-$id_conductor= $_SESSION["identificador"];
-$listado= $conductor->filtrar_conductor_tramo($tramo_informe, $fecha_actual, $id_conductor);
-?>
 
 <table class="table table-striped table-hover">
 
-<head>
+<thead>
     <tr>
         <th>Localizador</th>
         <th>Tipo reserva</th>
@@ -22,64 +16,65 @@ $listado= $conductor->filtrar_conductor_tramo($tramo_informe, $fecha_actual, $id
         <th>Usuario</th>
         <th>Número viajeros</th>
     </tr>
-</head>
-<body>
+</thead>
+<tbody>
 
 <div id="containerVer">
-<?php 
-    foreach($listado as $data){
-        echo"<tr>";
-        switch ($data["id_tipo_reserva"]){
-            case '1':
-                // Aeropuerto -> Hotel
-                echo"<th>".$data["localizador"]."</th>";
-                echo"<td>".$data["Descripción"]."</td>";
-                echo"<td>".$data["origen_vuelo_entrada"]." / ".$data["numer_vuelo_entrada"]."</td>";
-                echo"<td>".$data["fecha_entrada"]."</td>";
-                echo"<td>".$data["hora_entrada"]."</td>";
-                echo"<td>".$data["NombreHotel"]."</td>";
-                echo"<td>".$data["email_cliente"]."</td>";
-                echo"<td>".$data["num_viajeros"]."</td>";
-                break;
-            case '2':
-                // Hotel -> Aeropuerto
-                echo"<th>".$data["localizador"]."</th>";
-                echo"<td>".$data["Descripción"]."</td>";
-                echo"<td>".$data["NombreHotel"]."</td>";
-                echo"<td>".$data["fecha_vuelo_salida"]."</td>";
-                echo"<td>".$data["hora_recogida_hotel"]."</td>";
-                echo"<td>".$data["origen_vuelo_entrada"]."</td>";
-                echo"<td>".$data["email_cliente"]."</td>";
-                echo"<td>".$data["num_viajeros"]."</td>";
-                break;
-            case '3':
-                // Completo
-                echo"<th>".$data["localizador"]."</th>";
-                echo"<td>".$data["Descripción"]."</td>";
-                echo"<td>".$data["origen_vuelo_entrada"]." / ".$data["numer_vuelo_entrada"]."</td>";
-                echo"<td>".$data["fecha_entrada"]."</td>";
-                echo"<td>".$data["hora_entrada"]."</td>";
-                echo"<td>".$data["NombreHotel"]."</td>";
-                echo"<td>".$data["email_cliente"]."</td>";
-                echo"<td>".$data["num_viajeros"]."</td>";
-                echo "</tr><tr>";
-                echo"<th>".$data["localizador"]."</th>";
-                echo"<td>".$data["Descripción"]."</td>";
-                echo"<td>".$data["NombreHotel"]."</td>";
-                echo"<td>".$data["fecha_vuelo_salida"]."</td>";
-                echo"<td>".$data["hora_recogida_hotel"]."</td>";
-                echo"<td>".$data["origne_vuelo_entrada"]."</td>";
-                echo"<td>".$data["origen_vuelo_entrada"]."</td>";
-                echo"<td>".$data["email_cliente"]."</td>";
-                echo"<td>".$data["num_viajeros"]."</td>";
-                break;
-        }
-    echo"</tr>";
-}
 
-?>
-    </div>
-</body>
+@foreach($listado as $data)
+    <tr>
+        @switch($data['id_tipo_reserva'])
+            @case(1)
+                <!-- Aeropuerto -> Hotel -->
+                <th>{{ $data['localizador'] }}</th>
+                <td>{{ $data['Descripción'] }}</td>
+                <td>{{ $data['origen_vuelo_entrada'] }} / {{ $data['numer_vuelo_entrada'] }}</td>
+                <td>{{ $data['fecha_entrada'] }}</td>
+                <td>{{ $data['hora_entrada'] }}</td>
+                <td>{{ $data['NombreHotel'] }}</td>
+                <td>{{ $data['email_cliente'] }}</td>
+                <td>{{ $data['num_viajeros'] }}</td>
+                @break
+
+            @case(2)
+                <!-- Hotel -> Aeropuerto -->
+                <th>{{ $data['localizador'] }}</th>
+                <td>{{ $data['Descripción'] }}</td>
+                <td>{{ $data['NombreHotel'] }}</td>
+                <td>{{ $data['fecha_vuelo_salida'] }}</td>
+                <td>{{ $data['hora_recogida_hotel'] }}</td>
+                <td>{{ $data['origen_vuelo_entrada'] }}</td>
+                <td>{{ $data['email_cliente'] }}</td>
+                <td>{{ $data['num_viajeros'] }}</td>
+                @break
+
+            @case(3)
+                <!-- Completo -->
+                <th>{{ $data['localizador'] }}</th>
+                <td>{{ $data['Descripción'] }}</td>
+                <td>{{ $data['origen_vuelo_entrada'] }} / {{ $data['numer_vuelo_entrada'] }}</td>
+                <td>{{ $data['fecha_entrada'] }}</td>
+                <td>{{ $data['hora_entrada'] }}</td>
+                <td>{{ $data['NombreHotel'] }}</td>
+                <td>{{ $data['email_cliente'] }}</td>
+                <td>{{ $data['num_viajeros'] }}</td>
+                </tr><tr>
+                <th>{{ $data['localizador'] }}</th>
+                <td>{{ $data['Descripción'] }}</td>
+                <td>{{ $data['NombreHotel'] }}</td>
+                <td>{{ $data['fecha_vuelo_salida'] }}</td>
+                <td>{{ $data['hora_recogida_hotel'] }}</td>
+                <td>{{ $data['origen_vuelo_entrada'] }}</td>
+                <td>{{ $data['origen_vuelo_entrada'] }}</td>
+                <td>{{ $data['email_cliente'] }}</td>
+                <td>{{ $data['num_viajeros'] }}</td>
+                @break
+        @endswitch
+    </tr>
+@endforeach
+
+</div>
+</tbody>
 
 </table>
 @endsection

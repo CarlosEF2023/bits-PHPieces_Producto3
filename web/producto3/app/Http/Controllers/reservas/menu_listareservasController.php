@@ -8,7 +8,7 @@ use App\Models\transfer_reservas;
 use Illuminate\Support\Facades\DB;
 
 
-class menu_listarreservasController extends Controller
+class menu_listareservasController extends Controller
 {
     public function index()
     {

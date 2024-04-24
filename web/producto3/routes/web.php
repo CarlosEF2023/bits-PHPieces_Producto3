@@ -6,11 +6,10 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AuthController;
 
-use App\Http\Controllers\reservas\transfer_crearreservaController;
-use App\Http\Controllers\reservas\menu_listarreservasController;
+use App\Http\Controllers\reservas\menu_listareservasController;
 use App\Http\Controllers\reservas\menu_reservasController;
+use App\Http\Controllers\reservas\transfer_crearreservaController;
 use App\Http\Controllers\reservas\transfer_eliminarreservaController;
-use App\Http\Controllers\reservas\transfer_listarreservaController;
 use App\Http\Controllers\reservas\transfer_modificarreservaController;
 use App\Http\Controllers\reservas\transfer_reservaController;
 use App\Http\Controllers\reservas\transfer_verreservaController;
@@ -55,16 +54,17 @@ Route::get('/hotel', function () {
 
 // --------------------------------------------------------------------------------
 
-Route::get('reservas/menu', [menu_reservasController::class, 'index'])->name('reservas.menu');
-Route::get('reservas/listar', ['as' => 'reservas.listar', 'uses' => 'menu_listarreservasController@index']);
-Route::get('reservas/crear/{valor}', ['as' => 'reservas.crear', 'uses' => 'transfer_crearreservaController@index']);
-
-Route::get('reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva']);
-Route::get('reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva']);
-Route::get('reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva']);
-
+Route::get('/reservas/menu', [menu_reservasController::class, 'index'])->name('reservas.menu');
+Route::get('/reservas/listar', [menu_listareservasController::class, 'index'])->name('reservas.listar');
+Route::get('/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('reservas.crear');
+Route::get('/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('reservas.modificar');
+Route::get('/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('reservas.ver');
+Route::get('/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('reservas.eliminar');
 
 
+function Route_reservas (){
+
+}
 
 
 // --------------------------------------------------------------------------------
@@ -94,5 +94,3 @@ Route::get('/db-test2', function () {
         return "Conexión con la base de datos exitosa!";
     }
 });
-
-Route::get('reservas/aeropuerto/crear', 'App\Http\Controllers\reservas\transfer_crearreservaController@CrearReservaAeropuerto');
