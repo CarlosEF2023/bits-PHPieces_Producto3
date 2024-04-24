@@ -4,9 +4,8 @@
 @section('content')
 <div class="card" style="width: 50%; margin: 20px auto 0; padding: 30px;">
     <div class="card-body">
-        <h2 class="text-center">Añadir Vehículo</h2>
-        {{-- {{route('administrador.store')}} --}}
-        <form method="POST" action="">
+        <h2 class="text-center">Añadir Vehículo</h2>        
+        <form method="POST" action="{{route('administrador.storeVehiculo')}}">
             @csrf
             <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="4">
 

@@ -39,20 +39,18 @@
                                                 <td>
                                                     <div class="d-flex justify-content-start gap-2">
                                                         <!-- Formulario para modificar -->
-                                                        <form method="post"
-                                                        {{-- {{ route('administrador.frmModificarAdmin') }} --}}
-                                                            action="">
+                                                        <form method="post"                                                       
+                                                            action="{{ route('administrador.frmModificarVehiculo') }}">
                                                             @csrf
                                                             <input type="hidden" name="vehiculoMod"
-                                                                value="{{ $vehiculo->id_vehiculo }}">
+                                                                value="{{ $vehiculo->email_conductor }}">
                                                             <button type="submit" class="btn btn-outline-success"
                                                                 style="width: auto;"><i
                                                                     class="bi bi-pencil-square"></i></button>
                                                         </form>
                                                         <!-- Formulario para eliminar -->
-                                                        <form method="post"
-                                                        {{-- {{ route('administrador.delete', $admin->Id_usuario) }} --}}
-                                                            action="">
+                                                        <form method="post"                                                        
+                                                            action="{{ route('administrador.deleteVehiculo', $vehiculo->id_vehiculo) }}">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-outline-danger"
