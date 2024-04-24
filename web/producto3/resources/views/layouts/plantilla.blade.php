@@ -8,7 +8,9 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('assets/libraries/bootstrap.min.css') }}" id="bootstrap-css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    {{-- No se encuentra --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/style2.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/wizard.css') }}">
 </head>
 </head>
