@@ -12,7 +12,9 @@ class TransferHotel extends Model implements AuthenticatableContract
     use Authenticatable;
     protected $table = 'transfer_hotel';
     public $timestamps = false;
-
+    // Por defecto laravel en las consultas por identificador busca la columna id
+    // si tu tabla tiene otra columna como clave primaria debes especificarlo
+    protected $primaryKey = 'id_hotel';
     protected $fillable = [
         'Caracteristicas',
         'Comision',

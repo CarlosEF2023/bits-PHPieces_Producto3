@@ -44,7 +44,11 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::post('administrador/frmModificarAdmin', [AdminPanelController::class, 'frmModificarAdmin'])->name('administrador.frmModificarAdmin');
     Route::put('administrador/update/{Id_usuario}', [AdminPanelController::class, 'update'])->name('administrador.update');
     Route::delete('administrador/delete/{Id_usuario}', [AdminPanelController::class, 'delete'])->name('administrador.delete');
-    
+    Route::get('administrador/listaVehiculos', [AdminPanelController::class, 'listaVehiculos'])->name('administrador.listaVehiculos');
+    Route::get('administrador/frmNuevoVehiculo', [AdminPanelController::class, 'frmNuevoVehiculo'])->name('administrador.frmNuevoVehiculo');
+    // Esta ruta debería de estar en el contorlador de vehículos ya que es para guardar un nuevo vehículo
+    // Pero como no está implementado ese controlador lo dejo aquí por ahora
+    Route::post('administrador/storeVehiculo', [AdminPanelController::class, 'storeVehiculo'])->name('administrador.storeVehiculo');
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'administrador/'
 });
 

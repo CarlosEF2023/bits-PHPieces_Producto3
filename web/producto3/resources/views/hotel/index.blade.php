@@ -6,6 +6,6 @@
 @endsection
 
 @section('content')
-<h1>Viajero</h1>
+<h1>Hotel</h1>
 
 @endsection

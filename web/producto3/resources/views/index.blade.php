@@ -6,7 +6,8 @@
 @if(isset($user))
     @include('layouts.menu_nav', ['user' => $user])
 @else
-    @include('layouts.menu_nav')
+@include('layouts.menu_nav', ['user' => null])
+    {{-- @include('layouts.menu_nav') --}}
 @endif
 @endsection
 </header>

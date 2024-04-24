@@ -13,7 +13,7 @@
             </div>
         </button>
 
-        @if (isset($user))
+        {{-- @if (isset($user)) --}}
         <!-- Si existe el usuario -->
         <div class="collapse navbar-collapse" id="navbar-content">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
@@ -21,7 +21,7 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Isla Transfer</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Hola {{ $user->email }}!</a></li>
 
-                @switch($user->Id_tipo_usuario)
+                {{-- @switch($user->Id_tipo_usuario)
 
                     @case('3')
                         <!-- Administración -->
@@ -45,7 +45,7 @@
                     <!-- Aquí colocar las opciones específicas para el viajero -->
                     @break
 
-                @endswitch
+                @endswitch --}}
 
             </ul>
 
@@ -54,7 +54,7 @@
         </div>
         <!-- Fin de div collapse -->
 
-        @else
+        {{-- @else --}}
 
         <!-- Si no existe el usuario -->
         <div class="collapse navbar-collapse" id="navbar-content">
@@ -87,5 +87,5 @@
         </div>
         </nav>
         </div>
-        @endif
+        {{-- @endif --}}
         <br>

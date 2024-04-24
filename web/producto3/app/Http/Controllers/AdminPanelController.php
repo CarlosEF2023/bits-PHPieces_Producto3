@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TransferAdministrador;
+use App\Models\TransferVehiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -78,7 +79,7 @@ class AdminPanelController extends Controller
             $administrador->Apellido1 = $request->primerApellido;
             $administrador->Apellido2 = $request->segundoApellido;
             $administrador->Id_tipo_usuario = $request->Id_tipo_usuario;
-            $administrador->save();
+            $administrador->update();
             $administradores = TransferAdministrador::all();
             return redirect()->route('administrador.listaAdministradores')->with('success', 'Usuario actualizado con éxito.');
         } else {
@@ -100,4 +101,23 @@ class AdminPanelController extends Controller
             return redirect()->route('administrador.listaAdministradores')->with('error', 'Usuario no encontrado.');
         }
     }
+    public function listaVehiculos()
+    {
+        log::channel('mylog')->info('Pasando por lista Vehículos');
+
+        $vehiculos = TransferVehiculo::all();
+        // return $administradores;
+        return view('administrador.listaVehiculos', compact('vehiculos'));
+    }
+    public function frmNuevoVehiculo()
+    {
+        log::channel('mylog')->info('Pasando por frmNuevoVehiculo');
+
+        return view('administrador.frmNuevoVehiculo');
+    }
+
+
+    
+
+    
 }
