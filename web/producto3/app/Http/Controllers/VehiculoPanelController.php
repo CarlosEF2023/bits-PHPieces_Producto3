@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class VehiculoPanelController extends Controller
 {
     // public function index()
-    public function listaVehiculos()
-    {
-        // return view('vehiculo.vehiculoPanel');
-        return "vehiculoPanel";
+    public function index(Request $request)
+    {     
+        $user = $request->session()->get('user');
+        return view('vehiculo.index', ['user' =>$user] );       
     }
 }
