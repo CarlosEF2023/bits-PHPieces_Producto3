@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 class ViajeroPanelController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {     
-        // return "adminPanel";
-        return view('viajero.index');       
+        $user = $request->session()->get('user');
+        return view('viajero.index', ['user' =>$user] );       
     }
 }

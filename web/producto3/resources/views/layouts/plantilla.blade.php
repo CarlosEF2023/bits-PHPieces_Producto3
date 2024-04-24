@@ -46,9 +46,6 @@
 
                     @case('3')
                         <!-- Administración -->
-                        <li class="nav-item"><a class="nav-link" href="{{ route('menu.crear') }}">Crear Reservas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('menu.listar') }}">Listar Reservas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('menu.datos_personales') }}">Datos personales</a></li>
                         @break
 
                     @case('4')
@@ -64,6 +61,9 @@
                     @case('6')
                     <!-- Viajero -->
                     <!-- Aquí colocar las opciones específicas para el viajero -->
+                        <li class="nav-item"><a class="nav-link" href="{{ route('reservas.menu') }}">Crear Reservas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('reservas.listar') }}">Listar Reservas</a></li>
+
                     @break
 
                 @endswitch
@@ -106,10 +106,10 @@
                 </div>
             </form>
         </div>
-        </nav>
-        </div>
         @endif
-        <br>
+    </nav>
+    </div>
+    <br>
 
     @if(session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
