@@ -14,7 +14,7 @@ class TransferViajeros extends Model implements AuthenticatableContract
 
     protected $table = 'transfer_viajeros';
     public $timestamps = false;
-
+    protected $primaryKey = 'id_viajero';
     protected $fillable = [
         'apellido1',
         'apellido2',

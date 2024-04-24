@@ -13,13 +13,25 @@
                 <label for="descripcion" class="form-label" style="font-weight: bold;">Descripción</label>
                 <textarea class="form-control" id="descripcion" rows="4" placeholder="Descripción del vehículo" name="descripcion" required></textarea>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label" style="font-weight: bold;">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Escriba su Email" name="email" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label" style="font-weight: bold;">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Escriba su Password" name="password" required>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="email" class="form-label" style="font-weight: bold;">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                            <input type="email" class="form-control" id="email" placeholder="Escriba su Email" name="email" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="password" class="form-label" style="font-weight: bold;">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Escriba su Password" name="password" required>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="mb-3 text-center">
                 <button type="submit" class="btn btn-outline-primary" style="width: auto;">Enviar</button>

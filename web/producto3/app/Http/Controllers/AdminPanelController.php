@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TransferAdministrador;
 use App\Models\TransferVehiculo;
+use App\Models\TransferViajeros;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -157,10 +158,10 @@ class AdminPanelController extends Controller
         return view('administrador.frmModificarVehiculo', compact('vehiculo'));
     }
 
-    public function updateVehiculo(Request $request, $email_conductor)
+    public function updateVehiculo(Request $request, $id_vehiculo)
     {
 
-        $vehiculo = TransferVehiculo::find($email_conductor);
+        $vehiculo = TransferVehiculo::find($id_vehiculo);
         if ($vehiculo) {
             $vehiculo->Descripcion = $request->descripcion;
             $vehiculo->email_conductor = $request->email_conductor;
@@ -173,4 +174,96 @@ class AdminPanelController extends Controller
             return redirect()->route('administrador.listaVehiculos')->with('error', 'Vehículo no encontrado.');
         }
     }
+    public function listaViajeros()
+    {
+        log::channel('mylog')->info('Pasando por lista viajeros');
+
+        $viajeros = TransferViajeros::all();
+    
+        return view('administrador.listaViajeros', compact('viajeros'));
+    }
+    public function frmNuevoViajero()
+    {
+        log::channel('mylog')->info('Pasando por frmNuevoViajero');
+
+        return view('administrador.frmNuevoViajero');
+    }
+
+    public function frmModificarViajero(Request $request)
+    {
+        log::channel('mylog')->info('Pasando por modificar viajero ' . json_encode($request->input('viajeroMod')));
+        $email = $request->input('viajeroMod');
+        $viajero = TransferViajeros::where('email', $email)->first();
+        log::channel('mylog')->info('Viajero encontrado ' . json_encode($viajero));
+        return view('administrador.frmModificarViajero', compact('viajero'));
+    }
+
+
+
+    public function storeViajero(Request $request)
+    {
+        try {
+            log::channel('mylog')->info(json_encode($request->all()));
+            $viajero = new TransferViajeros();
+            $viajero->apellido1 = $request->apellido1;
+            $viajero->apellido2 = $request->apellido2;
+            $viajero->ciudad = $request->ciudad;
+            $viajero->codigoPostal = $request->codigoPostal; 
+            $viajero->direccion = $request->direccion;
+            $viajero->email = $request->email;
+            $viajero->Id_tipo_usuario = $request->tipoUsuario;           
+            $viajero->nombre = $request->nombre;           
+            $viajero->pais = $request->pais;           
+            $viajero->password = $request->password;
+            $viajero->save();
+            $viajeros = TransferViajeros::all();
+            return redirect()->route('administrador.listaViajeros')->with('success', 'Viajero creado con éxito.');
+        } catch (\Exception $e) {            
+            return redirect()->route('administrador.listaViajeros')->with('error', 'Error al crear el viajero.');
+        }
+    }
+    public function updateViajero(Request $request, $id_viajero)
+    {
+
+        $viajero = TransferViajeros::find($id_viajero);
+        if ($viajero) {
+            $viajero->apellido1 = $request->apellido1;
+            $viajero->apellido2 = $request->apellido2;
+            $viajero->ciudad = $request->ciudad;
+            $viajero->codigoPostal = $request->codigoPostal; 
+            $viajero->direccion = $request->direccion;
+            $viajero->email = $request->email;
+            $viajero->Id_tipo_usuario = $request->tipoUsuario;           
+            $viajero->nombre = $request->nombre;           
+            $viajero->pais = $request->pais;           
+            $viajero->password = $request->password;
+            $viajero->update();
+            $viajeros = TransferViajeros::all();
+            return redirect()->route('administrador.listaViajeros')->with('success', 'Viajero actualizado con éxito.');
+        } else {
+            return redirect()->route('administrador.listaViajeros')->with('error', 'Viajero no encontrado.');
+        }
+    }
+    public function deleteViajero($id_viajero)
+    {
+        //Busca el viajero por el id_vehiculo
+        $viajero = TransferViajeros::find($id_viajero);
+        //Verifica si el viajero existe
+        if ($viajero) {
+            //Elimina el viajero
+            $viajero->delete();
+            // Redirige al viajero a la lista de usuarios con un mensaje de éxito
+            return redirect()->route('administrador.listaViajeros')->with('success', 'Viajero eliminado con éxito.');
+        } else {
+            // Redirige al viajero a la lista de usuarios con un mensaje de error
+            return redirect()->route('administrador.listaViajeros')->with('error', 'Viajero no encontrado.');
+        }
+    }
+
+
+    
+
+
+    
+    
 }
