@@ -3,7 +3,7 @@
 {{-- poner menu como plantilla --}}
 @section('content')
     <div class="container" style="margin-bottom: 50px;">
-        <!-- Muestra el mensaje de éxito -->
+        {{-- <!-- Muestra el mensaje de éxito -->
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -15,7 +15,7 @@
             <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
-        @endif
+        @endif --}}
         <div class="col">
             <div class="col">
                 <ul class="list-group">
@@ -58,7 +58,7 @@
                                                         </form>
 
                                                         <!-- Formulario para eliminar -->
-                                                        <form method="post"
+                                                        <form method="post" onsubmit="return confirmarEliminacion()"
                                                             action="{{ route('administrador.delete', $admin->Id_usuario) }}">
                                                             @csrf
                                                             @method('DELETE')
@@ -86,5 +86,10 @@
             </div>
         </div>
     </div>
-
+    <script>
+        // Función para confirmar la eliminación de un viajero
+        function confirmarEliminacion() {
+            return confirm("¿Está seguro que desea eliminar el administrador?");
+        }
+    </script>
 @endsection

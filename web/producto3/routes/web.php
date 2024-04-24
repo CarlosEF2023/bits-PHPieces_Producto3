@@ -52,6 +52,14 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::post('administrador/frmModificarVehiculo', [AdminPanelController::class, 'frmModificarVehiculo'])->name('administrador.frmModificarVehiculo');
     Route::put('administrador/updateVehiculo/{id_vehiculo}', [AdminPanelController::class, 'updateVehiculo'])->name('administrador.updateVehiculo');
     Route::delete('administrador/deleteVehiculo/{id_vehiculo}', [AdminPanelController::class, 'deleteVehiculo'])->name('administrador.deleteVehiculo');    
+    Route::get('administrador/listaViajeros', [AdminPanelController::class, 'listaViajeros'])->name('administrador.listaViajeros');
+    Route::get('administrador/frmNuevoViajero', [AdminPanelController::class, 'frmNuevoViajero'])->name('administrador.frmNuevoViajero');
+    Route::post('administrador/storeViajero', [AdminPanelController::class, 'storeViajero'])->name('administrador.storeViajero');
+    Route::post('administrador/frmModificarViajero', [AdminPanelController::class, 'frmModificarViajero'])->name('administrador.frmModificarViajero');
+    Route::put('administrador/updateViajero/{id_viajero}', [AdminPanelController::class, 'updateViajero'])->name('administrador.updateViajero');
+    Route::delete('administrador/deleteViajero/{id_viajero}', [AdminPanelController::class, 'deleteViajero'])->name('administrador.deleteViajero');    
+    
+
 
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'administrador/'
 });

@@ -50,7 +50,21 @@
                         <p class="card-text">Gestión de hoteles.</p>
                     </div>
                     <div class="card-footer">
-                        <a type="button" name="btn_ver_hoteles" id="btn_ver_hoteles" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                        <a type="button" href="{{route('administrador.listaViajeros')}}" name="btn_ver_hoteles" id="btn_ver_hoteles" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col" style="width: 250px;">
+                <div class="card h-100 d-flex flex-column">
+                    <div class="card-image-container">
+                        <img src="{{asset('assets/viajeros.png')}}" class="card-img-top card-image" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Viajeros</h5>
+                        <p class="card-text">Gestión de viajeros.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a type="button" href="{{route('administrador.listaViajeros')}}" name="btn_ver_viajeros" id="btn_ver_viajeros" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
                     </div>
                 </div>
             </div>
