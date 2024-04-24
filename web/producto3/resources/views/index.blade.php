@@ -1,106 +1,20 @@
 @extends('layouts.plantilla')
 @section('title', 'Home')
 
+<header class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow" style="position: sticky; top: 0;">
+@section('navbar')
+@if(isset($user))
+    @include('layouts.menu_nav', ['user' => $user])
+@else
+    @include('layouts.menu_nav')
+@endif
+@endsection
+</header>
+
 @section('content')
-    <?php
-    // Comprueba si la sesión ya está iniciada
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        error_reporting(0);
-        session_start();
-    }
-    ?>
 
-    <?php
-if (!isset($_SESSION['login']) || $_SESSION['login'] == "") {
-?>
-
-    <header class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow" style="position: sticky; top: 0;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <a href='/index.php'><img src={{ asset('assets/Isla_Transfers_Logo.jpeg') }} width='64px'></a>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbar-content">
-                    <div class="hamburger-toggle">
-                        <div class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </button>
-                <div class="collapse navbar-collapse" id="navbar-content">
-                    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./views/principal.php">Isla Transfer</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-
-                    <!-- Colapsar correctamente los form de login -->
-
-                    <form action="{{ route('login') }}" method="post" style="display: flex; align-items: center;">
-                        @csrf
-                        <div style=" margin-right: 10px;">
-                            <a href="#" class="enlace">Registrarse</a>
-                        </div>
-                        <div style=" margin-right: 10px;">
-                            <label for="email">@</label>
-                            <input type="email" id="emailId" name="email" placeholder="email" required>
-                        </div style=" margin-right: 10px;">
-                        <div>
-                            <label for="password"></label>
-                            <input type="password" id="passwordId" name="password" placeholder="password" required>
-                        </div style=" margin-right: 10px;">
-                        <div style=" margin-left: 10px;">
-                            <input type="submit" value="Login" class="btn btn-secondary btn-sm">
-                        </div>
-                    </form>
-                </div>
-
-
-            </a>
-
-            </nav>
-        </div>
-    </header>
-
-    <?php
-} else {
-    include "views/menu.php";
-    /*
-                    <form action="controllers/CerrarAplicacion.php" method="post" style="display: flex; align-items: center;">
-                        <div style=" margin-right: 10px;">
-                            <!--  TODO aqui un icono de usuario -->
-                        </div>
-                        <div style=" margin-right: 10px;">
-                            <label name="email"><?= $_SESSION['email']; ?></label>
-    </div style=" margin-right: 10px;">
-    <div style=" margin-left: 10px;">
-        <input type="submit" value="Salir" class="btn btn-secondary btn-sm">
-    </div>
-    </form>
-    */
-    }
-    ?>
     <div class="container-fluid" name="principal" id="principal">
         <main>
-            <?php
-            if (isset($_SESSION['user_fail'])) {
-                echo '<div class="alert alert-danger">';
-                echo '<strong>Login fail</strong> ' . $_SESSION['user_fail'];
-                echo '</div>';
-                unset($_SESSION['user_fail']); // Eliminar la variable de sesión
-            }
-            ?>
-            <?php
-            if (isset($_SESSION['user_pass_fail'])) {
-                echo '<div class="alert alert-danger">';
-                echo '<strong>Login fail</strong> ' . $_SESSION['user_pass_fail'];
-                echo '</div>';
-                unset($_SESSION['user_pass_fail']); // Eliminar la variable de sesión
-            }
-            ?>
             <div class="container-fluid" name="principal" id="principal">
 
                 <div class="hero-section">
@@ -167,12 +81,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] == "") {
                     </div>
                 </div>
 
-                <script>
-                    $("#datospersonales_administrador").on("click", function(e) {
-                        e.preventDefault();
-                        $("#principal").load("./views/frm_datos_personales_admin.php");
-                    });
-                </script>
         </main>
     </div>
 @endsection
