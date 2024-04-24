@@ -12,6 +12,8 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {        
         $user = $request->session()->get('user');
+        var_dump($user);
         return view('index', ['user' =>$user] );       
+
     }
 }
