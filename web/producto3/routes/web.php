@@ -62,6 +62,13 @@ Route::middleware(['checkAdmin'])->group(function () {
 
 
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'administrador/'
+    Route::get('administrador/reservas/menu', [menu_reservasController::class, 'index'])->name('reservas.menu');
+    Route::get('administrador/reservas/listar', [menu_listareservasController::class, 'index'])->name('reservas.listar');
+    Route::get('administrador/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('reservas.crear');
+    Route::get('administrador/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('reservas.modificar');
+    Route::get('administrador/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('reservas.ver');
+    Route::get('administrador/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('reservas.eliminar');
+    
 });
 
 
@@ -73,24 +80,39 @@ Route::middleware(['checkVehiculo'])->group(function () {
 Route::middleware(['checkViajero'])->group(function () {
     Route::get('viajero', [ViajeroPanelController::class, 'index']);
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'viajero/'
+    Route::get('viajero/reservas/menu', [menu_reservasController::class, 'index'])->name('reservas.menu');
+    Route::get('viajero/reservas/listar', [menu_listareservasController::class, 'index'])->name('reservas.listar');
+    Route::get('viajero/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('reservas.crear');
+    Route::get('viajero/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('reservas.modificar');
+    Route::get('viajero/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('reservas.ver');
+    Route::get('viajero/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('reservas.eliminar');
+    
 });
 
 Route::middleware(['checkHotel'])->group(function () {
     Route::get('hotel', [HotelPanelController::class, 'index']);
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'hotel/'
+    Route::get('hotel/reservas/menu', [menu_reservasController::class, 'index'])->name('reservas.menu');
+    Route::get('hotel/reservas/listar', [menu_listareservasController::class, 'index'])->name('reservas.listar');
+    Route::get('hotel/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('reservas.crear');
+    Route::get('hotel/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('reservas.modificar');
+    Route::get('hotel/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('reservas.ver');
+    Route::get('hotel/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('reservas.eliminar');
+  
+
 });
 
 // Debería ir un grupo para reservas compartido por checkAdmin y checkViajero y creo que checkHotel
 // si es que los tres tienen que tener acceso a sus vistas
 // --------------------------------------------------------------------------------
-
+/*
 Route::get('/reservas/menu', [menu_reservasController::class, 'index'])->name('reservas.menu');
 Route::get('/reservas/listar', [menu_listareservasController::class, 'index'])->name('reservas.listar');
 Route::get('/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('reservas.crear');
 Route::get('/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('reservas.modificar');
 Route::get('/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('reservas.ver');
 Route::get('/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('reservas.eliminar');
-
+*/
 
 
 
