@@ -35,9 +35,7 @@
             </div>
         </button>
 
-        @var_dump($user)
-
-        @if (isset($user))
+        @if (Session::get('loggin')=="on")
         <!-- Si existe el usuario -->
         <div class="collapse navbar-collapse" id="navbar-content">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
@@ -45,7 +43,7 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Isla Transfer</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Hola {{ $user->email }}!</a></li>
 
-                @switch($user->Id_tipo_usuario)
+                @switch(Session::get('usertype'))
 
                     @case('3')
                         <!-- Administración -->
@@ -64,8 +62,8 @@
                     @case('6')
                     <!-- Viajero -->
                     <!-- Aquí colocar las opciones específicas para el viajero -->
-                        <li class="nav-item"><a class="nav-link" href="{{ route('reservas.menu') }}">Crear Reservas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('reservas.listar') }}">Listar Reservas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viajero.reservas.menu') }}">Crear Reservas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viajero.reservas.listar') }}">Listar Reservas</a></li>
 
                     @break
 
@@ -73,7 +71,7 @@
 
             </ul>
 
-            <a class="nav-link" style="align:right;" href="#" id="cerraraplicacion" name="cerraraplicacion">Salir</a>
+            <a class="nav-link" style="align:right;" href="{{ route('logout') }}" id="cerraraplicacion" name="cerraraplicacion">Salir</a>
 
         </div>
         <!-- Fin de div collapse -->
