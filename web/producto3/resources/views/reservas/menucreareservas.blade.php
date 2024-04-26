@@ -16,10 +16,7 @@
                         <p class="card-text">Reserva tu viaje del Aeropuerto al hotel y evita esperas.</p>
                     </div>
                     <div class="card-footer align-items-center justify-content-center">
-                        {{ $ruta = Session::get('userroute').'.reservas.crear' }}
-                    <a href="#" class="btn btn-primary" name="agendar_aeropuerto_hotel" id="agendar_aeropuerto_hotel">¡Agendar! {{ $ruta }}</a>
-                <!--  route($ruta, ['valor' => 1])  -->    
-                
+                    <a href="{{ route (Session::get('userroute').'.reservas.crear', ['valor' => 1]) }}" class="btn btn-primary" name="agendar_aeropuerto_hotel" id="agendar_aeropuerto_hotel">¡Agendar!</a>           
                 </div>
                 </div>
             </div>
@@ -31,10 +28,7 @@
                         <p class="card-text">Evita perder el avión y llega a tiempo al aeropuerto.</p>
                     </div>
                     <div class="card-footer align-items-center justify-content-center">
-
-                    <!-- 
-                        <a href=" route('reservas.crear', ['valor' => 2]) " name="agendar_hotel_aeropuerto" id="agendar_hotel_aeropuerto" class="btn btn-primary">¡Agendar!</a>
--->
+                        <a href="{{ route (Session::get('userroute').'.reservas.crear', ['valor' => 2]) }} " name="agendar_hotel_aeropuerto" id="agendar_hotel_aeropuerto" class="btn btn-primary">¡Agendar!</a>
                     </div>
                 </div>
             </div>
@@ -46,9 +40,7 @@
                         <p class="card-text">Sin complicaciones. Nosotros nos encargamos de llevarte siempre a tiempo.</p>
                     </div>
                     <div class="card-footer align-items-center justify-content-center">
-                    <!--
-                        <a href=" route('reservas.crear', ['valor' => 3]) " name="agendar_completo" id="agendar_completo" class="btn btn-primary">¡Agendar!</a>
--->
+                        <a href=" {{ route (Session::get('userroute').'.reservas.crear', ['valor' => 3]) }}" name="agendar_completo" id="agendar_completo" class="btn btn-primary">¡Agendar!</a>
                     </div>
                 </div>
             </div>

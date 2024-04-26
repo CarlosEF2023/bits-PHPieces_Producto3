@@ -13,30 +13,16 @@ class transfer_crearreservaController extends Controller
 
     public function index($valor){
         if ($valor=="1"){
-            $this->CrearReservaAeropuerto();
+            return view('/reservas/aeropuerto/crear_reservaaeropuerto');
         }
         if ($valor=="2"){
-            $this->CrearReservaTotal();
+            return view('/reservas/aeropuerto/crear_reservaaeropuerto');
         }
         if ($valor=="3"){
-            $this->CrearReservaTotal();
+            return view('/reservas/aeropuerto/crear_reservaaeropuerto');
         }
     }
 
-    public function CrearReservaAeropuerto()
-    {
-        return view('reservas/aeropuerto/crear_reservaaeropuerto');
-    }
-
-    public function CrearReservaHotel()
-    {
-        return view('reservas/aeropuerto/crear_reservaaeropuerto');
-    }
-
-    public function CrearReservaTotal()
-    {
-        return view('reservas/aeropuerto/crear_reservaaeropuerto');
-    }
 
     public function EnviarReservaAeropuerto(Request $request)
     {

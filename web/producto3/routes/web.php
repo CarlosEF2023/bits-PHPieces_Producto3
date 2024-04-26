@@ -83,8 +83,8 @@ Route::middleware(['checkViajero'])->group(function () {
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'viajero/'
     Route::get('viajero/reservas/menu', [menu_reservasController::class, 'index'])->name('viajero.reservas.menu');
     Route::get('viajero/reservas/listar', [menu_listareservasController::class, 'index'])->name('viajero.reservas.listar');
-    Route::post('viajero/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('viajero.reservas.crear');
-    Route::post('viajero/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('viajero.reservas.modificar');
+    Route::get('viajero/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('viajero.reservas.crear');
+    Route::get('viajero/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('viajero.reservas.modificar');
     Route::get('viajero/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('viajero.reservas.ver');
     Route::get('viajero/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('viajero.reservas.eliminar');
     
