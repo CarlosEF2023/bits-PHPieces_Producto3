@@ -15,15 +15,12 @@
                     <span>2</span>
                     <span>3</span>
                 </div>
-                <?php if (isset($_SESION["mensaje"])) { ?>
-                    <div class="message <?php echo $type; ?>"><?php echo $_SESION["mensaje"]; ?></div>
-                <?php } ?>
                 <!-- Wizard section 1 -->
                 <section id="aeropuerto_hotel">
                     <h3>Salida del Hotel</h3>
                     <div class="row">
                         <label class="float-left label-width">Día de salida</label>
-                        <input name="diadesalida" id="diadesalida" type="date"  min="<?php echo date('Y-m-d', strtotime('+2 day')); ?>" max="<?php echo date('Y-m-d', strtotime('+15 day')); ?>">
+                        <input name="diadesalida" id="diadesalida" type="date" min="{{ \Carbon\Carbon::now()->addDays(2)->format('Y-m-d') }}" max="{{ \Carbon\Carbon::now()->addDays(15)->format('Y-m-d') }}">
                     </div>
                     <div class="row">
                         <label class="float-left label-width">Hora de salida</label>
@@ -54,9 +51,7 @@
                     <h3>Hotel recogida</h3>
                     <div class="row">
                         <label class="float-left label-width">Hotel recogida</label>
-                        <?php
-                        $t->comboHotel("", "Hotel_Recogida");
-                        ?>
+                        <x-hotel-select :selected="$seleccionado" name="nombreselect" /> 
                     </div>
                     <div class="row">
                         <label class="float-left label-width">Número de viajeros</label>
@@ -64,7 +59,12 @@
                     </div>
                     <div class="row">
                         <label class="float-left label-width">email reserva</label>
-                        <input name="emailreserva" id="emailreserva" type="mail" value="<?php echo $_SESSION["email"]; ?>">
+                        @if (Session::get('usertype')!="6")
+                            <input name="emailreserva" id="emailreserva" type="mail" value="">
+                        @else
+                            <input name="emailreserva" id="emailreserva" type="mail" value="{{ Session::get('email') }}">
+                        @endif
+                        
                     </div>
                     <div class="row button-row">
                     <div class="btn-group" role="group">
