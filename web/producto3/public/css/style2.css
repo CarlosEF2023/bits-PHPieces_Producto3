@@ -1,0 +1,20 @@
+.alerta{
+    display:block;
+    margin-bottom:2px;
+    border-radius: 10px;
+    color:white;
+    padding: 0.4rem;
+    text-align: center;
+    font-weight:bold;
+  }
+   
+  
+  .error{
+        background-color:rgba(196, 39, 39, 0.884);
+        
+    }
+  
+    .exito{
+        background-color: green;
+        
+    }
