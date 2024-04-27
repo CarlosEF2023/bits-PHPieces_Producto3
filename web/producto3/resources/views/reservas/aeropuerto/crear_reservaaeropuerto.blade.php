@@ -9,8 +9,8 @@
     <div class="phppot-container" name="resulado_reserva" id="resulado_reserva">
             <h1>Reserva trayecto Aeropuerto al Hotel</h1>
 
-            <form method="POST" name="checkout-form" id="checkout-form" action="aeropuerto/enviar" Method="POST">
-            @csrf
+            <form method="POST" name="checkout-form" id="checkout-form" action="{{Session::get('userroute').'.reservas.nuevo'}}">
+                @csrf
                 <input type="hidden" name="idtiporeserva" id="idtiporeserva" value="1">
                 <div class="wizard-flow-chart">
                     <span class="fill">1</span>

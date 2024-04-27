@@ -66,6 +66,7 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::get('administrador/reservas/menu', [menu_reservasController::class, 'index'])->name('administrador.reservas.menu');
     Route::get('administrador/reservas/listar', [menu_listareservasController::class, 'index'])->name('administrador.reservas.listar');
     Route::get('administrador/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('administrador.reservas.crear');
+    Route::post('administrador/reservas/nuevo', [transfer_crearreservaController::class, 'store'])->name('administrador.reservas.nuevo');
     Route::get('administrador/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('administrador.reservas.modificar');
     Route::get('administrador/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('administrador.reservas.ver');
     Route::get('administrador/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('administrador.reservas.eliminar');

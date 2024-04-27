@@ -24,4 +24,8 @@ class transfer_modificarreservaController extends Controller
             return view('/reservas/completo/modificar_reservaacompleto', ['reservas' => $reserva]);
         }
     }
+
+    public function UpdateReserva($request){
+        
+    }
 }
