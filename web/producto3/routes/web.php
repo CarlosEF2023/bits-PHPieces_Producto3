@@ -92,9 +92,11 @@ Route::middleware(['checkViajero'])->group(function () {
     Route::get('viajero/reservas/menu', [menu_reservasController::class, 'index'])->name('viajero.reservas.menu');
     Route::get('viajero/reservas/listar', [menu_listareservasController::class, 'index'])->name('viajero.reservas.listar');
     Route::get('viajero/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('viajero.reservas.crear');
+    Route::post('viajero/reservas/nuevo', [transfer_crearreservaController::class, 'store'])->name('viajero.reservas.nuevo');
     Route::get('viajero/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('viajero.reservas.modificar');
     Route::get('viajero/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('viajero.reservas.ver');
     Route::get('viajero/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('viajero.reservas.eliminar');
+
     Route::get('viajero/cambiar-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('cambiarDatos');
     Route::post('viajero/cambiar-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('cambiarDatos');
     Route::get('viajero/cambiar-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('cambiarcontraseña');
@@ -107,6 +109,7 @@ Route::middleware(['checkHotel'])->group(function () {
     Route::get('hotel/reservas/menu', [menu_reservasController::class, 'index'])->name('hotel.reservas.menu');
     Route::get('hotel/reservas/listar', [menu_listareservasController::class, 'index'])->name('hotel.reservas.listar');
     Route::get('hotel/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('hotel.reservas.crear');
+    Route::post('hotel/reservas/nuevo', [transfer_crearreservaController::class, 'store'])->name('hotel.reservas.nuevo');
     Route::get('hotel/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('hotel.reservas.modificar');
     Route::get('hotel/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('hotel.reservas.ver');
     Route::get('hotel/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('hotel.reservas.eliminar');
