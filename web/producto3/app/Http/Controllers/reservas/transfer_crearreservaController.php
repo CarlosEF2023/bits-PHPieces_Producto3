@@ -4,8 +4,9 @@ namespace App\Http\Controllers\reservas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\transfer_reservas;
+use App\Models\TransferReservas;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 
 class transfer_crearreservaController extends Controller
@@ -16,17 +17,25 @@ class transfer_crearreservaController extends Controller
             return view('/reservas/aeropuerto/crear_reservaaeropuerto');
         }
         if ($valor=="2"){
-            return view('/reservas/aeropuerto/crear_reservaaeropuerto');
+            return view('/reservas/hotel/crear_reservahotel');
         }
         if ($valor=="3"){
-            return view('/reservas/aeropuerto/crear_reservaaeropuerto');
+            return view('/reservas/completo/crear_reservacompleto');
         }
     }
 
 
-    public function EnviarReservaAeropuerto(Request $request)
+    public function store(Request $request)
     {
         // Procesar los datos del formulario aquí
+        log::channel('mylog')->info(json_encode($request->all()));
+
+
+
+
+
+
+
         dd($request->all());
     }
 }

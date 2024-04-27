@@ -4,9 +4,9 @@ namespace App\Http\Controllers\reservas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\transfer_reservas;
+use App\Models\TransferReservas;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 
 class menu_reservasController extends Controller
 {

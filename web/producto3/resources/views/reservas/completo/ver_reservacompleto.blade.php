@@ -1,65 +1,61 @@
 @extends('layouts.plantilla')
-@section('title', 'Reservas del Hotel all Aeropuerto')
+@section('title', 'Reservas del Hotel al Aeropuerto')
 
 @section('content')
-<?php
-echo "<h1> LOCALIZADOR: ".$bbdd_reservas->get_Localizador()."</h1>";
-?>
+<h1> LOCALIZADOR: {{ $reservas->localizador }}</h1>
 <h3>Recogida aeropuerto</h3>
 <div class="row">
     <label class="float-left label-width">Día de llegada</label>
-    <input name="diadellegada" id="diadellegada" type="date" VALUE="<?php echo $bbdd_reservas->get_Fecha_Entrada(); ?>" disabled \>
+    <input name="diadellegada" id="diadellegada" type="date" VALUE="{{ $reservas->fecha_entrada }}" disabled \>
 </div>
 <div class="row">
     <label class="float-left label-width">Hora de llegada</label>
-    <input name="horadellegada" id="horadellegada" type="time" VALUE="<?php echo $bbdd_reservas->get_Hora_Entrada(); ?>" disabled \>
+    <input name="horadellegada" id="horadellegada" type="time" VALUE="{{ $reservas->hora_entrada }}" disabled \>
 </div>
 <div class="row">
     <label class="float-left label-width">Número de vuelo</label>
-    <input name="numerovuelo" id="numerovuelo" type="text" VALUE="<?php echo $bbdd_reservas->get_Numero_Vuelo_Entrada(); ?>" disabled \>
+    <input name="numerovuelo" id="numerovuelo" type="text" VALUE="{{ $reservas->numero_vuelo_entrada }}" disabled \>
 </div>
 <div class="row">
     <label class="float-left label-width">Aeropueto Origen</label>
-    <input name="aeropuertoorigen" id="aeropuertoorigen" type="text" VALUE="<?php echo $bbdd_reservas->get_Origen_Vuelo_Entrada(); ?>" disabled \>
+    <input name="aeropuertoorigen" id="aeropuertoorigen" type="text" VALUE="{{ $reservas->origen_vuelo_entrada }}" disabled \>
 </div>
 
 <!-- Recogida Hotel -->
 <h3>Salida del Hotel</h3>
 <div class="row">
     <label class="float-left label-width">Día de salida</label>
-    <input name="diadesalida" id="diadesalida" type="date" VALUE="<?php echo $bbdd_reservas->get_Fecha_Vuelo_Salida(); ?>" disabled \>
+    <input name="diadesalida" id="diadesalida" type="date" VALUE="{{ $reservas->fecha_vuelo_salida }}" disabled \>
 </div>
 <div class="row">
     <label class="float-left label-width">Hora de salida</label>
-    <input name="horadesalida" id="horadesalida" type="time" VALUE="<?php echo $bbdd_reservas->get_Hora_Vuelo_Salida(); ?>" disabled \>
+    <input name="horadesalida" id="horadesalida" type="time" VALUE="{{ $reservas->hora_vuelo_salida }}" disabled \>
 </div>
 <div class="row">
     <label class="float-left label-width">Hora de recogida en el Hotel</label>
-    <input name="horaderecogida" id="horaderecogida" type="time" VALUE="<?php echo $bbdd_reservas->get_Hora_Recogida_Hotel(); ?>" disabled \>
+    <input name="horaderecogida" id="horaderecogida" type="time" VALUE="{{ $reservas->hora_recogida_hotel }}" disabled \>
 </div>
 <div class="row">
     <label class="float-left label-width">Número de vuelo</label>
-    <input name="numerovuelo" id="numerovuelo" type="text" VALUE="<?php echo $bbdd_reservas->get_Numero_Vuelo_Entrada(); ?>" disabled \>
+    <input name="numerovuelo" id="numerovuelo" type="text" VALUE="{{ $reservas->numero_vuelo_entrada }}" disabled \>
 </div>
 <div class="row">
     <label class="float-left label-width">Aeropueto Origen</label>
-    <input name="aeropuertoorigen" id="aeropuertoorigen" type="text" VALUE="<?php echo $bbdd_reservas->get_Origen_Vuelo_Entrada(); ?>" disabled \>
+    <input name="aeropuertoorigen" id="aeropuertoorigen" type="text" VALUE="{{ $reservas->origen_vuelo_entrada }}" disabled \>
 </div>
 <!-- Parte Común -->
 <h3>Hotel destino</h3>
 <div class="row">
     <label class="float-left label-width">Hotel recogida</label>
-    <?php
-    $t->comboHotel($bbdd_reservas->get_Id_Destino(), "hoteldestino");
-    ?>
+    <x-hotel-select :selected="{{$reservas->id_destino}}" name="hoteldestino" /> 
 </div>
 <div class="row">
     <label class="float-left label-width">Número de viajeros</label>
-    <input name="numeroviajeros" id="numeroviajeros" type="number" min="1" max="8" VALUE="<?php echo $bbdd_reservas->get_Num_Viajeros(); ?>" disabled \>
+    <input name="numeroviajeros" id="numeroviajeros" type="number" min="1" max="8" VALUE="{{ $reservas->num_viajeros }}" disabled \>
 </div>
 <div class="row">
     <label class="float-left label-width">email reserva</label>
-    <input name="emailreserva" id="emailreserva" type="mail" value="<?php echo $bbdd_reservas->get_Email_Cliente(); ?>">
+    <input name="emailreserva" id="emailreserva" type="mail" value="{{ $reservas->email_cliente }}">
 </div>
 
 @endsection
