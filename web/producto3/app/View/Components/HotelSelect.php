@@ -10,10 +10,10 @@ use App\Models\TransferHotel;
 class HotelSelect extends Component
 {
 
-public $selected;
+    public $selected;
     public $name;
 
-    public function __construct($selected = null, $name = 'hotel_id')
+    public function __construct($selected = null, $name = 'id_hotel')
     {
         $this->selected = $selected;
         $this->name = $name;
