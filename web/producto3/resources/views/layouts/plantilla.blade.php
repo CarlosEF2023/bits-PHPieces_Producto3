@@ -77,6 +77,7 @@
                     <!-- Conductor -->
                     <!-- Aquí colocar las opciones específicas para el conductor -->
                     <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('vehiculo.itinerario') }}">Crear Reservas</a></li>
+                    <li class="nav-item me-md-2"><a class="nav-link" href="vehiculo/cambiar-datos">Datos personales</a></li>
                     @break
 
                     @case('5')
@@ -92,7 +93,7 @@
                     <!-- Aquí colocar las opciones específicas para el viajero -->
                         <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('viajero.reservas.menu') }}">Crear Reservas</a></li>
                         <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('viajero.reservas.listar') }}">Listar Reservas</a></li>
-
+                        <li class="nav-item me-md-2"><a class="nav-link" href="viajero/cambiar-datos">Datos personales</a></li>
                     @break
 
                 @endswitch
@@ -120,7 +121,7 @@
             <form action="{{ route('login') }}" method="post" style="display: flex; align-items: center;">
                 @csrf
                 <div style="margin-right: 10px;">
-                    <a href="#" class="enlace">Registrarse</a>
+                    <a href="registrarse" class="enlace">Registrarse</a>
                 </div>
                 <div style="margin-right: 10px;">
                     <label for="email">@</label>

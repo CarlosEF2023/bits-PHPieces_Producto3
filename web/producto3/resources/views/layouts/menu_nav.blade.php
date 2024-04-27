@@ -35,7 +35,7 @@
 
                     @case('4')
                     <!-- Conductor -->
-                    <!-- Aquí colocar las opciones específicas para el conductor -->
+                    
                     @break
 
                     @case('5')
@@ -45,7 +45,12 @@
 
                     @case('6')
                     <!-- Viajero -->
-                    <!-- Aquí colocar las opciones específicas para el viajero -->
+                    {{-- {{ route('menu.crear') }} --}}
+                        <li class="nav-item"><a class="nav-link" href="">Crear Reservas</a></li>
+                        {{-- {{ route('menu.listar') }} --}}
+                        <li class="nav-item"><a class="nav-link" href="">Listar Reservas</a></li>
+                        {{-- {{ route('menu.datos_personales') }} --}}
+                        <li class="nav-item"><a class="nav-link" href="cambiar-datos">Datos personales</a></li>
                     @break
 
                 @endswitch 
@@ -73,7 +78,7 @@
             <form action="{{ route('login') }}" method="post" style="display: flex; align-items: center;">
                 @csrf
                 <div style="margin-right: 10px;">
-                    <a href="#" class="enlace">Registrarse</a>
+                    <a href="registrarse" class="enlace">Registrarse</a>
                 </div>
                 <div style="margin-right: 10px;">
                     <label for="email">@</label>
