@@ -41,7 +41,7 @@
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
 
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Isla Transfer</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Hola {{ Session::get('email') }}!</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Hola {{ Session::get('mail') }}!</a></li>
 
                 @switch(Session::get('usertype'))
 

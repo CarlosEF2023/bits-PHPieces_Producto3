@@ -62,7 +62,7 @@
                         @if (Session::get('usertype')!="6")
                             <input name="emailreserva" id="emailreserva" type="mail" value="">
                         @else
-                            <input name="emailreserva" id="emailreserva" type="mail" value="{{ Session::get('email') }}">
+                            <input name="emailreserva" id="emailreserva" type="mail" value="{{ Session::get('mail') }}">
                         @endif
                         
                     </div>

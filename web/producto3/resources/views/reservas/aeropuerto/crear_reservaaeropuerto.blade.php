@@ -58,11 +58,11 @@
                     <!-- Si es administrador u Hotel pueden crearla en nombre del usuario -->
                     <div class="row">
                         <label class="float-left label-width">email reserva</label>
-                        <label class="float-left label-width">email reserva</label>
-                        @if (Session::get('usertype')!="6")
-                            <input name="emailreserva" id="emailreserva" type="mail" value="">
+                         @if (Session::get('usertype')!="6")
+                            <x-viajero-select :selected="0" name="emailreserva" />     
+                        <!-- <input name="emailreserva" id="emailreserva" type="mail" value=""> -->
                         @else
-                            <input name="emailreserva" id="emailreserva" type="mail" value="{{ Session::get('email') }}">
+                            <input name="emailreserva" id="emailreserva" type="mail" value="{{ Session::get('mail') }}">
                         @endif
                     </div>
 
