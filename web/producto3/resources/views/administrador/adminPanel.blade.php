@@ -22,12 +22,13 @@
                             <p class="card-text">Realizar reservas de ida al aeropuerto, hotel o de ida y vuelta.</p>
                         </div>
                         <div class="card-footer">
-                            <a name="btn_ver_reservas" id="btn_ver_reservas" type="button" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                            <a href="{{ route('administrador.reservas.menu') }}" name="btn_ver_reservas" id="btn_ver_reservas" type="button" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
                             <!-- views/reservas/frm_rservas.php -->
                         </div>
                     </div>
                 </div>
-                <div class="col" style="width: 250px;">
+                <!--
+                    <div class="col" style="width: 250px;">
                     <div class="card h-100">
                         <div class="card-image-container">
                             <img src="{{asset('assets/modificar_reserva.jpg')}}" class="card-img-top card-image" alt="...">
@@ -41,17 +42,18 @@
                         </div>
                     </div>
                 </div>
+                -->
                 <div class="col" style="width: 250px;">
                     <div class="card h-100">
                         <div class="card-image-container">
-                            <img src="{{asset('assets/cancelar_reserva.jpg')}}" class="card-img-top card-image" alt="...">
+                            <img src="{{asset('assets/reservas.jpg')}}" class="card-img-top card-image" alt="...">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Cancelar reservas</h5>
-                            <p class="card-text">Cancela una reserva en cualquier momento.</p>
+                            <h5 class="card-title">Listar reservas</h5>
+                            <p class="card-text">Listar las reservas existentes por día/semana/mes o ver el histórico.</p>
                         </div>
                         <div class="card-footer">
-                            <a type="button" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                            <a href="{{ route('administrador.reservas.listar') }}" type="button" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
                         </div>
                     </div>
                 </div>

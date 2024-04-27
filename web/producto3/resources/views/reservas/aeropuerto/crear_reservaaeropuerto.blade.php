@@ -9,8 +9,8 @@
     <div class="phppot-container" name="resulado_reserva" id="resulado_reserva">
             <h1>Reserva trayecto Aeropuerto al Hotel</h1>
 
-            <form method="POST" name="checkout-form" id="checkout-form" action="aeropuerto/enviar" Method="POST">
-            @csrf
+            <form method="POST" name="checkout-form" id="checkout-form" action="{{Session::get('userroute').'.reservas.nuevo'}}">
+                @csrf
                 <input type="hidden" name="idtiporeserva" id="idtiporeserva" value="1">
                 <div class="wizard-flow-chart">
                     <span class="fill">1</span>
@@ -22,7 +22,7 @@
                     <h3>Recogida aeropuerto</h3>
                     <div class="row">
                         <label class="float-left label-width">Día de llegada</label>
-                        <input name="diadellegada" id="diadellegada" type="date" min="<?php echo date('Y-m-d', strtotime('+2 day')); ?>" max="<?php echo date('Y-m-d', strtotime('+15 day')); ?>">
+                        <input name="diadesalida" id="diadesalida" type="date" min="{{ \Carbon\Carbon::now()->addDays(2)->format('Y-m-d') }}" max="{{ \Carbon\Carbon::now()->addDays(15)->format('Y-m-d') }}">
                     </div>
                     <div class="row">
                         <label class="float-left label-width">Hora de llegada</label>
@@ -49,9 +49,7 @@
                     <h3>Hotel destino</h3>
                     <div class="row">
                         <label class="float-left label-width">Hotel destino</label>
-                        <?php
-                        //$t->comboHotel("", "Hotel_Destino");
-                        ?>
+                        <x-hotel-select :selected="0" name="nombreselect" />
                     </div>
                     <div class="row">
                         <label class="float-left label-width">Número de viajeros</label>
@@ -60,13 +58,12 @@
                     <!-- Si es administrador u Hotel pueden crearla en nombre del usuario -->
                     <div class="row">
                         <label class="float-left label-width">email reserva</label>
-                        <?php
-                        //echo '<input type="mail" name="emailreserva" id="emailreserva" value="'.$_SESSION["email"].'"';
-                        //if ($_SESSION['usertype']==6 ){
-                        //    echo " disabled ";
-                        //}
-                       //echo '>';
-                        ?>
+                         @if (Session::get('usertype')!="6")
+                            <x-viajero-select :selected="0" name="emailreserva" />     
+                        <!-- <input name="emailreserva" id="emailreserva" type="mail" value=""> -->
+                        @else
+                            <input name="emailreserva" id="emailreserva" type="mail" value="{{ Session::get('mail') }}">
+                        @endif
                     </div>
 
                     <div class="row button-row">

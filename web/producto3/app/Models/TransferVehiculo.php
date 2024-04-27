@@ -12,6 +12,7 @@ class TransferVehiculo extends Model implements AuthenticatableContract
     use Authenticatable;
     protected $table = 'transfer_vehiculo';
     public $timestamps = false;
+    protected static $alertas = [];
     // Por defecto laravel en las consultas por identificador busca la columna id
     // si tu tabla tiene otra columna como clave primaria debes especificarlo
     protected $primaryKey = 'id_vehiculo';
@@ -22,4 +23,12 @@ class TransferVehiculo extends Model implements AuthenticatableContract
         'id_vehiculo',
         'password',
     ];
+    
+    public static function setAlerta($tipo, $mensaje) {
+        static::$alertas[$tipo][] = $mensaje;
+    }
+    // Validación
+    public static function getAlertas() {
+        return static::$alertas;
+    }
 }

@@ -35,8 +35,7 @@
                     <h2>Reserva tu transfer</h2>
                     <p>¿Listo para reservar su traslado con Isla Transfer?<br>¡Contáctenos hoy mismo para obtener más
                         información!</p>
-                    <a href="/views/reservas/frm_reservas.php" class="btn btn-primary">¡Reserve su Transferencia
-                        Hoy!</a><br>
+<br>
                     <p>También disponibles al teléfono: +34 123 456 89<br>
                     <p>Contacta con nuestro servicio de atención a ciente al mail: info@islatransfer.com</p>
                 </div>
