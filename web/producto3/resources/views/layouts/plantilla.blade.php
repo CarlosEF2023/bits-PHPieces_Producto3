@@ -19,8 +19,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow">
 
-
-
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <span><img src="{{ asset('assets/Isla_Transfers_Logo.jpeg') }}" width="64px" height="64px"></span>
@@ -47,32 +45,62 @@
 
                     @case('3')
                         <!-- Administración -->
+                        <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('administrador') }}">Dashboard</a></li>
+                        <li class="nav-item dropdown me-md-2">
+                            <a class="nav-link dropdown-toggle" href="#" id="admin_reservas_dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reservas</a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="admin_reservas_dropdown">
+                                <li><a class="dropdown-item" href="{{ route('administrador.reservas.menu') }}">Crear reservas</a></li>
+                                <li><a class="dropdown-item" href="{{ route('administrador.reservas.listar') }}">Gestión de reservas</a></li>
+                                <li><a class="dropdown-item" href="#">Asignar conductor</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown me-md-2">
+                            <a class="nav-link dropdown-toggle" href="#" id="admin_gestion_user_dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestión de usuarios</a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="admin_gestion_user_dropdown">
+                                <li><a class="dropdown-item" href="{{route('administrador.listaAdministradores')}}">Administradores</a></li>
+                                <li><a class="dropdown-item" href="{{route('administrador.listaVehiculos')}}">Conductores / Vehículos</a></li>
+                                <li><a class="dropdown-item" href="#}">Hoteles</a></li>
+                                <li><a class="dropdown-item" href="{{route('administrador.listaViajeros')}}">Viajeros</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown me-md-2">
+                            <a class="nav-link dropdown-toggle" href="#" id="admin_mantenimiento_dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mantenimiento</a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="admin_mantenimiento_dropdown">
+                                <li><a class="dropdown-item" href="#">Gestión de zonas</a></li>
+                                <li><a class="dropdown-item" href="#">Gestión de Tipos de reservas</a></li>
+                                <li><a class="dropdown-item" href="#">Gestión de Tipos de usuarios</a></li>
+                            </ul>
+                        </li>
                         @break
 
                     @case('4')
                     <!-- Conductor -->
                     <!-- Aquí colocar las opciones específicas para el conductor -->
+                    <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('vehiculo.itinerario') }}">Crear Reservas</a></li>
                     @break
 
                     @case('5')
                     <!-- Hotel -->
                     <!-- Aquí colocar las opciones específicas para el hotel -->
+                    <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('hotel.reservas.menu') }}">Crear Reservas</a></li>
+                    <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('hotel.reservas.listar') }}">Listar Reservas</a></li>
+
                     @break
 
                     @case('6')
                     <!-- Viajero -->
                     <!-- Aquí colocar las opciones específicas para el viajero -->
-                        <li class="nav-item"><a class="nav-link" href="{{ route('viajero.reservas.menu') }}">Crear Reservas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('viajero.reservas.listar') }}">Listar Reservas</a></li>
+                        <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('viajero.reservas.menu') }}">Crear Reservas</a></li>
+                        <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('viajero.reservas.listar') }}">Listar Reservas</a></li>
 
                     @break
 
                 @endswitch
-
             </ul>
 
-            <a class="nav-link" style="align:right;" href="{{ route('logout') }}" id="cerraraplicacion" name="cerraraplicacion">Salir</a>
-
+            <div class="ms-auto me-md-2"> 
+                <a href="{{ route('logout') }}" class="btn btn-danger">Salir</a>
+            </div>
         </div>
         <!-- Fin de div collapse -->
 
@@ -134,6 +162,7 @@
     @endif
     
     @yield('content')
+
     <div class="footer" id="foot" name="foot">bits & PHPieces - Producto 2 - FP064 </div>
     <script lang="javascript" src="{{ asset('assets/libraries/jquery-3.7.1.min.js') }}"></script>
     <script lang="javascript" src="{{ asset('assets/libraries/bootstrap.bundle.min.js') }}"></script>

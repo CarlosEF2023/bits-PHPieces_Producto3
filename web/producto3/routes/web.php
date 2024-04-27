@@ -75,6 +75,7 @@ Route::middleware(['checkAdmin'])->group(function () {
 
 Route::middleware(['checkVehiculo'])->group(function () {
     Route::get('vehiculo', [VehiculoPanelController::class, 'index']);
+    Route::get('vehiculo.itinerario', [menu_listareservasController::class, 'index'])->name('vehiculo.itinerario');
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'vehiculo/'
 });
 
