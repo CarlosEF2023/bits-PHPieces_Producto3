@@ -48,7 +48,7 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::delete('administrador/delete/{Id_usuario}', [AdminPanelController::class, 'delete'])->name('administrador.delete');
     Route::get('administrador/listaVehiculos', [AdminPanelController::class, 'listaVehiculos'])->name('administrador.listaVehiculos');
     Route::get('administrador/frmNuevoVehiculo', [AdminPanelController::class, 'frmNuevoVehiculo'])->name('administrador.frmNuevoVehiculo');
-    // Esta ruta podría estar en el contorlador de vehículos ya que es para guardar un nuevo vehículo
+    // Esta ruta podría estar en el controlador de vehículos ya que es para guardar un nuevo vehículo
     // Pero como no está implementado ese controlador lo dejo aquí por ahora
     Route::post('administrador/storeVehiculo', [AdminPanelController::class, 'storeVehiculo'])->name('administrador.storeVehiculo');
     //////////
@@ -61,6 +61,15 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::post('administrador/frmModificarViajero', [AdminPanelController::class, 'frmModificarViajero'])->name('administrador.frmModificarViajero');
     Route::put('administrador/updateViajero/{id_viajero}', [AdminPanelController::class, 'updateViajero'])->name('administrador.updateViajero');
     Route::delete('administrador/deleteViajero/{id_viajero}', [AdminPanelController::class, 'deleteViajero'])->name('administrador.deleteViajero');    
+    Route::get('administrador/listaHoteles', [AdminPanelController::class, 'listaHoteles'])->name('administrador.listaHoteles');
+    Route::get('administrador/frmNuevoHotel', [AdminPanelController::class, 'frmNuevoHotel'])->name('administrador.frmNuevoHotel');
+    Route::post('administrador/storeHotel', [AdminPanelController::class, 'storeHotel'])->name('administrador.storeHotel');
+    Route::post('administrador/frmModificarHotel', [AdminPanelController::class, 'frmModificarHotel'])->name('administrador.frmModificarHotel');
+    Route::put('administrador/updateHotel/{id_hotel}', [AdminPanelController::class, 'updateHotel'])->name('administrador.updateHotel');
+    Route::delete('administrador/deleteHotel/{id_hotel}', [AdminPanelController::class, 'deleteHotel'])->name('administrador.deleteHotel');    
+
+ 
+
     
 
 
@@ -72,6 +81,8 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::get('administrador/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('administrador.reservas.modificar');
     Route::get('administrador/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('administrador.reservas.ver');
     Route::get('administrador/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('administrador.reservas.eliminar');
+
+    
     
 });
 

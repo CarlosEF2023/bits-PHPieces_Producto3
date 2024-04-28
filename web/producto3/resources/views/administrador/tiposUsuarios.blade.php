@@ -50,7 +50,7 @@
                         <p class="card-text">Gestión de hoteles.</p>
                     </div>
                     <div class="card-footer">
-                        <a type="button" href="{{route('administrador.listaViajeros')}}" name="btn_ver_hoteles" id="btn_ver_hoteles" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                        <a type="button" href="{{route('administrador.listaHoteles')}}" name="btn_ver_hoteles" id="btn_ver_hoteles" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
                     </div>
                 </div>
             </div>
