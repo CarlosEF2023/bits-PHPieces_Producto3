@@ -11,6 +11,7 @@ use App\Http\Controllers\logoutController;
 
 use App\Http\Controllers\reservas\menu_listareservasController;
 use App\Http\Controllers\reservas\menu_reservasController;
+use App\Http\Controllers\reservas\transfer_listarreservaController;
 use App\Http\Controllers\reservas\transfer_crearreservaController;
 use App\Http\Controllers\reservas\transfer_eliminarreservaController;
 use App\Http\Controllers\reservas\transfer_modificarreservaController;
@@ -90,9 +91,15 @@ Route::middleware(['checkViajero'])->group(function () {
     Route::get('viajero', [ViajeroPanelController::class, 'index']);
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'viajero/'
     Route::get('viajero/reservas/menu', [menu_reservasController::class, 'index'])->name('viajero.reservas.menu');
-    Route::get('viajero/reservas/listar', [menu_listareservasController::class, 'index'])->name('viajero.reservas.listar');
     Route::get('viajero/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('viajero.reservas.crear');
     Route::post('viajero/reservas/nuevo', [transfer_crearreservaController::class, 'store'])->name('viajero.reservas.nuevo');
+    // -------------------------------------------------------
+    Route::get('viajero/reservas/listar', [menu_listareservasController::class, 'index'])->name('viajero.reservas.listar');
+    Route::get('viajero/reservas/listar/dia/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('viajero.reservas.listar.dia');
+    Route::get('viajero/reservas/listar/semana/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('viajero.reservas.listar.semana');
+    Route::get('viajero/reservas/listar/mes/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('viajero.reservas.listar.mes');
+    Route::get('viajero/reservas/listar/todas/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('viajero.reservas.listar.todas');
+    // -------------------------------------------------------
     Route::get('viajero/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('viajero.reservas.modificar');
     Route::get('viajero/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('viajero.reservas.ver');
     Route::get('viajero/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('viajero.reservas.eliminar');

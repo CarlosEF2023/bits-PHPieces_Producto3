@@ -1,8 +1,10 @@
 @extends('layouts.plantilla')
-@section('title', 'Reservas del Hotel all Aeropuerto')
+@section('title', 'Listado de todas las reservas')
 
 @section('content')
 
+<br>
+<h1>Listado de todas las reservas realizadas </h1>
 <br>
 <div class="card">
     <table class="table table-bordered table-striped table-hover">
