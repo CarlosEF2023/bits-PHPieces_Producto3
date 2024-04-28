@@ -76,5 +76,16 @@ class VehiculoPanelController extends Controller
 
         return view('vehiculo.cambio-contraseña-vehiculo')->with('alertas', $alertas)->with('user', $user);
     }
+
+    public function mostrarTodos()
+    {
+        return TransferVehiculo::all();
+    }
+
+    public function mostrarTramo($tramo, $fecha, $id){
+        $reservas = (new TransferVehiculo)->filtrarPorConductorYTramo($tramo, $fecha, $id);
+        return view('reservas.listados.ver_itinerario')->with('listado', $reservas);
+    }
+
 }
 

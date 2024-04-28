@@ -11,6 +11,7 @@ class TransferReservas extends Model
 
     protected $table = 'transfer_reservas';
     public $timestamps = false;
+    protected $primaryKey = 'id_reserva';
 
     protected $fillable = [
         'id_reserva',

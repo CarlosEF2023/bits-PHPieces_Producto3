@@ -33,43 +33,59 @@ class transfer_crearreservaController extends Controller
         log::channel('mylog')->info(json_encode($request->all()));
 
         // Valida los datos del formulario
-        /*$
-        validateData = $request->validate([
-            // Define las reglas de validación para cada campo del formulario aquí
-            // Ejemplo: 'campo' => 'reglas',
+        /*$validatedData = $request->validate([
+            'localizador' => 'required|string|max:100',
+            'id_hotel' => 'nullable|integer',
+            'id_tipo_reserva' => 'required|integer',
+            'email_cliente' => 'required|email|max:100',
+            'fecha_reserva' => 'required|date',
+            'fecha_modificacion' => 'required|date',
+            'id_destino' => 'required|integer',
+            'fecha_entrada' => 'required|date',
+            'hora_entrada' => 'required|date_format:H:i:s',
+            'numero_vuelo_entrada' => 'required|string|max:50',
+            'origen_vuelo_entrada' => 'required|string|max:50',
+            'hora_vuelo_salida' => 'required|date_format:H:i:s',
+            'hora_recogida_hotel' => 'required|date_format:H:i:s',
+            'fecha_vuelo_salida' => 'required|date',
+            'num_viajeros' => 'required|integer',
+            'id_vehiculo' => 'required|integer',
         ]);
         */
+
         // Crea una nueva instancia del modelo TransferReserva con los datos validados
         $transfer_reserva = new TransferReservas();
         
         switch ($request->idtiporeserva=="1"){
             case "1":
-                $transfer_reserva->idhotelreserva = null;
+                $transfer_reserva->id_reserva = null;
                 $transfer_reserva->localizador = $this->generarLocalizador(10);
-                $transfer_reserva->id_hotel = $request("idhotelreserva"); 
+                $transfer_reserva->id_hotel = $request->idhotelreserva; 
                 $transfer_reserva->id_tipo_reserva = "1";
-                $transfer_reserva->email_cliente = $request("emailreserva");
-                $transfer_reserva->fecha_reserva = date("y-m-d h:m:s");
-                $transfer_reserva->fecha_modificacion = date("y-m-d h:m:s");
-                $transfer_reserva->id_destino  = $request("Hotel_Destino");
-                $transfer_reserva->hora_entrada = $request("horadellegada").":00";
-                $transfer_reserva->numero_vuelo_entrada = $request("numerovuelo");
-                $transfer_reserva->origen_vuelo_entrada = $request("aeropuertoorigen");
+                $transfer_reserva->email_cliente = $request->emailreserva;
+                $transfer_reserva->fecha_reserva = date("Y-m-d H:i:s");
+                $transfer_reserva->fecha_modificacion = date("Y-m-d H:i:s");
+                $transfer_reserva->id_destino  = $request->Hotel_Destino;
+                $transfer_reserva->fecha_entrada = $request->diadesalida;
+                $transfer_reserva->hora_entrada = $request->horadellegada.":00";
+                $transfer_reserva->numero_vuelo_entrada = $request->numerovuelo;
+                $transfer_reserva->origen_vuelo_entrada = $request->aeropuertoorigen;
                 $transfer_reserva->hora_vuelo_salida = "00:00:00";
                 $transfer_reserva->hora_recogida_hotel = "00:00:00";
                 $transfer_reserva->fecha_vuelo_salida = "9999-12-31";
-                $transfer_reserva->num_viajeros = $request("numeroviajeros");
+                $transfer_reserva->num_viajeros = $request->numeroviajeros;
                 $transfer_reserva->id_vehiculo = "9999";  // Tiene que ser 9999 para luego asignarlo
                 break;
             case "2":
-                $transfer_reserva->idhotelreserva = null;
+                $transfer_reserva->id_reserva = null;
                 $transfer_reserva->localizador = $this->generarLocalizador(10);
-                $transfer_reserva->id_hotel = $request("");
-                $transfer_reserva->id_tipo_reserva = $request("");
+                $transfer_reserva->id_hotel = $request("idhotelreserva");
+                $transfer_reserva->id_tipo_reserva = "2";
                 $transfer_reserva->email_cliente = $request("");
-                $transfer_reserva->fecha_reserva = date("y-m-d h:m:s");
-                $transfer_reserva->fecha_modificacion = date("y-m-d h:m:s");
+                $transfer_reserva->fecha_reserva = date("Y-m-d H:i:s");
+                $transfer_reserva->fecha_modificacion = date("Y-m-d H:i:s");
                 $transfer_reserva->id_destino  = $request("");
+                $transfer_reserva->fecha_entrada = $request->diadesalida;
                 $transfer_reserva->hora_entrada = $request("");
                 $transfer_reserva->numero_vuelo_entrada = $request("");
                 $transfer_reserva->origen_vuelo_entrada = $request("");
@@ -80,15 +96,15 @@ class transfer_crearreservaController extends Controller
                 $transfer_reserva->id_vehiculo = "9999";  // Tiene que ser 9999 para luego asignarlo
                 break;
             case "3":
-                $transfer_reserva->idhotelreserva = null;
-                $transfer_reserva->idhotelreserva = null;
+                $transfer_reserva->id_reserva = null;
                 $transfer_reserva->localizador = $this->generarLocalizador(10);
-                $transfer_reserva->id_hotel = $request("");
-                $transfer_reserva->id_tipo_reserva = $request("");
+                $transfer_reserva->id_hotel = $request("idhotelreserva");
+                $transfer_reserva->id_tipo_reserva = "3";
                 $transfer_reserva->email_cliente = $request("");
-                $transfer_reserva->fecha_reserva = date("y-m-d h:m:s");
-                $transfer_reserva->fecha_modificacion = date("y-m-d h:m:s");
+                $transfer_reserva->fecha_reserva = date("Y-m-d H:i:s");
+                $transfer_reserva->fecha_modificacion = date("Y-m-d H:i:s");
                 $transfer_reserva->id_destino  = $request("");
+                $transfer_reserva->fecha_entrada = $request->diadesalida;
                 $transfer_reserva->hora_entrada = $request("");
                 $transfer_reserva->numero_vuelo_entrada = $request("");
                 $transfer_reserva->origen_vuelo_entrada = $request("");

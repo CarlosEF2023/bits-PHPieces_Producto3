@@ -83,6 +83,7 @@ class transfer_listarreservaController extends Controller
 
     public function listarTipoReserva($tipoReporte, $tipoDeReserva, $id, $tipoUsuario)
     {
+
         $fecha = now()->format('Y-m-d');
         
         $query = TransferReservas::leftJoin('transfer_tipo_reserva', 'transfer_reservas.id_tipo_reserva', '=', 'transfer_tipo_reserva.id_tipo_reserva')
@@ -134,11 +135,28 @@ class transfer_listarreservaController extends Controller
                 }
             });
 
-        if ($tipoDeReserva != 999) {
+        if ($tipoDeReserva != 9999) {
             $query->where('transfer_reservas.id_tipo_reserva', $tipoDeReserva);
         }
 
-        return $query->get();
+        $listadofinal = $query->get();
+        
+        //dd($query->toSql());
+
+        switch ($tipoReporte) {
+            case 'dia':
+                return view('reservas.listados.ver_reservas_dia', ['matrizresultado' => $listadofinal]);
+                break;
+            case 'semana':
+                return view('reservas.listados.ver_reservas_semana', ['matrizresultado' => $listadofinal]);
+                break;    
+            case 'mes':
+                return view('reservas.listados.ver_reservas_mes', ['matrizresultado' => $listadofinal]);
+                break;
+            case 'todos':
+                return view('reservas.listados.ver_reservas_total', ['matrizresultado' => $listadofinal]);
+                break;
+        }
     }    
 
 }

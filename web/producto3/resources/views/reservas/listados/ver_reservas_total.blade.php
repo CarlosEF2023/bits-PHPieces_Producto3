@@ -1,8 +1,10 @@
 @extends('layouts.plantilla')
-@section('title', 'Reservas del Hotel all Aeropuerto')
+@section('title', 'Listado de todas las reservas')
 
 @section('content')
 
+<br>
+<h1>Listado de todas las reservas realizadas </h1>
 <br>
 <div class="card">
     <table class="table table-bordered table-striped table-hover">
@@ -37,6 +39,7 @@
                         <td>N/A</td>
                         <td>N/A</td>
                         <td>N/A</td>
+                        <td>N/A</td>
                         @break
                     @case("2")
                         <td>{{ $info["NombreHotel"] }}</td>
@@ -64,7 +67,7 @@
                 </td>
                 <td>
                     <a href="#" class="btn btn-outline-primary modificar_reserva" id="modificar_reserva" name="modificar_reserva" data="{{ $info["id_reserva"] }}">
-                        <img src="{{ asset('/assets/edit_FILL0_wght400_GRAD0_opsz24.svg')}}'">
+                        <img src="{{ asset('/assets/edit_FILL0_wght400_GRAD0_opsz24.svg')}}">
                     </a>
                 </td>
                 <td>
