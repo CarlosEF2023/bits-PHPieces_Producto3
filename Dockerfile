@@ -24,3 +24,19 @@ RUN a2enmod rewrite
 
 # Reinicia Apache para que los cambios tengan efecto
 RUN service apache2 restart
+# PRUEBAS PARA VER SI DOCKER VA MAS RAPIDO
+# NO HE NOTADO DIFERENCIA
+# Establece el directorio de trabajo en /var/www/html (este es el directorio predeterminado para Apache en la imagen de PHP)
+# WORKDIR /var/www/html
+
+# Copia el código de la aplicación al contenedor
+# COPY . .
+
+# Cambia los permisos del directorio de la aplicación
+# RUN chmod -R 755 .
+
+# Cambia el propietario del directorio de la aplicación a www-data (el usuario predeterminado para Apache en la imagen de PHP)
+# RUN chown -R www-data:www-data .
+
+# Ejecuta composer install para instalar las dependencias de PHP
+# RUN composer install

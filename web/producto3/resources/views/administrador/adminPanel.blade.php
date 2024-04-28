@@ -82,7 +82,7 @@
                             <p class="card-text">Visualizar todos los trayectos disponibles.</p>
                         </div>
                         <div class="card-footer">
-                            <a type="button" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                            <a type="button" href="{{ route('administrador.listaTrayectos') }}" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
                         </div>
                     </div>
                 </div>

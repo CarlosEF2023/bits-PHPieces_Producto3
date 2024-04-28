@@ -2,7 +2,7 @@
 docker-compose up -d 
 
 Entrar por ssh:
-docker exec -it 323473b1674251293e87f7488b9a4401ca3ae20341123cd45fb2dab1511a8f4e /bin/bash
+docker exec -it PHP-webServer-prdto3 /bin/bash
 
 1 No nos olvidemos de instalar las librerias de php en el contenedor, ya estan en el Dockerfile
 2 Insalar la aplicacion laravel en su versión 10, ya que php de AWS es 8.1.2 y no permite una versión más nueva
@@ -117,3 +117,9 @@ Log::channel('mylog')->info('Email: ' . $email);
 
 luego para verlos en consola
 cat storage/logs/mylog.log
+
+- Para ver los logs en tiempo real
+tail -f storage/logs/mylog.log
+
+- Para ver los logs en tiempo real y que se actualice automaticamente
+tail -f storage/logs/mylog.log -n 0

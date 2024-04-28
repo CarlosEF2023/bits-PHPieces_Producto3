@@ -74,7 +74,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; padding: 20px;">
+                        <div style="display:flexbox; align-items: center; padding: 20px;">
                             <a type="button" href="{{ route('administrador.formNuevoAdministrador') }}"
                                 class="btn btn-outline-primary" name="nuevoAdmin" id="nuevoAdmin"
                                 style="width: auto; margin-right: 10px;"><i class="bi bi-plus-circle"></i> Añadir Administrador</a>

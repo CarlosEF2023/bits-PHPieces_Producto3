@@ -80,8 +80,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; padding: 20px;">
-
+                        <div style="display: flexbox; align-items: center; padding: 20px;">
                             <a type="button" href="{{ route('administrador.frmNuevoViajero') }}"
                                 class="btn btn-outline-primary" name="nuevoViajero" id="nuevoViajero"
                                 style="width: auto; margin-right: 10px;"><i class="bi bi-plus-circle"></i> Añadir

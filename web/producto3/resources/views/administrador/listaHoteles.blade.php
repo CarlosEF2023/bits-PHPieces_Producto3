@@ -1,10 +1,10 @@
 @extends('layouts.plantilla')
-@section('title', 'Vehículo')
+@section('title', 'Hotel')
 {{-- poner menu como plantilla --}}
 @section('content')
     <div class="container" style="margin-bottom: 50px;">
-        <!-- Muestra el mensaje de éxito -->
-        {{-- @if (session('success'))
+        {{-- <!-- Muestra el mensaje de éxito -->
+        @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
@@ -20,37 +20,47 @@
             <div class="col">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <div class="container-fluid mt-2" style="padding-top: 20px;">
-                            <h2>Listado de vehículos</h2>
+                        <div class="container-fluid mt-3" style="padding-top: 20px;">
+                            <h2>Listado de usuarios de hotel</h2>
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Descripción</th>
-                                            <th>Email</th>                                            
+                                            <th>Nombre de hotel</th>
+                                            <th>Características</th>
+                                            <th>Zona</th>
+                                            <th>Comisión</th>
+                                            <th>Usuario</th>
+                                            <th>Email</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- recorrer listado de vehículos --}}
-                                        @foreach ($vehiculos as $vehiculo)
+                                        {{-- recorrer listado de administradores --}}
+                                        @foreach ($hoteles as $hotel)
                                             <tr>
-                                                <td>{{ $vehiculo->Descripcion }}</td>
-                                                <td>{{ $vehiculo->email_conductor }}</td>
+                                                <td>{{ $hotel->NombreHotel }}</td>
+                                                <td>{{ $hotel->Caracteristicas }}</td>
+                                                <td>{{ $hotel->id_zona }}</td>
+                                                <td>{{ $hotel->Comision }}</td>
+                                                <td>{{ $hotel->usuario }}</td>
+                                                <td>{{ $hotel->email }}</td>
+
                                                 <td>
                                                     <div class="d-flex justify-content-start gap-2">
                                                         <!-- Formulario para modificar -->
-                                                        <form method="post"                                                       
-                                                            action="{{ route('administrador.frmModificarVehiculo') }}">
+                                                        <form method="post"                                                        
+                                                            action="{{ route('administrador.frmModificarHotel') }}">
                                                             @csrf
-                                                            <input type="hidden" name="vehiculoMod"
-                                                                value="{{ $vehiculo->email_conductor }}">
+                                                            <input type="hidden" name="hotelMod"
+                                                                value="{{ $hotel->email }}">
                                                             <button type="submit" class="btn btn-outline-success"
                                                                 style="width: auto;"><i
                                                                     class="bi bi-pencil-square"></i></button>
                                                         </form>
+
                                                         <!-- Formulario para eliminar -->
-                                                        <form method="post"   onsubmit="return confirmarEliminacion()"                                                      
-                                                            action="{{ route('administrador.deleteVehiculo', $vehiculo->id_vehiculo) }}">
+                                                        <form method="post" onsubmit="return confirmarEliminacion()"                                                        
+                                                            action="{{ route('administrador.deleteHotel', $hotel->id_hotel) }}">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-outline-danger"
@@ -65,11 +75,12 @@
                                 </table>
                             </div>
                         </div>
-                        <div  style="display: flexbox; align-items: center; padding: 20px;">                           
-                            <a type="button" href=" {{ route('administrador.frmNuevoVehiculo') }}"
-                                class="btn btn-outline-primary" name="nuevoVehiculo" id="nuevoVehiculo"
-                                style="width: auto; margin-right: 10px;"><i class="bi bi-plus-circle"></i> Añadir Vehículo</a>
-                            <a id="volver-a-tipos" href="{{ route('administrador.tiposUsuarios') }}"
+                        <div style="display: flexbox; align-items: center; padding: 20px;">
+                            <a type="button" href=" {{ route('administrador.frmNuevoHotel') }}"
+                                class="btn btn-outline-primary" name="nuevoAdmin" id="nuevoAdmin"
+                                style="width: auto; margin-right: 10px;"><i class="bi bi-plus-circle"></i> Añadir usuario hotel</a>
+                                
+                                <a id="volver-a-tipos" href="{{ route('administrador.tiposUsuarios') }}"
                                 class="btn btn-outline-secondary" style="width: auto;"><i class="bi bi-arrow-left-circle"></i> Volver a Tipos de Usuarios</a>
                         </div>
                     </li>
@@ -80,7 +91,7 @@
     <script>
         // Función para confirmar la eliminación de un viajero
         function confirmarEliminacion() {
-            return confirm("¿Está seguro que desea eliminar el vehículo?");
+            return confirm("¿Está seguro que desea eliminar el usuario de hotel?");
         }
     </script>
 @endsection
