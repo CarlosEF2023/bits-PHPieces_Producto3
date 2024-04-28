@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TransferAdministrador;
 use App\Models\TransferHotel;
+use App\Models\TransferTipoReserva;
 use App\Models\TransferVehiculo;
 use App\Models\TransferViajeros;
 use Illuminate\Http\Request;
@@ -341,6 +342,61 @@ class AdminPanelController extends Controller
         } else {
             // Redirige al viajero a la lista de usuarios con un mensaje de error
             return redirect()->route('administrador.listaHoteles')->with('error', 'Usuario hotel no encontrado.');
+        }
+    }
+
+    public function listaTrayectos()
+    {
+        log::channel('mylog')->info('Pasando por lista trayectos');
+
+        $trayectos = TransferTipoReserva::all();
+
+        return view('administrador.listaTrayectos', compact('trayectos'));
+    }
+
+    public function frmNuevoTrayecto()
+    {
+        log::channel('mylog')->info('Pasando por frmNuevoTrayecto');
+
+        return view('administrador.frmNuevoTrayecto');
+    }
+
+    public function storeTrayecto(Request $request)
+    {
+        try {
+            log::channel('mylog')->info(json_encode($request->all()));
+            $trayecto = new TransferTipoReserva();
+            $trayecto->Descripcion = $request->descripcion; 
+            $trayecto->save();
+            $trayecto = TransferTipoReserva::all();
+            return redirect()->route('administrador.listaTrayectos')->with('success', 'Trayecto creado con éxito.');
+        } catch (\Exception $e) {
+            return redirect()->route('administrador.listaTrayectos')->with('error', 'Error al crear el trayecto.');
+        }
+    }
+
+    public function frmModificarTrayecto(Request $request)
+    {
+        log::channel('mylog')->info('Pasando por modificar trayecto ' . json_encode($request->input('trayectoMod')));
+        $id_tipo_reserva = $request->input('trayectoMod');
+        $trayecto = TransferTipoReserva::where('id_tipo_reserva', $id_tipo_reserva)->first();
+        log::channel('mylog')->info('Trayecto encontrado ' . json_encode($trayecto));
+        return view('administrador.frmModificarTrayecto', compact('trayecto'));
+    }
+
+
+
+    public function updateTrayecto(Request $request, $id_tipo_reserva)
+    {
+
+        $trayecto = TransferTipoReserva::find($id_tipo_reserva);
+        if ($trayecto) {
+            $trayecto->Descripcion = $request->descripcion;
+            $trayecto->update();
+            $trayectos = TransferTipoReserva::all();
+            return redirect()->route('administrador.listaTrayectos')->with('success', 'El trayecto se ha actualizado con éxito.');
+        } else {
+            return redirect()->route('administrador.listaHoteles')->with('error', 'No se ha podido actualizar el trayecto.');
         }
     }
 

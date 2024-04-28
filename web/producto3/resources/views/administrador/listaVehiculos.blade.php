@@ -65,8 +65,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; padding: 20px;">
-                           
+                        <div  style="display: flexbox; align-items: center; padding: 20px;">                           
                             <a type="button" href=" {{ route('administrador.frmNuevoVehiculo') }}"
                                 class="btn btn-outline-primary" name="nuevoVehiculo" id="nuevoVehiculo"
                                 style="width: auto; margin-right: 10px;"><i class="bi bi-plus-circle"></i> Añadir Vehículo</a>

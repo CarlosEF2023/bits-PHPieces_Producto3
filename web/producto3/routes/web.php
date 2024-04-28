@@ -68,7 +68,15 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::post('administrador/frmModificarHotel', [AdminPanelController::class, 'frmModificarHotel'])->name('administrador.frmModificarHotel');
     Route::put('administrador/updateHotel/{id_hotel}', [AdminPanelController::class, 'updateHotel'])->name('administrador.updateHotel');
     Route::delete('administrador/deleteHotel/{id_hotel}', [AdminPanelController::class, 'deleteHotel'])->name('administrador.deleteHotel');    
+    Route::get('administrador/listaTrayectos', [AdminPanelController::class, 'listaTrayectos'])->name('administrador.listaTrayectos');
+    Route::get('administrador/frmNuevoTrayecto', [AdminPanelController::class, 'frmNuevoTrayecto'])->name('administrador.frmNuevoTrayecto');
+    Route::post('administrador/storeTrayecto', [AdminPanelController::class, 'storeTrayecto'])->name('administrador.storeTrayecto');
+    Route::post('administrador/frmModificarTrayecto', [AdminPanelController::class, 'frmModificarTrayecto'])->name('administrador.frmModificarTrayecto');
+    Route::put('administrador/updateTrayecto/{id_tipo_reserva}', [AdminPanelController::class, 'updateTrayecto'])->name('administrador.updateTrayecto');
 
+
+
+    //administrador.updateTrayecto
  
 
     
