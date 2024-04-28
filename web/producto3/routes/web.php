@@ -67,9 +67,16 @@ Route::middleware(['checkAdmin'])->group(function () {
 
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'administrador/'
     Route::get('administrador/reservas/menu', [menu_reservasController::class, 'index'])->name('administrador.reservas.menu');
-    Route::get('administrador/reservas/listar', [menu_listareservasController::class, 'index'])->name('administrador.reservas.listar');
     Route::get('administrador/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('administrador.reservas.crear');
     Route::post('administrador/reservas/nuevo', [transfer_crearreservaController::class, 'store'])->name('administrador.reservas.nuevo');
+    // ---------------------------------------------------------------------------------------------
+    Route::get('administrador/reservas/listar', [menu_listareservasController::class, 'index'])->name('administrador.reservas.listar');
+    Route::get('administrador/reservas/listar', [menu_listareservasController::class, 'index'])->name('administrador.reservas.listar');
+    Route::get('administrador/reservas/listar/dia/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('administrador.reservas.listar.dia');
+    Route::get('administrador/reservas/listar/semana/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('administrador.reservas.listar.semana');
+    Route::get('administrador/reservas/listar/mes/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('administrador.reservas.listar.mes');
+    Route::get('administrador/reservas/listar/todas/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('administrador.reservas.listar.todas');
+    // ---------------------------------------------------------------------------------------------
     Route::get('administrador/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('administrador.reservas.modificar');
     Route::get('administrador/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('administrador.reservas.ver');
     Route::get('administrador/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('administrador.reservas.eliminar');
@@ -114,9 +121,15 @@ Route::middleware(['checkHotel'])->group(function () {
     Route::get('hotel', [HotelPanelController::class, 'index']);
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'hotel/'
     Route::get('hotel/reservas/menu', [menu_reservasController::class, 'index'])->name('hotel.reservas.menu');
-    Route::get('hotel/reservas/listar', [menu_listareservasController::class, 'index'])->name('hotel.reservas.listar');
     Route::get('hotel/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('hotel.reservas.crear');
     Route::post('hotel/reservas/nuevo', [transfer_crearreservaController::class, 'store'])->name('hotel.reservas.nuevo');
+    // --------------------------------------------------------
+    Route::get('hotel/reservas/listar', [menu_listareservasController::class, 'index'])->name('hotel.reservas.listar');
+    Route::get('hotel/reservas/listar/dia/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('hotel.reservas.listar.dia');
+    Route::get('hotel/reservas/listar/semana/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('hotel.reservas.listar.semana');
+    Route::get('hotel/reservas/listar/mes/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('hotel.reservas.listar.mes');
+    Route::get('hotel/reservas/listar/todas/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('hotel.reservas.listar.todas');
+    // --------------------------------------------------------
     Route::get('hotel/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('hotel.reservas.modificar');
     Route::get('hotel/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('hotel.reservas.ver');
     Route::get('hotel/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('hotel.reservas.eliminar');

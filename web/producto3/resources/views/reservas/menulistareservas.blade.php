@@ -67,9 +67,9 @@
                     </div>
                     <div class="card-footer align-items-center justify-content-center">
                     @if (Session::get('usertype')!="6")
-                            <a href="{{ route(Session::get('userroute').'.reservas.listar.todas', ['tipoReporte' => 'todas', 'tipoDeReserva' => '9999', 'id' => Session::get('id'), 'tipoUsuario' => Session::get('usertype')]) }}" name="reservastotales" id="reservastotales" class="btn btn-primary">Historico de reservas</a>
+                            <a href="{{ route(Session::get('userroute').'.reservas.listar.todas', ['tipoReporte' => 'todos', 'tipoDeReserva' => '9999', 'id' => Session::get('id'), 'tipoUsuario' => Session::get('usertype')]) }}" name="reservastotales" id="reservastotales" class="btn btn-primary">Historico de reservas</a>
                         @else
-                            <a href="{{ route(Session::get('userroute').'.reservas.listar.todas', ['tipoReporte' => 'todas', 'tipoDeReserva' => '9999', 'id' => Session::get('mail'), 'tipoUsuario' => Session::get('usertype')]) }}" name="reservastotales" id="reservastotales" class="btn btn-primary">Historico de reservas</a>
+                            <a href="{{ route(Session::get('userroute').'.reservas.listar.todas', ['tipoReporte' => 'todos', 'tipoDeReserva' => '9999', 'id' => Session::get('mail'), 'tipoUsuario' => Session::get('usertype')]) }}" name="reservastotales" id="reservastotales" class="btn btn-primary">Historico de reservas</a>
                         @endif
                     </div>
                 </div>
