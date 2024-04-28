@@ -66,8 +66,7 @@ class transfer_listarreservaController extends Controller
                 // Tramo no válido
                 return false;
         }
-
-        return $reservas;
+        return view('reservas.listados.ver_itinerario', ['listado' => $reservas]);
     }
 
     public function listarReservasSinConductor()

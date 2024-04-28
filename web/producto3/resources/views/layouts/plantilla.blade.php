@@ -76,7 +76,7 @@
                     @case('4')
                     <!-- Conductor -->
                     <!-- Aquí colocar las opciones específicas para el conductor -->
-                    <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('vehiculo.itinerario') }}">Ver itinerario</a></li>
+                    <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('vehiculo.listar') }}">Ver itinerario</a></li>
                     <li class="nav-item me-md-2"><a class="nav-link" href="vehiculo/cambiar-datos">Datos personales</a></li>
                     @break
 

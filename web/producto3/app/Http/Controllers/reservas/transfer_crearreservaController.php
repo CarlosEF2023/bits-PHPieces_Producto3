@@ -79,39 +79,39 @@ class transfer_crearreservaController extends Controller
             case "2":
                 $transfer_reserva->id_reserva = null;
                 $transfer_reserva->localizador = $this->generarLocalizador(10);
-                $transfer_reserva->id_hotel = $request("idhotelreserva");
+                $transfer_reserva->id_hotel = $request->idhotelreserva;
                 $transfer_reserva->id_tipo_reserva = "2";
-                $transfer_reserva->email_cliente = $request("");
+                $transfer_reserva->email_cliente = $request->emailreserva;
                 $transfer_reserva->fecha_reserva = date("Y-m-d H:i:s");
                 $transfer_reserva->fecha_modificacion = date("Y-m-d H:i:s");
-                $transfer_reserva->id_destino  = $request("");
+                $transfer_reserva->id_destino  = $request->hotelrecogida;
                 $transfer_reserva->fecha_entrada = $request->diadesalida;
-                $transfer_reserva->hora_entrada = $request("");
-                $transfer_reserva->numero_vuelo_entrada = $request("");
-                $transfer_reserva->origen_vuelo_entrada = $request("");
-                $transfer_reserva->hora_vuelo_salida = $request("");
-                $transfer_reserva->hora_recogida_hotel = $request("");
-                $transfer_reserva->fecha_vuelo_salida = $request("");
-                $transfer_reserva->num_viajeros = $request("");
+                $transfer_reserva->hora_entrada = $request->horaderecogida;
+                $transfer_reserva->numero_vuelo_entrada = $request->numerovuelo;
+                $transfer_reserva->origen_vuelo_entrada = $request->aeropuertodestino;
+                $transfer_reserva->hora_vuelo_salida = $request->horadesalida;
+                $transfer_reserva->hora_recogida_hotel = $request->horaderecogida;
+                $transfer_reserva->fecha_vuelo_salida = $request->diadesalida;
+                $transfer_reserva->num_viajeros = $request->numeroviajeros;
                 $transfer_reserva->id_vehiculo = "9999";  // Tiene que ser 9999 para luego asignarlo
                 break;
             case "3":
                 $transfer_reserva->id_reserva = null;
                 $transfer_reserva->localizador = $this->generarLocalizador(10);
-                $transfer_reserva->id_hotel = $request("idhotelreserva");
+                $transfer_reserva->id_hotel = $request->idhotelreserva; 
                 $transfer_reserva->id_tipo_reserva = "3";
-                $transfer_reserva->email_cliente = $request("");
+                $transfer_reserva->email_cliente = $request->emailreserva;
                 $transfer_reserva->fecha_reserva = date("Y-m-d H:i:s");
                 $transfer_reserva->fecha_modificacion = date("Y-m-d H:i:s");
-                $transfer_reserva->id_destino  = $request("");
+                $transfer_reserva->id_destino  = $request->Hotel_Destino;
                 $transfer_reserva->fecha_entrada = $request->diadesalida;
-                $transfer_reserva->hora_entrada = $request("");
-                $transfer_reserva->numero_vuelo_entrada = $request("");
-                $transfer_reserva->origen_vuelo_entrada = $request("");
-                $transfer_reserva->hora_vuelo_salida = $request("");
-                $transfer_reserva->hora_recogida_hotel = $request("");
-                $transfer_reserva->fecha_vuelo_salida = $request("");
-                $transfer_reserva->num_viajeros = $request("");
+                $transfer_reserva->hora_entrada = $request->horadellegada.":00";
+                $transfer_reserva->numero_vuelo_entrada = $request->numerovuelo;
+                $transfer_reserva->origen_vuelo_entrada = $request->aeropuertoorigen;
+                $transfer_reserva->hora_vuelo_salida = $request->horadesalida;
+                $transfer_reserva->hora_recogida_hotel = $request->horaderecogida;
+                $transfer_reserva->fecha_vuelo_salida = $request->diadesalida;
+                $transfer_reserva->num_viajeros = $request->numeroviajeros;
                 $transfer_reserva->id_vehiculo = "9999";  // Tiene que ser 9999 para luego asignarlo
                 break;
         }

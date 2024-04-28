@@ -16,6 +16,11 @@ class VehiculoPanelController extends Controller
         return view('vehiculo.index', ['user' =>$user] );       
     }
 
+    public function vertramos()
+    {     
+        return view('vehiculo.menulistaritinerarios');       
+    }
+
     public function cambiarDatos(Request $request){
         $alertas = [];
         $userId = $request->session()->get('user')->id_vehiculo;

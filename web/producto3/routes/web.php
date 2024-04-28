@@ -86,7 +86,8 @@ Route::middleware(['checkAdmin'])->group(function () {
 
 Route::middleware(['checkVehiculo'])->group(function () {
     Route::get('vehiculo', [VehiculoPanelController::class, 'index']);
-    Route::get('vehiculo.itinerario', [menu_listareservasController::class, 'index'])->name('vehiculo.itinerario');
+    Route::get('vehiculo/listar', [VehiculoPanelController::class, 'index'])->name('vehiculo.listar');
+    Route::get('vehiculo.itinerario/{tramo}/{fecha}/{conductor}', [transfer_listarreservaController::class, 'listarReservasConductor'])->name('vehiculo.itinerario');
     Route::get('vehiculo/cambiar-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('cambiarDatos');
     Route::post('vehiculo/cambiar-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('cambiarDatos');
     Route::get('vehiculo/cambiar-contraseña', [VehiculoPanelController::class, 'cambiarContraseña'])->name('cambiarContraseña');
