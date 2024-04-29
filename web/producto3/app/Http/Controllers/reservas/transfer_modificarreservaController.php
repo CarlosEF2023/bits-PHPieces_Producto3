@@ -27,7 +27,24 @@ class transfer_modificarreservaController extends Controller
         return view($ruta, ['reservas' => $reserva]);
     }
 
-    public function AccionModificar($request){
-        
+    public function AccionModificar(Request $request){
+        try{
+            // Buscar la reserva por su ID
+            $reserva = TransferReservas::findOrFail($request->idreserva);
+            // Verificar si la reserva existe
+            if (!$reserva) {
+                return redirect()->back()->with('error', 'La reserva no existe');
+            }
+
+            // Actualizar solo los campos que se han modificado
+            if ($request->isDirty()) {
+                $reserva->fill($request->getDirty())->save();
+            }
+            // Redireccionar de vuelta con un mensaje de éxito
+            return redirect()->back()->with('success', 'Reserva modificada correctamente');
+        } catch (\Exception $e) {
+            // Capturar cualquier excepción que pueda ocurrir durante el proceso de modificación
+            return redirect()->back()->with('error', '¡No se ha podido modificar la reserva!');
+        }
     }
 }
