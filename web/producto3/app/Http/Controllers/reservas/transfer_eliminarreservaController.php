@@ -11,8 +11,27 @@ class transfer_eliminarreservaController extends Controller
 {
     public function EliminarReserva($idreserva)
     {
-        //$reserva = TransferReservas::where('id_reserva', $idreserva)->first();
-        return "Eliminar reserva".$idreserva;
+        $reserva = TransferReservas::where('id_reserva', $idreserva)->first();
+        $valor = $reserva->id_tipo_reserva;
+        $ruta="";
+        if ($valor=="1"){
+            $ruta='/reservas/aeropuerto/eliminar_reservaaeropuerto';
+        }
+        if ($valor=="2"){
+            $ruta='/reservas/hotel/eliminar_reservahotel';
+        }
+        if ($valor=="3"){
+            $ruta='/reservas/completo/eliminar_reservacompleto';
+        }
+        return view($ruta, ['reservas' => $reserva]);
     }
 
+    public  function AccionEliminar($idreserva){
+        try {   
+            $administrador = TransferReservas::find($idreserva);
+            return redirect()->back()->with('success', 'Reserva eliminada correctamente');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error', '¡No se ha podido eliminar!');
+        }
+    }
 }

@@ -7,7 +7,7 @@
 @csrf   
 @method('PUT') 
 <input type="hidden" name="idtiporeserva" id="idtiporeserva" value="1">
-<input name="id_reserva" id="id_reserva" type="hinned" VALUE="{{ $reservas->id_reserva }}" \>
+<input name="id_reserva" id="id_reserva" type="hidden" VALUE="{{ $reservas->id_reserva }}" \>
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
     <div class="card">

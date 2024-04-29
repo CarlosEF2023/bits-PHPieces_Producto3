@@ -6,7 +6,7 @@
 @csrf   
 @method('PUT') 
 <input type="hidden" name="idtiporeserva" id="idtiporeserva" value="2">
-<input name="id_reserva" id="id_reserva" type="hinned" VALUE="{{ $reservas->id_reserva }}" \>
+<input name="id_reserva" id="id_reserva" type="hidden" VALUE="{{ $reservas->id_reserva }}" \>
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
     <div class="card">
@@ -46,7 +46,7 @@
             <input class="form-control" name="numeroviajeros" id="numeroviajeros" type="number" min="1" max="8" VALUE="{{$reservas->num_viajeros}}" disabled \>
         </div>
         @if (Session::get('usertype')!="6")
-                <x-viajero-select :selected="{{ $reservas->email_cliente }}" name="emailreserva" />     
+        <x-viajero-select :selected="$reservas->email_cliente" name="emailreserva" />    
             <!-- <input name="emailreserva" id="emailreserva" type="mail" value=""> -->
             @else
                 <input class="form-control" name="emailreserva" id="emailreserva" type="mail" value="{{ $reservas->email_cliente }}">
