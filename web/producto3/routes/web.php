@@ -36,7 +36,7 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::get('registrarse', [ViajeroPanelController::class, 'registro'])->name('registro');
-    Route::post('registrarse', [ViajeroPanelController::class, 'registro'])->name('registro');
+Route::post('registrarse', [ViajeroPanelController::class, 'registro'])->name('registro');
 
 Route::middleware(['checkAdmin'])->group(function () {
     Route::get('administrador', [AdminPanelController::class, 'index'])->name('administrador');
@@ -89,6 +89,8 @@ Route::middleware(['checkAdmin'])->group(function () {
     
 
 
+    //administrador.updateTrayecto
+    // -------------------------------------------------------
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'administrador/'
     Route::get('administrador/reservas/menu', [menu_reservasController::class, 'index'])->name('administrador.reservas.menu');
     Route::get('administrador/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('administrador.reservas.crear');
@@ -101,28 +103,27 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::get('administrador/reservas/listar/mes/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('administrador.reservas.listar.mes');
     Route::get('administrador/reservas/listar/todas/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('administrador.reservas.listar.todas');
     // ---------------------------------------------------------------------------------------------
-    Route::get('administrador/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('administrador.reservas.modificar');
-    Route::get('administrador/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('administrador.reservas.ver');
-    Route::get('administrador/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('administrador.reservas.eliminar');
-
-    
-    
+    Route::get('administrador/reservas/modificar/{idreserva}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('administrador.reservas.modificar');
+    Route::get('administrador/reservas/ver/{idreserva}', [transfer_verreservaController::class, 'VerReserva'])->name('administrador.reservas.ver');
+    Route::post('administrador/reservas/eliminar/{idreserva}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('administrador.reservas.eliminar');
 });
-
 
 Route::middleware(['checkVehiculo'])->group(function () {
     Route::get('vehiculo', [VehiculoPanelController::class, 'index']);
+    // -------------------------------------------------------
+    // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'vehiculo/'
     Route::get('vehiculo/listar', [VehiculoPanelController::class, 'index'])->name('vehiculo.listar');
-    Route::get('vehiculo.itinerario/{tramo}/{fecha}/{conductor}', [transfer_listarreservaController::class, 'listarReservasConductor'])->name('vehiculo.itinerario');
-    Route::get('vehiculo/cambiar-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('cambiarDatos');
-    Route::post('vehiculo/cambiar-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('cambiarDatos');
-    Route::get('vehiculo/cambiar-contraseña', [VehiculoPanelController::class, 'cambiarContraseña'])->name('cambiarContraseña');
-    Route::post('vehiculo/cambiar-contraseña', [VehiculoPanelController::class, 'cambiarContraseña'])->name('cambiarContraseña');
+    Route::get('vehiculo/itinerario/{tramo}/{fecha}/{conductor}', [transfer_listarreservaController::class, 'listarReservasConductor'])->name('vehiculo.itinerario');
+    Route::get('vehiculo/cambio-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('vehiculo.cambio-datos');
+    Route::post('vehiculo/cambio-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('vehiculo.cambio-datos');
+    Route::get('vehiculo/cambio-contraseña', [VehiculoPanelController::class, 'cambiarContraseña'])->name('vehiculo.cambio-contraseña');
+    Route::post('vehiculo/cambio-contraseña', [VehiculoPanelController::class, 'cambiarContraseña'])->name('vehiculo.cambio-contraseña');
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'vehiculo/'
 });
 
 Route::middleware(['checkViajero'])->group(function () {
     Route::get('viajero', [ViajeroPanelController::class, 'index']);
+    // -------------------------------------------------------
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'viajero/'
     Route::get('viajero/reservas/menu', [menu_reservasController::class, 'index'])->name('viajero.reservas.menu');
     Route::get('viajero/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('viajero.reservas.crear');
@@ -134,18 +135,21 @@ Route::middleware(['checkViajero'])->group(function () {
     Route::get('viajero/reservas/listar/mes/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('viajero.reservas.listar.mes');
     Route::get('viajero/reservas/listar/todas/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('viajero.reservas.listar.todas');
     // -------------------------------------------------------
-    Route::get('viajero/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('viajero.reservas.modificar');
-    Route::get('viajero/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('viajero.reservas.ver');
-    Route::get('viajero/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('viajero.reservas.eliminar');
-
-    Route::get('viajero/cambiar-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('cambiarDatos');
-    Route::post('viajero/cambiar-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('cambiarDatos');
-    Route::get('viajero/cambiar-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('cambiarcontraseña');
-    Route::post('viajero/cambiar-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('cambiarcontraseña');
+    Route::get('viajero/reservas/ver/{idreserva}', [transfer_verreservaController::class, 'VerReserva'])->name('viajero.reservas.ver');
+    Route::get('viajero/reservas/modificar/{idreserva}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('viajero.reservas.modificar');
+    Route::post('viajero/reservas/mod', [transfer_modificarreservaController::class, 'AccionModificar'])->name('viajero.reservas.mod');
+    Route::get('viajero/reservas/eliminar/{idreserva}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('viajero.reservas.eliminar');
+    Route::post('viajero/reservas/del', [transfer_eliminarreservaController::class, 'AccionEliminar'])->name('viajero.reservas.del');
+    // -------------------------------------------------------
+    Route::get('viajero/cambio-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('viajero.cambio-datos');
+    Route::post('viajero/cambio-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('viajero.cambio-datos');
+    Route::get('viajero/cambio-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('viajero.cambio-contraseña');
+    Route::post('viajero/cambio-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('viajero.cambio-contraseña');
 });
 
 Route::middleware(['checkHotel'])->group(function () {
     Route::get('hotel', [HotelPanelController::class, 'index']);
+    // -------------------------------------------------------
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'hotel/'
     Route::get('hotel/reservas/menu', [menu_reservasController::class, 'index'])->name('hotel.reservas.menu');
     Route::get('hotel/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('hotel.reservas.crear');
@@ -157,54 +161,12 @@ Route::middleware(['checkHotel'])->group(function () {
     Route::get('hotel/reservas/listar/mes/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('hotel.reservas.listar.mes');
     Route::get('hotel/reservas/listar/todas/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('hotel.reservas.listar.todas');
     // --------------------------------------------------------
-    Route::get('hotel/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('hotel.reservas.modificar');
-    Route::get('hotel/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('hotel.reservas.ver');
-    Route::get('hotel/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('hotel.reservas.eliminar');
-  
-
+    Route::get('hotel/reservas/modificar/{idreserva}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('hotel.reservas.modificar');
+    Route::get('hotel/reservas/ver/{idreserva}', [transfer_verreservaController::class, 'VerReserva'])->name('hotel.reservas.ver');
+    Route::post('hotel/reservas/eliminar/{idreserva}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('hotel.reservas.eliminar');
 });
 
-// Debería ir un grupo para reservas compartido por checkAdmin y checkViajero y creo que checkHotel
-// si es que los tres tienen que tener acceso a sus vistas
-// --------------------------------------------------------------------------------
-/*
-Route::get('/reservas/menu', [menu_reservasController::class, 'index'])->name('reservas.menu');
-Route::get('/reservas/listar', [menu_listareservasController::class, 'index'])->name('reservas.listar');
-Route::get('/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('reservas.crear');
-Route::get('/reservas/modificar/{valor}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('reservas.modificar');
-Route::get('/reservas/ver/{valor}', [transfer_verreservaController::class, 'VerReserva'])->name('reservas.ver');
-Route::get('/reservas/eliminar/{valor}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('reservas.eliminar');
-*/
-
 Route::get('logout', [logoutController::class, 'index'])->name('logout');
-
-// habra que unificar estas rutas en una sola
-
-
-
-// Route::get('/administrador', function () {
-//     return "administrador";
-// })->name('administrador');
-
-// Route::get('/vehiculo', function () {
-//     return "vehiculo";
-// })->name('vehiculo');
-
-// Route::get('/viajero', function () {
-//     return "viajero";
-// })->name('viajero');
-
-// Route::get('/hotel', function () {
-//     return "hotel";
-// })->name('hotel');
-
-
-
-
-
-// Route::get('reservas', function () {
-//     return 'reservas';
-// });
 
 // Route::get('/db-test', function () {
 //     try {

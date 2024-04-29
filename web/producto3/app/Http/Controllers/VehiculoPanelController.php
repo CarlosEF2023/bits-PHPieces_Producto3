@@ -38,7 +38,7 @@ class VehiculoPanelController extends Controller
             if($existeUsuario && $user->email_conductor !== $email){
         
                 TransferVehiculo::setAlerta('alert-danger', 'Email no valido, cuenta ya registrada');
-                            $alertas = TransferVehiculo::getAlertas();
+                $alertas = TransferVehiculo::getAlertas();
             } else{
 
                 $user->Descripcion = $descripcion;

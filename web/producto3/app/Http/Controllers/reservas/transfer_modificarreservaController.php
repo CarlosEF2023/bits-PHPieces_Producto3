@@ -10,22 +10,24 @@ use Illuminate\Support\Facades\Log;
 
 class transfer_modificarreservaController extends Controller
 {
-    public function ModificarReserva($localizador)
+    public function ModificarReserva($idreserva)
     {
-        $reserva = TransferReservas::where('localizador', $localizador)->first();
+        $reserva = TransferReservas::where('id_reserva', $idreserva)->first();
         $valor = $reserva->id_tipo_reserva;
+        $ruta="";
         if ($valor=="1"){
-            return view('/reservas/aeropuerto/modificar_reservaaeropuerto', ['reservas' => $reserva]);
+            $ruta='/reservas/aeropuerto/modificar_reservaaeropuerto';
         }
         if ($valor=="2"){
-            return view('/reservas/hotel/modificar_reservahotel', ['reservas' => $reserva]);
+            $ruta='/reservas/hotel/modificar_reservahotel';
         }
         if ($valor=="3"){
-            return view('/reservas/completo/modificar_reservaacompleto', ['reservas' => $reserva]);
+            $ruta='/reservas/completo/modificar_reservacompleto';
         }
+        return view($ruta, ['reservas' => $reserva]);
     }
 
-    public function UpdateReserva($request){
+    public function AccionModificar($request){
         
     }
 }

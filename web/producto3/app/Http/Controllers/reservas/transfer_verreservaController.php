@@ -10,18 +10,21 @@ use Illuminate\Support\Facades\Log;
 
 class transfer_verreservaController extends Controller
 {
-    public function VerReserva($localizador)
+    public function VerReserva($idreserva)
     {
-        $reserva = TransferReservas::where('localizador', $localizador)->first();
+        $reserva = TransferReservas::where('id_reserva', $idreserva)->first();
         $valor = $reserva->id_tipo_reserva;
+        $ruta = ""; 
         if ($valor=="1"){
-            return view('/reservas/aeropuerto/ver_reservaaeropuerto', ['reservas' => $reserva]);
+            $ruta = 'reservas/aeropuerto/ver_reservaaeropuerto';
         }
         if ($valor=="2"){
-            return view('/reservas/hotel/ver_reservahotel', ['reservas' => $reserva]);
+            $ruta = 'reservas/hotel/ver_reservahotel';
         }
         if ($valor=="3"){
-            return view('/reservas/completo/ver_reservaacompleto', ['reservas' => $reserva]);
+            $ruta = 'reservas/completo/ver_reservacompleto';
         }
+
+        return view($ruta, ['reservas' => $reserva]);
     }
 }
