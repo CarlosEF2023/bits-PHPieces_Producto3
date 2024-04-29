@@ -73,6 +73,22 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::post('administrador/storeTrayecto', [AdminPanelController::class, 'storeTrayecto'])->name('administrador.storeTrayecto');
     Route::post('administrador/frmModificarTrayecto', [AdminPanelController::class, 'frmModificarTrayecto'])->name('administrador.frmModificarTrayecto');
     Route::put('administrador/updateTrayecto/{id_tipo_reserva}', [AdminPanelController::class, 'updateTrayecto'])->name('administrador.updateTrayecto');
+    Route::get('administrador/listaZonas', [AdminPanelController::class, 'listaZonas'])->name('administrador.listaZonas');
+    Route::get('administrador/frmNuevaZona', [AdminPanelController::class, 'frmNuevaZona'])->name('administrador.frmNuevaZona');
+    Route::post('administrador/storeZona', [AdminPanelController::class, 'storeZona'])->name('administrador.storeZona');
+    Route::post('administrador/frmModificarZona', [AdminPanelController::class, 'frmModificarZona'])->name('administrador.frmModificarZona');
+    Route::put('administrador/updateZona/{id_zona}', [AdminPanelController::class, 'updateZona'])->name('administrador.updateZona');
+    Route::get('administrador/asignarConductor', [AdminPanelController::class, 'asignarConductor'])->name('administrador.asignarConductor');
+    Route::put('administrador/updateAsignarConductor/{id_reserva}', [AdminPanelController::class, 'updateAsignarConductor'])->name('administrador.updateAsignarConductor');
+
+
+
+    //
+ 
+
+    
+
+
     //administrador.updateTrayecto
     // -------------------------------------------------------
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'administrador/'

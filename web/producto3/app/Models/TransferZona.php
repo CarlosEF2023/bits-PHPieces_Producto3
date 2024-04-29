@@ -11,6 +11,7 @@ class TransferZona extends Model
 
     protected $table = 'transfer_zona';
     public $timestamps = false;
+    protected $primaryKey = 'id_zona';
 
     protected $fillable = [
         'descripcion',
