@@ -1,44 +1,52 @@
 @extends('layouts.plantilla')
-@section('title', 'Reservas del Aeropuerto al Hotel ida y vuelta')
+@section('title', 'Reservas del Hotel al Aeropuerto')
 
 @section('content')
-
-<h1> LOCALIZADOR: {{ $reservas->localizador }}</h1>
-
-<h3>Salida del Hotel</h3>
-<div class="row">
-    <label class="float-left label-width">Día de salida</label>
-    <input name="diadesalida" id="diadesalida" type="date" VALUE="{{ $reservas->fecha_vuelo_salida }}" disabled \>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+    <div class="card">
+    <div class="card-header">
+            <h1 class="card-title"> LOCALIZADOR: {{ $reservas->localizador }}</h1>
+        </div>
+    <div class="card-body">
+        <h3 class="card-title">Salida del Hotel</h3>
+        <div class="input-group mb-4">
+        <span class="input-group-text">Día de salida</span>
+            <input class="form-control" name="diadesalida" id="diadesalida" type="date" VALUE="{{ $reservas->fecha_vuelo_salida }}" disabled \>
+        </div>
+        <div class="input-group mb-4">
+        <span class="input-group-text">Hora de salida</span>
+            <input class="form-control" name="horadesalida" id="horadesalida" type="time" VALUE="{{ $reservas->hora_vuelo_salida }}" disabled \>
+        </div>
+        <div class="input-group mb-4">
+        <span class="input-group-text">Hora de recogida en el Hotel</span>
+            <input class="form-control" name="horaderecogida" id="horaderecogida" type="time" VALUE="{{ $reservas->hora_recogida_hotel }}" disabled \>
+        </div>
+        <div class="input-group mb-4">
+        <span class="input-group-text">Número de vuelo</span>
+            <input class="form-control" name="numerovuelo" id="numerovuelo" type="text" VALUE="{{ $reservas->numero_vuelo_entrada }}" disabled \>
+        </div>
+        <div class="input-group mb-4">
+        <span class="input-group-text">Aeropueto Origen</span>
+            <input class="form-control" name="aeropuertoorigen" id="aeropuertoorigen" type="text" VALUE="{{ $reservas->origen_vuelo_entrada }}" disabled \>
+        </div>
+        <!-- PARTE COMUN -->
+        <h3 class="card-title">Hotel destino</h3>
+        <div class="input-group mb-4">
+        <span class="input-group-text">Hotel recogida</span>
+            <x-hotel-select :selected="$reservas->id_destino" name="hoteldestino" /> 
+        </div>
+        <div class="input-group mb-4">
+        <span class="input-group-text">Número de viajeros</span>
+            <input class="form-control" name="numeroviajeros" id="numeroviajeros" type="number" min="1" max="8" VALUE="{{$reservas->num_viajeros}}" disabled \>
+        </div>
+        <div class="input-group mb-4">
+        <span class="input-group-text">email reserva</span>
+            <input class="form-control" name="emailreserva" id="emailreserva" type="mail" value="{{$reservas->email_cliente}}">
+        </div>
 </div>
-<div class="row">
-    <label class="float-left label-width">Hora de salida</label>
-    <input name="horadesalida" id="horadesalida" type="time" VALUE="{{ $reservas->hora_vuelo_salida }}" disabled \>
+        </div>
+    </div>
 </div>
-<div class="row">
-    <label class="float-left label-width">Hora de recogida en el Hotel</label>
-    <input name="horaderecogida" id="horaderecogida" type="time" VALUE="{{ $reservas->hora_recogida_hotel }}" disabled \>
-</div>
-<div class="row">
-    <label class="float-left label-width">Número de vuelo</label>
-    <input name="numerovuelo" id="numerovuelo" type="text" VALUE="{{ $reservas->numero_vuelo_entrada }}" disabled \>
-</div>
-<div class="row">
-    <label class="float-left label-width">Aeropueto Origen</label>
-    <input name="aeropuertoorigen" id="aeropuertoorigen" type="text" VALUE="{{ $reservas->origen_vuelo_entrada }}" disabled \>
-</div>
-<!-- PARTE COMUN -->
-<h3>Hotel destino</h3>
-<div class="row">
-    <label class="float-left label-width">Hotel recogida</label>
-    <x-hotel-select :selected="{{$reservas->id_destino}}" name="nombreselect" /> 
-</div>
-<div class="row">
-    <label class="float-left label-width">Número de viajeros</label>
-    <input name="numeroviajeros" id="numeroviajeros" type="number" min="1" max="8" VALUE="{{$reservas->num_viajeros}}" disabled \>
-</div>
-<div class="row">
-    <label class="float-left label-width">email reserva</label>
-    <input name="emailreserva" id="emailreserva" type="mail" value="{{$reservas->email_cliente}}">
-</div>
-
+<br><br><br><br>
 @endsection

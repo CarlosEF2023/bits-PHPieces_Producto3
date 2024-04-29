@@ -8,8 +8,15 @@
     <div class="phppot-container">
             <h1>Reserva trayecto Hotel al Aeropuerto</h1>
 
-            <form method="POST" id="checkout-form" action="/~uocx1/controllers/reservas/crear_reserva_sql.php" action="POST">
+            <form method="POST" name="checkout-form" id="checkout-form" action="{{Route(Session::get('userroute').'.reservas.nuevo')}}">
+            @csrf
                 <input type="hidden" name="idtiporeserva" id="idtiporeserva" value="2">
+                @if (Session::get('usertype')=="5")
+                    <input type="hidden" name="idhotelreserva" id="idhotelreserva" value="999">
+                @else
+                    <input type="hidden" name="idhotelreserva" id="idhotelreserva" value="{{ Session::get('id') }}">
+                @endif
+
                 <div class="wizard-flow-chart">
                     <span class="fill">1</span>
                     <span>2</span>
@@ -51,7 +58,7 @@
                     <h3>Hotel recogida</h3>
                     <div class="row">
                         <label class="float-left label-width">Hotel recogida</label>
-                        <x-hotel-select :selected="0" name="nombreselect" /> 
+                        <x-hotel-select :selected="0" name="Hotel_Destino" /> 
                     </div>
                     <div class="row">
                         <label class="float-left label-width">Número de viajeros</label>

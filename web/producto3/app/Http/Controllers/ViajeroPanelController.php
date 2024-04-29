@@ -104,8 +104,6 @@ class ViajeroPanelController extends Controller
             return view('viajero.cambio-datos')->with('alertas', $alertas)->with('user', $user);
         }
     
-    
-        
         public function cambiarContraseña(Request $request)
         {     
             log::channel('mylog')->info('Pasando por ViajeroPanelController');

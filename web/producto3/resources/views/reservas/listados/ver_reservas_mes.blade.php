@@ -60,17 +60,17 @@
                         @break
                 @endswitch
                 <td>
-                    <a href="#" class="btn btn-outline-success ver_reserva" id="ver_reserva" name="ver_reserva" data="{{ $info["id_reserva"] }}">
-                        <img src="{{ asset('/assets/visibility_FILL0_wght400_GRAD0_opsz24.svg')}}">
+                <a href="{{ route(Session::get('userroute').'.reservas.ver', ['idreserva' => $info['id_reserva']]) }}" class="btn btn-outline-success ver_reserva" id="ver_reserva" name="ver_reserva">
+                    <img src="{{ asset('/assets/visibility_FILL0_wght400_GRAD0_opsz24.svg')}}">
+                </a>
+                </td>
+                <td>
+                    <a href="{{ route (Session::get('userroute').'.reservas.modificar', ['idreserva' => $info['id_reserva']]) }}" class="btn btn-outline-primary modificar_reserva" id="modificar_reserva" name="modificar_reserva">
+                        <img src="{{ asset('/assets/edit_FILL0_wght400_GRAD0_opsz24.svg')}}">
                     </a>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-outline-primary modificar_reserva" id="modificar_reserva" name="modificar_reserva" data="{{ $info["id_reserva"] }}">
-                        <img src="{{ asset('/assets/edit_FILL0_wght400_GRAD0_opsz24.svg')}}'">
-                    </a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-outline-danger eliminar_reserva" id="eliminar_reserva" name="eliminar_reserva" data="{{ $info["id_reserva"] }}">
+                    <a href="{{ route (Session::get('userroute').'.reservas.eliminar', ['idreserva' => $info['id_reserva']]) }}" class="btn btn-outline-danger eliminar_reserva" id="eliminar_reserva" name="eliminar_reserva">
                         <img src="{{ asset('/assets/delete_FILL0_wght400_GRAD0_opsz24.svg')}}">
                     </a>
                 </td>

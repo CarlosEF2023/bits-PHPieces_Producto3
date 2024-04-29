@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 class transfer_eliminarreservaController extends Controller
 {
-    public function EliminarReserva($valor)
+    public function EliminarReserva($idreserva)
     {
-        return "Eliminar reserva".$valor;
+        //$reserva = TransferReservas::where('id_reserva', $idreserva)->first();
+        return "Eliminar reserva".$idreserva;
     }
 
 }
