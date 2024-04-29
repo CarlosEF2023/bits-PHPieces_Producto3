@@ -68,21 +68,7 @@
                             <p class="card-text">Asginar un conductor para el transfer.</p>
                         </div>
                         <div class="card-footer">
-                            <a type="button" id="asignar_conductor" name="asignar_conductor" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col" style="width: 250px;">
-                    <div class="card h-100">
-                        <div class="card-image-container">
-                            <img src="{{asset('assets/vista_trayectos.png')}}" class="card-img-top card-image" alt="...">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Vista trayectos</h5>
-                            <p class="card-text">Visualizar todos los trayectos disponibles.</p>
-                        </div>
-                        <div class="card-footer">
-                            <a type="button" href="{{ route('administrador.listaTrayectos') }}" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                            <a type="button" href="{{ route('administrador.asignarConductor') }}" id="asignar_conductor" name="asignar_conductor" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +96,7 @@
                             <p class="card-text">Gestiona las zonas.</p>
                         </div>
                         <div class="card-footer">
-                            <a type="button" id="zonas" name="zonas" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                            <a type="button" id="zonas" href="{{ route('administrador.listaZonas') }}" name="zonas" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
                         </div>
                     </div>
                 </div>
@@ -124,7 +110,7 @@
                             <p class="card-text">Mostrar tipos de reservas.</p>
                         </div>
                         <div class="card-footer">
-                            <a type="button" id="lista_reservas" name="lista_reservas" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
+                            <a type="button" href="{{ route('administrador.listaTrayectos') }}" id="lista_reservas"  name="lista_reservas" class="btn btn-outline-dark"><i class="bi bi-door-open"></i> Acceder</a>
                         </div>
                     </div>
                 </div>

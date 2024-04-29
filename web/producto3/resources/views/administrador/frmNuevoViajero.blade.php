@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="mb-3 text-center">
-                <button type="submit" class="btn btn-outline-primary" style="width: auto;">Enviar</button>
+                <button type="submit" class="btn btn-outline-primary" style="width: auto;">Aceptar</button>
                 <a type="button" href="{{route('administrador.listaViajeros')}}" class="btn btn-outline-secondary" style="width: auto;" id="cancelar">Cancelar</a>
             </div>
         </form>

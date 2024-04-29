@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\TransferAdministrador;
 use App\Models\TransferHotel;
+use App\Models\TransferReservas;
 use App\Models\TransferTipoReserva;
 use App\Models\TransferVehiculo;
 use App\Models\TransferViajeros;
+use App\Models\TransferZona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+
 
 
 class AdminPanelController extends Controller
@@ -392,6 +395,8 @@ class AdminPanelController extends Controller
         $trayecto = TransferTipoReserva::find($id_tipo_reserva);
         if ($trayecto) {
             $trayecto->Descripcion = $request->descripcion;
+            // ...
+
             $trayecto->update();
             $trayectos = TransferTipoReserva::all();
             return redirect()->route('administrador.listaTrayectos')->with('success', 'El trayecto se ha actualizado con éxito.');
@@ -400,6 +405,75 @@ class AdminPanelController extends Controller
         }
     }
 
+    public function listaZonas()
+    {
+        log::channel('mylog')->info('Pasando por lista zonas');
+
+        $zonas = TransferZona::all();
+
+        return view('administrador.listaZonas', compact('zonas'));
+    }
+    public function frmNuevaZona()
+    {
+        log::channel('mylog')->info('Pasando por frmNuevaZona');
+
+        return view('administrador.frmNuevaZona');
+    }
+    public function storeZona(Request $request)
+    {
+        try {
+            log::channel('mylog')->info(json_encode($request->all()));
+            $zona = new TransferZona();
+            $zona->Descripcion = $request->descripcion; 
+            $zona->save();
+            $zona = TransferZona::all();
+            return redirect()->route('administrador.listaZonas')->with('success', 'Zona creada con éxito.');
+        } catch (\Exception $e) {
+            return redirect()->route('administrador.listaZonas')->with('error', 'Error al crear la zona.');
+        }
+    }
+    public function frmModificarZona(Request $request)
+    {
+        log::channel('mylog')->info('Pasando por modificar zona ' . json_encode($request->input('zonaMod')));
+        $id_zona = $request->input('zonaMod');
+        $zona = TransferZona::where('id_zona', $id_zona)->first();
+        log::channel('mylog')->info('Zona encontrada ' . json_encode($zona));
+        return view('administrador.frmModificarZona', compact('zona'));
+    }
+    public function updateZona(Request $request, $id_zona)
+    {
+        log::channel('mylog')->info('id zona ' . json_encode($request->input($id_zona)));
+        $zona = TransferZona::find($id_zona);
+        if ($zona) {
+            $zona->descripcion = $request->descripcion; 
+            $zona->update();
+            $zonas = TransferZona::all();
+            return redirect()->route('administrador.listaZonas')->with('success', 'La zona se ha actualizado con éxito.');
+        } else {
+            return redirect()->route('administrador.listaZonas')->with('error', 'No se ha podido actualizar la zona.');
+        }
+    }
+    public function asignarConductor()
+    {
+        
+        $transferReservas = TransferReservas::where('id_vehiculo', 9999)->get();  
+        $vehiculos = TransferVehiculo::all();      
+        log::channel('mylog')->info('Pasando por asignar conductor. Sin conductor hay: ' . $transferReservas->count());
+        return view('administrador.asignarConductor', compact('transferReservas', 'vehiculos'));
+    }
+    public function updateAsignarConductor(Request $request, $id_reserva)
+    {
+        log::channel('mylog')->info('id reserva ' . json_encode($request->input($id_reserva)));
+        $reserva = TransferReservas::find($id_reserva);
+        if ($reserva) {
+            $reserva->id_vehiculo = $request->id_vehiculo; 
+            $reserva->update();
+            $reservas = TransferZona::all();
+            return redirect()->route('administrador.asignarConductor')->with('success', 'Se ha asignado conductor con éxito.');
+        } else {
+            return redirect()->route('administrador.asignarConductor')->with('error', 'No se ha podido asignar conductor.');
+        }
+    }
 
     // 
 }

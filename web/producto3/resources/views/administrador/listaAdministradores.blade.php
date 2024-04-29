@@ -3,19 +3,6 @@
 {{-- poner menu como plantilla --}}
 @section('content')
     <div class="container" style="margin-bottom: 50px;">
-        {{-- <!-- Muestra el mensaje de éxito -->
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <!-- Muestra el mensaje de error -->
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif --}}
         <div class="col">
             <div class="col">
                 <ul class="list-group">
