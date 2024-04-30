@@ -61,7 +61,7 @@
         <h3 class="card-title">Hotel destino</h3>
         <div class="input-group mb-4">
         <span class="input-group-text">Hotel recogida</span>
-            <x-hotel-select :selected="$reservas->id_destino" name="hoteldestino" /> 
+            <x-hotel-select :selected="$reservas->id_destino" name="Hotel_Destino" /> 
         </div>
         <div class="input-group mb-4">
         <span class="input-group-text">Número de viajeros</span>

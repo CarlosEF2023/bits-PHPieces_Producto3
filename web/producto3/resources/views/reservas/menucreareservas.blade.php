@@ -15,7 +15,7 @@
                         <h5 class="card-title">Reserva viaje del Aeropuerto al Hotel</h5>
                         <p class="card-text">Reserva tu viaje del Aeropuerto al hotel y evita esperas.</p>
                     </div>
-                    <div class="card-footer align-items-center justify-content-center">
+                    <div class="card-footer text-center align-items-center justify-content-center">
                     <a href="{{ route (Session::get('userroute').'.reservas.crear', ['valor' => 1]) }}" class="btn btn-primary" name="agendar_aeropuerto_hotel" id="agendar_aeropuerto_hotel">¡Agendar!</a>           
                 </div>
                 </div>
@@ -27,7 +27,7 @@
                         <h5 class="card-title">Reserva viaje del Hotel al Aeropuerto</h5>
                         <p class="card-text">Evita perder el avión y llega a tiempo al aeropuerto.</p>
                     </div>
-                    <div class="card-footer align-items-center justify-content-center">
+                    <div class="card-footer text-center align-items-center justify-content-center">
                         <a href="{{ route (Session::get('userroute').'.reservas.crear', ['valor' => 2]) }} " name="agendar_hotel_aeropuerto" id="agendar_hotel_aeropuerto" class="btn btn-primary">¡Agendar!</a>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                         <h5 class="card-title">Servicio ida y vuelta</h5>
                         <p class="card-text">Sin complicaciones. Nosotros nos encargamos de llevarte siempre a tiempo.</p>
                     </div>
-                    <div class="card-footer align-items-center justify-content-center">
+                    <div class="card-footer text-center align-items-center justify-content-center">
                         <a href=" {{ route (Session::get('userroute').'.reservas.crear', ['valor' => 3]) }}" name="agendar_completo" id="agendar_completo" class="btn btn-primary">¡Agendar!</a>
                     </div>
                 </div>
