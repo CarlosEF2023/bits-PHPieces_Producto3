@@ -139,7 +139,7 @@ Route::middleware(['checkViajero'])->group(function () {
     Route::get('viajero/reservas/modificar/{idreserva}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('viajero.reservas.modificar');
     Route::put('viajero/reservas/mod', [transfer_modificarreservaController::class, 'AccionModificar'])->name('viajero.reservas.mod');
     Route::get('viajero/reservas/eliminar/{idreserva}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('viajero.reservas.eliminar');
-    Route::put('viajero/reservas/del', [transfer_eliminarreservaController::class, 'AccionEliminar'])->name('viajero.reservas.del');
+    Route::get('viajero/reservas/del/{idreserva}', [transfer_eliminarreservaController::class, 'AccionEliminar'])->name('viajero.reservas.del');
     // -------------------------------------------------------
     Route::get('viajero/cambio-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('viajero.cambio-datos');
     Route::post('viajero/cambio-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('viajero.cambio-datos');
