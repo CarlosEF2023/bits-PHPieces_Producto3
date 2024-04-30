@@ -17,18 +17,16 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark shadow">
-
+<nav class="navbar fixed-top sticky-top navbar-expand-lg navbar-light bg-dark navbar-dark shadow">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <span><img src="{{ asset('assets/Isla_Transfers_Logo.jpeg') }}" width="64px" height="64px"></span>
+        <a class="navbar-brand d-flex align-items-center" href="#">
+                <img class="d-inline-block align-top" src="{{ asset('assets/Isla_Transfers_Logo.jpeg') }}" width="64px" height="64px" alt="">
+                <span class="ms-2 fs-2">Isla Transfer</span>         
         </a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
             <div class="hamburger-toggle">
                 <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span class="navbar-toggler-icon"></span>
                 </div>
             </div>
         </button>
@@ -38,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbar-content">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Isla Transfer</a></li>
+                <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Isla Transfer</a></li> -->
                 <li class="nav-item"><a class="nav-link" href="#">Hola {{ Session::get('mail') }}!</a></li>
 
                 @switch(Session::get('usertype'))

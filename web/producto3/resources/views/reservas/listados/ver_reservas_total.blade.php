@@ -8,7 +8,7 @@
 <br>
 <div class="card">
     <table class="table table-bordered table-striped table-hover">
-        <thead class="table-dark">
+        <thead class="table-dark" style="background: white;position: sticky;top: 0;box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);">
             <tr>
                 <th>Localizador</th>
                 <th>Tipo reserva</th>
@@ -71,9 +71,22 @@
                     </a>
                 </td>
                 <td>
+
+                @if (Session::get('usertype') == "6")
+                    @if(\Carbon\Carbon::now()->diffInHours(\Carbon\Carbon::parse($info["fecha_entrada"])) <= 48 )
+                        <a href="{{ route (Session::get('userroute').'.reservas.eliminar', ['idreserva' => $info['id_reserva']]) }}" class="btn btn-outline-danger eliminar_reserva" id="eliminar_reserva" name="eliminar_reserva">
+                            <img src="{{ asset('/assets/delete_FILL0_wght400_GRAD0_opsz24.svg')}}">
+                        </a>
+                    @else
+                        <img src="{{ asset('/assets/delete_FILL0_wght400_GRAD0_opsz24.svg')}}">
+                    @endif
+                @else
                     <a href="{{ route (Session::get('userroute').'.reservas.eliminar', ['idreserva' => $info['id_reserva']]) }}" class="btn btn-outline-danger eliminar_reserva" id="eliminar_reserva" name="eliminar_reserva">
                         <img src="{{ asset('/assets/delete_FILL0_wght400_GRAD0_opsz24.svg')}}">
                     </a>
+                @endif
+                        
+                    
                 </td>
             </tr>
             @endforeach

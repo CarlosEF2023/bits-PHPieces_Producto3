@@ -15,7 +15,7 @@
                         <h5 class="card-title">Reservas de Hoy</h5>
                         <p class="card-text">Revisa las reservas que tienes para hoy</p>
                     </div>
-                    <div class="card-footer align-items-center justify-content-center">
+                    <div class="card-footer text-center align-items-center justify-content-center">
                         
                     @if (Session::get('usertype')!="6")
                         <a href="{{ route(Session::get('userroute').'.reservas.listar.dia', ['tipoReporte' => 'dia', 'tipoDeReserva' => '9999', 'id' => Session::get('id'), 'tipoUsuario' => Session::get('usertype')]) }}" name="reservasdia" id="reservasdia" class="btn btn-primary">Ver reservas del día</a>
@@ -49,7 +49,7 @@
                         <h5 class="card-title">Reservas del mes</h5>
                         <p class="card-text">Revisa tu planificación mensual</p>
                     </div>
-                    <div class="card-footer align-items-center justify-content-center">
+                    <div class="card-footer text-center align-items-center justify-content-center">
                         @if (Session::get('usertype')!="6")
                             <a href="{{ route(Session::get('userroute').'.reservas.listar.mes', ['tipoReporte' => 'mes', 'tipoDeReserva' => '9999', 'id' => Session::get('id'), 'tipoUsuario' => Session::get('usertype')]) }}" name="reservasmes" id="reservasmes" class="btn btn-primary">Ver reservas del mes</a>
                         @else
@@ -65,7 +65,7 @@
                         <h5 class="card-title">Historico de reservas</h5>
                         <p class="card-text">Revisa todas las reservas realizadas</p>
                     </div>
-                    <div class="card-footer align-items-center justify-content-center">
+                    <div class="card-footer text-center align-items-center justify-content-center">
                     @if (Session::get('usertype')!="6")
                             <a href="{{ route(Session::get('userroute').'.reservas.listar.todas', ['tipoReporte' => 'todos', 'tipoDeReserva' => '9999', 'id' => Session::get('id'), 'tipoUsuario' => Session::get('usertype')]) }}" name="reservastotales" id="reservastotales" class="btn btn-primary">Historico de reservas</a>
                         @else

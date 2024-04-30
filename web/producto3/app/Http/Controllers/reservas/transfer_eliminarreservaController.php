@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\TransferReservas;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\URL;
+
 class transfer_eliminarreservaController extends Controller
 {
     public function EliminarReserva($idreserva)
@@ -28,8 +30,19 @@ class transfer_eliminarreservaController extends Controller
 
     public  function AccionEliminar($idreserva){
         try {   
-            $administrador = TransferReservas::find($idreserva);
-            return redirect()->back()->with('success', 'Reserva eliminada correctamente');
+            $reserva = TransferReservas::find($idreserva);
+            $valor = $reserva->id_tipo_reserva;
+                // Verifica si se encontró la reserva
+            if ($reserva) {
+                // Elimina la reserva
+                $reserva->delete();
+                
+                // Redirecciona de vuelta con un mensaje de éxito
+                return redirect('/')->with('success', 'Reserva eliminada correctamente');
+            } else {
+                // Si no se encuentra la reserva, redirecciona con un mensaje de error
+                return redirect()->back()->with('error', '¡La reserva no existe!');
+            }
         }catch(\Exception $e){
             return redirect()->back()->with('error', '¡No se ha podido eliminar!');
         }

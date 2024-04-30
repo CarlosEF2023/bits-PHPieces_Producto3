@@ -45,7 +45,7 @@
                     <div class="row button-row">
                     <div class="btn-group" role="group">
                         <button class="btn btn-outline-success" type="button" onClick="validate(this)">Siguiente</button>
-                        <a class="btn btn-outline-danger cancelar" href="#" class="btn">Cancelar</a>
+                        <a href="{{ back()->getTargetUrl() }}" class="btn btn-danger">Cancelar</a>
                     </div>
                     </div>
                 </section>
@@ -76,7 +76,7 @@
                     <div class="btn-group" role="group">
                         <button class="btn btn-outline-primary" type="button" onClick="showPrevious(this)">Anterior</button>
                         <button class="btn btn-outline-success" type="button" onClick="validate(this)">Siguiente</button>
-                        <a class="btn btn-danger cancelar" href="#" class="btn">Cancelar</a>
+                        <a href="{{ back()->getTargetUrl() }}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </section>
@@ -93,7 +93,7 @@
                         <div class="btn-group" role="group">
                         <button class="btn btn-outline-primary" type="button" onClick="showPrevious(this)">Anterior</button>
                         <button class="btn btn-outline-success" type="submit">Enviar</button>
-                        <a class="btn btn-danger cancelar" href="#" class="btn">Cancelar</a>
+                        <a href="{{ back()->getTargetUrl() }}" class="btn btn-danger">Cancelar</a>
                     </div>
                     </div>
                 </section>
@@ -115,8 +115,8 @@
             <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
             <button type="button" class="btn btn-outline-primary" name="aceptarmodal" id="aceptarmodal">Validar</button>
+            <a href="{{ back()->getTargetUrl() }}" class="btn btn-danger">Cancelar</a>
         </form>
       </div>
     </div>
