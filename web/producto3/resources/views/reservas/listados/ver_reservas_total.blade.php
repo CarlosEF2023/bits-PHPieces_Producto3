@@ -8,7 +8,7 @@
 <br>
 <div class="card">
     <table class="table table-bordered table-striped table-hover">
-        <thead class="table-dark">
+        <thead class="table-dark" style="background: white;position: sticky;top: 0;box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);">
             <tr>
                 <th>Localizador</th>
                 <th>Tipo reserva</th>

@@ -10,9 +10,10 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
     <div class="card">
-    <div class="card-header">
-            <h1 class="card-title"> LOCALIZADOR: {{ $reservas->localizador }}</h1>
-        </div>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h1 class="card-title mb-0">MODIFICAR LOCALIZADOR: {{ $reservas->localizador }}</h1>
+        <a href="{{ back()->getTargetUrl() }}" class="btn btn-primary">Volver</a>
+    </div>
     <div class="card-body">
     <h3 class="card-title">Salida del Hotel</h3>
         <div class="input-group mb-4">
@@ -45,6 +46,7 @@
         <span class="input-group-text">Número de viajeros</span>
             <input class="form-control" name="numeroviajeros" id="numeroviajeros" type="number" min="1" max="8" VALUE="{{$reservas->num_viajeros}}" disabled \>
         </div>
+        <div class="input-group mb-4">
         @if (Session::get('usertype')!="6")
         <x-viajero-select :selected="$reservas->email_cliente" name="emailreserva" />    
             <!-- <input name="emailreserva" id="emailreserva" type="mail" value=""> -->
@@ -53,15 +55,14 @@
             @endif
         </div>
         </div>
-        <div class="card-foot">
+        <div class="card-foot text-center">
             <button type="submit" class="btn btn-primary" name="enviar" id="enviar" >Validar cambios</button>
-            <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
-        </div>
-        </div>
+            <a href="{{ back()->getTargetUrl() }}" class="btn btn-danger">Cancelar</a>
         </div>
     </div>
-</div>
 
+    </div>
+</div>
 </form>
 <br><br><br><br>
 @endsection

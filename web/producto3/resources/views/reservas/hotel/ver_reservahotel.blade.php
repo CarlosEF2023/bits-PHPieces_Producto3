@@ -7,6 +7,8 @@
     <div class="card">
     <div class="card-header">
             <h1 class="card-title"> LOCALIZADOR: {{ $reservas->localizador }}</h1>
+            <a href="{{ back()->getTargetUrl() }}" class="btn btn-primary">Volver</a>
+
         </div>
     <div class="card-body">
         <h3 class="card-title">Salida del Hotel</h3>

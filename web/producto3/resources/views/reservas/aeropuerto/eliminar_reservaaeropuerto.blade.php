@@ -6,13 +6,15 @@
 @csrf   
 @method('PUT') 
 <input type="hidden" name="idtiporeserva" id="idtiporeserva" value="2">
-<input name="id_reserva" id="id_reserva" type="hinned" VALUE="{{ $reservas->id_reserva }}" \>
+<input name="id_reserva" id="id_reserva" type="hidden" VALUE="{{ $reservas->id_reserva }}" \>
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
     <div class="card">
-    <div class="card-header">
-            <h1 class="card-title"> LOCALIZADOR: {{ $reservas->localizador }}</h1>
-        </div>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h1 class="card-title mb-0">ELIMINAR LOCALIZADOR: {{ $reservas->localizador }}</h1>
+        <a href="{{ back()->getTargetUrl() }}" class="btn btn-primary">Volver</a>
+    </div>
+
     <div class="card-body">
     <h3 class="card-title">Salida del Hotel</h3>
         <div class="input-group mb-4">
@@ -46,21 +48,21 @@
             <input class="form-control" name="numeroviajeros" id="numeroviajeros" type="number" min="1" max="8" VALUE="{{$reservas->num_viajeros}}" disabled \>
         </div>
         @if (Session::get('usertype')!="6")
-                <x-viajero-select :selected="{{ $reservas->email_cliente }}" name="emailreserva" />     
+                <x-viajero-select :selected="$reservas->email_cliente" name="emailreserva" />     
             <!-- <input name="emailreserva" id="emailreserva" type="mail" value=""> -->
             @else
                 <input class="form-control" name="emailreserva" id="emailreserva" type="mail" value="{{ $reservas->email_cliente }}">
             @endif
         </div>
-        </div>
         <div class="card-foot">
             <button type="submit" class="btn btn-primary" name="enviar" id="enviar" >Eliminar</button>
-            <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
+            <a href="{{ back()->getTargetUrl() }}" class="btn btn-danger">Cancelar</a>
         </div>
         </div>
-        </div>
+
     </div>
 </div>
+
 
 </form>
 <br><br><br><br>
