@@ -114,10 +114,10 @@ Route::middleware(['checkVehiculo'])->group(function () {
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'vehiculo/'
     Route::get('vehiculo/listar', [VehiculoPanelController::class, 'index'])->name('vehiculo.listar');
     Route::get('vehiculo/itinerario/{tramo}/{fecha}/{conductor}', [transfer_listarreservaController::class, 'listarReservasConductor'])->name('vehiculo.itinerario');
-    Route::get('vehiculo/cambio-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('vehiculo.cambio-datos');
-    Route::post('vehiculo/cambio-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('vehiculo.cambio-datos');
-    Route::get('vehiculo/cambio-contraseña', [VehiculoPanelController::class, 'cambiarContraseña'])->name('vehiculo.cambio-contraseña');
-    Route::post('vehiculo/cambio-contraseña', [VehiculoPanelController::class, 'cambiarContraseña'])->name('vehiculo.cambio-contraseña');
+    Route::get('vehiculo/cambiar-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('vehiculo.cambio-datos');
+    Route::post('vehiculo/cambiar-datos', [VehiculoPanelController::class, 'cambiarDatos'])->name('vehiculo.cambio-datos');
+    Route::get('vehiculo/cambiar-contraseña', [VehiculoPanelController::class, 'cambiarContraseña'])->name('vehiculo.cambio-contraseña');
+    Route::post('vehiculo/cambiar-contraseña', [VehiculoPanelController::class, 'cambiarContraseña'])->name('vehiculo.cambio-contraseña');
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'vehiculo/'
 });
 
@@ -141,10 +141,10 @@ Route::middleware(['checkViajero'])->group(function () {
     Route::get('viajero/reservas/eliminar/{idreserva}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('viajero.reservas.eliminar');
     Route::get('viajero/reservas/del/{idreserva}', [transfer_eliminarreservaController::class, 'AccionEliminar'])->name('viajero.reservas.del');
     // -------------------------------------------------------
-    Route::get('viajero/cambio-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('viajero.cambio-datos');
-    Route::post('viajero/cambio-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('viajero.cambio-datos');
-    Route::get('viajero/cambio-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('viajero.cambio-contraseña');
-    Route::post('viajero/cambio-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('viajero.cambio-contraseña');
+    Route::get('viajero/cambiar-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('viajero.cambio-datos');
+    Route::post('viajero/cambiar-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('viajero.cambio-datos');
+    Route::get('viajero/cambiar-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('viajero.cambio-contraseña');
+    Route::post('viajero/cambiar-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('viajero.cambio-contraseña');
 });
 
 Route::middleware(['checkHotel'])->group(function () {
