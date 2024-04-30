@@ -51,7 +51,7 @@
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="admin_reservas_dropdown">
                                 <li><a class="dropdown-item" href="{{ route('administrador.reservas.menu') }}">Crear reservas</a></li>
                                 <li><a class="dropdown-item" href="{{ route('administrador.reservas.listar') }}">Gestión de reservas</a></li>
-                                <li><a class="dropdown-item" href="#">Asignar conductor</a></li>
+                                <li><a class="dropdown-item" href="{{route('administrador.asignarConductor')}}">Asignar conductor</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown me-md-2">
@@ -59,18 +59,19 @@
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="admin_gestion_user_dropdown">
                                 <li><a class="dropdown-item" href="{{route('administrador.listaAdministradores')}}">Administradores</a></li>
                                 <li><a class="dropdown-item" href="{{route('administrador.listaVehiculos')}}">Conductores / Vehículos</a></li>
-                                <li><a class="dropdown-item" href="#}">Hoteles</a></li>
+                                <li><a class="dropdown-item" href="{{route('administrador.listaHoteles')}}">Hoteles</a></li>
                                 <li><a class="dropdown-item" href="{{route('administrador.listaViajeros')}}">Viajeros</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown me-md-2">
                             <a class="nav-link dropdown-toggle" href="#" id="admin_mantenimiento_dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mantenimiento</a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="admin_mantenimiento_dropdown">
-                                <li><a class="dropdown-item" href="#">Gestión de zonas</a></li>
-                                <li><a class="dropdown-item" href="#">Gestión de Tipos de reservas</a></li>
-                                <li><a class="dropdown-item" href="#">Gestión de Tipos de usuarios</a></li>
+                                <li><a class="dropdown-item" href="{{route('administrador.listaZonas')}}">Gestión de zonas</a></li>
+                                <li><a class="dropdown-item" href="{{route('administrador.listaTrayectos')}}">Gestión de Tipos de reservas</a></li>
+                                <li><a class="dropdown-item" href="{{route('administrador.tiposUsuarios')}}">Gestión de Tipos de usuarios</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('administrador.frmDatosPersonalesAdmin') }}">Datos personales</a></li>
                         @break
 
                     @case('4')

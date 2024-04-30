@@ -80,16 +80,16 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::put('administrador/updateZona/{id_zona}', [AdminPanelController::class, 'updateZona'])->name('administrador.updateZona');
     Route::get('administrador/asignarConductor', [AdminPanelController::class, 'asignarConductor'])->name('administrador.asignarConductor');
     Route::put('administrador/updateAsignarConductor/{id_reserva}', [AdminPanelController::class, 'updateAsignarConductor'])->name('administrador.updateAsignarConductor');
+    Route::get('administrador/frmDatosPersonalesAdmin/administrador', [AdminPanelController::class, 'frmDatosPersonalesAdmin'])->name('administrador.frmDatosPersonalesAdmin');
+    Route::put('administrador/updateAdminPersonalData/{Id_usuario}', [AdminPanelController::class, 'updateAdminPersonalData'])->name('administrador.updateAdminPersonalData');
 
 
-
-    //
  
 
     
 
 
-    //administrador.updateTrayecto
+    
     // -------------------------------------------------------
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'administrador/'
     Route::get('administrador/reservas/menu', [menu_reservasController::class, 'index'])->name('administrador.reservas.menu');

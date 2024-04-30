@@ -475,5 +475,39 @@ class AdminPanelController extends Controller
         }
     }
 
+    public function frmDatosPersonalesAdmin(Request $request)
+    {
+        log::channel('mylog')->info('Pasando por frmDatosPersonalesAdmin');
+        $administrador = $request->session()->get('user');
+        log::channel('mylog')->info('Administrador encontrado ' . json_encode($administrador));
+        return view('administrador.frmDatosPersonalesAdmin',  compact('administrador'));
+    }
+
+
+    // Esta función podria ser igual que la de update, que es la que se encarga de actualizar al Administrador,
+    // pero ha de ser una función diferente ya que al modificar los datos personales también cambian en el usuario
+    // que está logeado, por lo que se ha de actualizar la sesión.
+    public function updateAdminPersonalData(Request $request, $Id_usuario)
+    {
+
+        $administrador = TransferAdministrador::find($Id_usuario);
+        if ($administrador) {
+            $administrador->Username = $request->username;
+            $administrador->nombre = $request->nombre;
+            $administrador->Password = $request->password;
+            $administrador->email = $request->email;
+            $administrador->Apellido1 = $request->primerApellido;
+            $administrador->Apellido2 = $request->segundoApellido;
+            // $administrador->Id_tipo_usuario = $request->Id_tipo_usuario;
+            $administrador->update();
+            // Actualiza la sesión
+            $request->session()->put('user', $administrador);
+            $administradores = TransferAdministrador::all();
+            return redirect()->route('administrador.listaAdministradores')->with('success', 'Usuario actualizado con éxito.');
+        } else {
+            return redirect()->route('administrador.listaAdministradores')->with('error', 'Usuario no encontrado.');
+        }
+    }
+
     // 
 }
