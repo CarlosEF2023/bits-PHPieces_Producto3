@@ -70,9 +70,20 @@
                     </a>
                 </td>
                 <td>
+
+                @if (Session::get('usertype') == "6")
+                    @if(Carbon::now()->diffInHours($info["fecha_entrada"]) <= 48 )
+                        <a href="{{ route (Session::get('userroute').'.reservas.eliminar', ['idreserva' => $info['id_reserva']]) }}" class="btn btn-outline-danger eliminar_reserva" id="eliminar_reserva" name="eliminar_reserva">
+                            <img src="{{ asset('/assets/delete_FILL0_wght400_GRAD0_opsz24.svg')}}">
+                        </a>
+                    @else
+                        <img src="{{ asset('/assets/delete_FILL0_wght400_GRAD0_opsz24.svg')}}">
+                    @endif
+                @else
                     <a href="{{ route (Session::get('userroute').'.reservas.eliminar', ['idreserva' => $info['id_reserva']]) }}" class="btn btn-outline-danger eliminar_reserva" id="eliminar_reserva" name="eliminar_reserva">
                         <img src="{{ asset('/assets/delete_FILL0_wght400_GRAD0_opsz24.svg')}}">
                     </a>
+                @endif
                 </td>
             </tr>
             @endforeach

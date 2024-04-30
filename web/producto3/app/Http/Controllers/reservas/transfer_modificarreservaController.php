@@ -37,13 +37,12 @@ class transfer_modificarreservaController extends Controller
             if (!$reserva) {
                 return redirect()->back()->with('error', 'La reserva no existe');
             }
-    
+            
             // Actualizar solo los campos que se han modificado
 
             switch ($request->idtiporeserva){
                 case "1":
                     $reserva->email_cliente = $request->emailreserva;
-                    $reserva->fecha_reserva = date("Y-m-d H:i:s");
                     $reserva->fecha_modificacion = date("Y-m-d H:i:s");
                     $reserva->id_destino  = $request->Hotel_Destino;
                     $reserva->fecha_entrada = $request->diadellegada;
@@ -54,7 +53,6 @@ class transfer_modificarreservaController extends Controller
                     break;
                 case "2":
                     $reserva->email_cliente = $request->emailreserva;
-                    $reserva->fecha_reserva = date("Y-m-d H:i:s");
                     $reserva->fecha_modificacion = date("Y-m-d H:i:s");
                     $reserva->id_destino  = $request->Hotel_Destino;
                     $reserva->fecha_entrada = $request->diadellegada;
@@ -68,7 +66,6 @@ class transfer_modificarreservaController extends Controller
                     break;
                 case "3":
                     $reserva->email_cliente = $request->emailreserva;
-                    $reserva->fecha_reserva = date("Y-m-d H:i:s");
                     $reserva->fecha_modificacion = date("Y-m-d H:i:s");
                     $reserva->id_destino  = $request->Hotel_Destino;
                     $reserva->fecha_entrada = $request->diadesalida;
