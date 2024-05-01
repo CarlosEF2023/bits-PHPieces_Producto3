@@ -55,7 +55,11 @@
                     <h3>Hotel destino</h3>
                     <div class="row">
                         <label class="float-left label-width">Hotel destino</label>
-                        <x-hotel-select :selected="0" name="Hotel_Destino" />
+                        @if (Session::get('usertype')=="5")
+                            <x-hotel-select :selected="Session::get('id')" name="Hotel_Destino" />
+                        @else
+                            <x-hotel-select :selected="0" name="Hotel_Destino" />
+                        @endif
                     </div>
                     <div class="row">
                         <label class="float-left label-width">Número de viajeros</label>
