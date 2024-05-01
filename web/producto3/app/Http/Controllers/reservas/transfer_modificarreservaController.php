@@ -84,7 +84,6 @@ class transfer_modificarreservaController extends Controller
         } catch (\Exception $e) {
             // Capturar cualquier excepción que pueda ocurrir durante el proceso de modificación
             return redirect()->back()->with('error', '¡No se ha podido modificar la reserva!'.$e);
-            dd($reserva);
         }
 
     }

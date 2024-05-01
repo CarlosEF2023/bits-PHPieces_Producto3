@@ -84,6 +84,7 @@
                     <!-- Aquí colocar las opciones específicas para el hotel -->
                     <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('hotel.reservas.menu') }}">Crear Reservas</a></li>
                     <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('hotel.reservas.listar') }}">Listar Reservas</a></li>
+                    <li class="nav-item me-md-2"><a class="nav-link" href="{{ route('hotel.frmDatosPersonalesHotel') }}">Datos personales</a></li>
 
                     @break
 

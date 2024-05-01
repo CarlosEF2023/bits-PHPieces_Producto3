@@ -82,14 +82,6 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::put('administrador/updateAsignarConductor/{id_reserva}', [AdminPanelController::class, 'updateAsignarConductor'])->name('administrador.updateAsignarConductor');
     Route::get('administrador/frmDatosPersonalesAdmin/administrador', [AdminPanelController::class, 'frmDatosPersonalesAdmin'])->name('administrador.frmDatosPersonalesAdmin');
     Route::put('administrador/updateAdminPersonalData/{Id_usuario}', [AdminPanelController::class, 'updateAdminPersonalData'])->name('administrador.updateAdminPersonalData');
-
-
- 
-
-    
-
-
-    
     // -------------------------------------------------------
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'administrador/'
     Route::get('administrador/reservas/menu', [menu_reservasController::class, 'index'])->name('administrador.reservas.menu');
@@ -149,11 +141,20 @@ Route::middleware(['checkViajero'])->group(function () {
 
 Route::middleware(['checkHotel'])->group(function () {
     Route::get('hotel', [HotelPanelController::class, 'index']);
+    Route::get('hotel/frmDatosPersonalesHotel', [HotelPanelController::class, 'frmDatosPersonalesHotel'])->name('hotel.frmDatosPersonalesHotel');
+    Route::post('hotel/frmModificarHotel', [HotelPanelController::class, 'frmModificarHotel'])->name('hotel.frmModificarHotel');
+    Route::put('hotel/updateHotel/{id_hotel}', [HotelPanelController::class, 'updateHotel'])->name('hotel.updateHotel');
     // -------------------------------------------------------
     // Agrega aquí otras rutas que devuelvan vistas dentro de la carpeta 'hotel/'
     Route::get('hotel/reservas/menu', [menu_reservasController::class, 'index'])->name('hotel.reservas.menu');
     Route::get('hotel/reservas/crear/{valor}', [transfer_crearreservaController::class, 'index'])->name('hotel.reservas.crear');
     Route::post('hotel/reservas/nuevo', [transfer_crearreservaController::class, 'store'])->name('hotel.reservas.nuevo');
+    // -------------------------------------------------------
+    Route::get('hotel/reservas/ver/{idreserva}', [transfer_verreservaController::class, 'VerReserva'])->name('hotel.reservas.ver');
+    Route::get('hotel/reservas/modificar/{idreserva}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('hotel.reservas.modificar');
+    Route::put('hotel/reservas/mod', [transfer_modificarreservaController::class, 'AccionModificar'])->name('hotel.reservas.mod');
+    Route::get('hotel/reservas/eliminar/{idreserva}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('hotel.reservas.eliminar');
+    Route::get('hotel/reservas/del/{idreserva}', [transfer_eliminarreservaController::class, 'AccionEliminar'])->name('hotel.reservas.del');    
     // --------------------------------------------------------
     Route::get('hotel/reservas/listar', [menu_listareservasController::class, 'index'])->name('hotel.reservas.listar');
     Route::get('hotel/reservas/listar/dia/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('hotel.reservas.listar.dia');
@@ -161,9 +162,10 @@ Route::middleware(['checkHotel'])->group(function () {
     Route::get('hotel/reservas/listar/mes/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('hotel.reservas.listar.mes');
     Route::get('hotel/reservas/listar/todas/{tipoReporte}/{tipoDeReserva}/{id}/{tipoUsuario}', [transfer_listarreservaController::class, 'listarTipoReserva'])->name('hotel.reservas.listar.todas');
     // --------------------------------------------------------
-    Route::get('hotel/reservas/modificar/{idreserva}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('hotel.reservas.modificar');
-    Route::get('hotel/reservas/ver/{idreserva}', [transfer_verreservaController::class, 'VerReserva'])->name('hotel.reservas.ver');
-    Route::post('hotel/reservas/eliminar/{idreserva}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('hotel.reservas.eliminar');
+    Route::get('hotel/cambiar-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('hotel.cambio-datos');
+    Route::post('hotel/cambiar-datos', [ViajeroPanelController::class, 'cambiarDatos'])->name('hotel.cambio-datos');
+    Route::get('hotel/cambiar-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('hotel.cambio-contraseña');
+    Route::post('hotel/cambiar-contraseña', [ViajeroPanelController::class, 'cambiarContraseña'])->name('hotel.cambio-contraseña');
 });
 
 Route::get('logout', [logoutController::class, 'index'])->name('logout');
