@@ -5,11 +5,10 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
     <div class="card">
-        <div class="card-header">
-            <h1 class="card-title"> LOCALIZADOR: {{ $reservas->localizador }}</h1>
-            <a href="{{ back()->getTargetUrl() }}" class="btn btn-primary">Volver</a>
-
-        </div>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h1 class="card-title mb-0">VER LOCALIZADOR: {{ $reservas->localizador }}</h1>
+        <a href="{{ back()->getTargetUrl() }}" class="btn btn-primary">Volver</a>
+    </div>
     <div class="card-body">
         <h3 class="card-title">Recogida aeropuerto</h3>
         <div class="input-group mb-4">
