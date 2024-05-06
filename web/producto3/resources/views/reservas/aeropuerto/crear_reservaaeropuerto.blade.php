@@ -12,7 +12,7 @@
             <form method="POST" name="checkout-form" id="checkout-form" action="{{Route(Session::get('userroute').'.reservas.nuevo')}}">
                 @csrf
                 <input type="hidden" name="idtiporeserva" id="idtiporeserva" value="1">
-                @if (Session::get('usertype')=="5")
+                @if (Session::get('usertype')!="5")
                     <input type="hidden" name="idhotelreserva" id="idhotelreserva" value="999">
                 @else
                     <input type="hidden" name="idhotelreserva" id="idhotelreserva" value="{{ Session::get('id') }}">

@@ -98,6 +98,9 @@ Route::middleware(['checkAdmin'])->group(function () {
     Route::get('administrador/reservas/modificar/{idreserva}', [transfer_modificarreservaController::class, 'ModificarReserva'])->name('administrador.reservas.modificar');
     Route::get('administrador/reservas/ver/{idreserva}', [transfer_verreservaController::class, 'VerReserva'])->name('administrador.reservas.ver');
     Route::post('administrador/reservas/eliminar/{idreserva}', [transfer_eliminarreservaController::class, 'EliminarReserva'])->name('administrador.reservas.eliminar');
+        // Reservas por zonas
+    // ------------------------------------------------------------------------------------
+    Route::get('administrador/reservasporzona', [transfer_listarreservaController::class, 'reservasPorZona'])->name('administrador.reservasporzona');
 });
 
 Route::middleware(['checkVehiculo'])->group(function () {

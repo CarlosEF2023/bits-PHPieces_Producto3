@@ -158,4 +158,49 @@ class transfer_listarreservaController extends Controller
         }
     }    
 
+    public function reservasPorZona()
+    {
+
+        /*
+
+        SELECT 
+            T1.id_zona,
+            COUNT(T3.id_reserva) AS total_reservas,
+            COUNT(T3.id_reserva) * 100.0 / total_total_reservas AS porcentaje_reservas,
+            MONTH(T3.fecha_reserva) AS mes
+        FROM 
+            transfer_zona AS T1
+        LEFT JOIN 
+            transfer_hotel AS T2 ON T1.id_zona = T2.id_zona
+        LEFT JOIN 
+            transfer_reservas AS T3 ON T3.id_destino = T2.id_hotel
+        CROSS JOIN 
+            (SELECT COUNT(*) AS total_total_reservas FROM transfer_reservas WHERE MONTH(fecha_reserva) = 4) AS total
+            WHERE MONTH(T3.fecha_reserva) = 4
+        GROUP BY 
+            T1.id_zona, total_total_reservas, mes;
+
+    */
+    $reservasPorZona = DB::table('transfer_zona AS T1')
+    ->selectRaw('T1.id_zona, COUNT(T3.id_reserva) AS total_reservas, COUNT(T3.id_reserva) * 100.0 / (SELECT COUNT(*) FROM transfer_reservas WHERE MONTH(fecha_reserva) = 4) AS porcentaje_reservas, MONTH(T3.fecha_reserva) AS mes')
+    ->leftJoin('transfer_hotel AS T2', 'T1.id_zona', '=', 'T2.id_zona')
+    ->leftJoin('transfer_reservas AS T3', 'T3.id_destino', '=', 'T2.id_hotel')
+    ->whereRaw('MONTH(T3.fecha_reserva) = 4')
+    ->groupBy('T1.id_zona', 'mes')
+    ->get();
+
+    $totalReservas = TransferReservas::whereMonth('fecha_reserva', 4)->count();
+
+    $reservasPorZonaConPorcentaje = $reservasPorZona->map(function ($reserva) use ($totalReservas) {
+        $porcentaje = ($reserva->total_reservas / $totalReservas) * 100;
+        return [
+            'zona' => $reserva->id_zona,
+            'total' => $reserva->total_reservas,
+            'porcentaje' => round($porcentaje, 2)
+        ];
+    });
+
+    return response()->json($reservasPorZonaConPorcentaje);
+    }
+
 }
